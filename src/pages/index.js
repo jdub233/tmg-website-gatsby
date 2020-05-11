@@ -1,3 +1,10 @@
-import React from "react"
+import React from "react";
 
-export default () => <div>Hello world!</div>
+import ProjectList from "../components/projectList";
+
+export default (data) => (
+    <div>
+        <h2>Projects</h2>
+        <ProjectList />
+    </div>
+)
