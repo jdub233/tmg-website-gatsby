@@ -15,13 +15,25 @@ const ProjectList = () => {
               Name
               BadgeContainerURL
               Project_Year
+              cBadgeRawURL
             }
           }
         }
       }
     }
   `)
-    return <pre>{JSON.stringify(data, null, 4)}</pre>
+    return (
+        
+        <div>
+            {data.allProjectsJson.edges.map( ({ node }) => (
+                <div key={node.id}>
+                  <img src={node.fieldData.cBadgeRawURL} />
+                  {node.fieldData.Name}
+                </div>
+            ) )}
+        </div>
+        
+    );
 }
 
 export default ProjectList
