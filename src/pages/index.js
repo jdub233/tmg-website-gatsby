@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "gatsby";
 
-import ProjectList from "../components/projectList";
-
-export default (data) => (
+export default () => (
     <div>
-        <h2>Projects</h2>
-        <ProjectList />
+        <h1>Tangible Media Group</h1>
+        <ul>
+            <li><Link to='projects'>Projects</Link></li>
+            <li><Link to='papers'>Papers</Link></li>
+        </ul>
     </div>
 )
