@@ -7,6 +7,7 @@ export default () => (
         <ul>
             <li><Link to='projects'>Projects</Link></li>
             <li><Link to='papers'>Papers</Link></li>
+            <li><Link to='people'>People</Link></li>
         </ul>
     </div>
 )
