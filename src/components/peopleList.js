@@ -8,6 +8,7 @@ const PeopleList = () => (
         allPeopleJson {
           edges {
             node {
+              id
               fieldData {
                 Full_Name
                 cBadgeRawURL

@@ -28,14 +28,13 @@ const PaperList = () => (
       }
     `}
         render={data => (
-            <div>
-                {data.allPapersJson.edges.map( ({ node }) => (
-                    <div key={node.id}>
-                        {node.fieldData.Title}
-                    </div>
-                ) )}
-            </div>
-            //<pre>{JSON.stringify(data.allPapersJson.nodes, null, 4)}</pre>
+          <div>
+              {data.allPapersJson.edges.map( ({ node }) => (
+                  <div key={node.id}>
+                      {node.fieldData.Title}
+                  </div>
+              ) )}
+          </div>
         )}
     ></StaticQuery>
 )
