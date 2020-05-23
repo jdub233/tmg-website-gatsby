@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 
 const PeopleList = () => (
     <StaticQuery
@@ -10,6 +10,7 @@ const PeopleList = () => (
             node {
               id
               fieldData {
+                slug
                 Full_Name
                 cBadgeRawURL
                 Category
@@ -23,7 +24,9 @@ const PeopleList = () => (
             <div>
                 {data.allPeopleJson.edges.map( ({ node }) => (
                     <div key={node.id} >
+                      <Link to={`/people/${node.fieldData.slug}`}>
                         {node.fieldData.Full_Name}
+                      </Link>
                     </div>
                 ) )}
             </div>
