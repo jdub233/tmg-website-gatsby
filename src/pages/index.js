@@ -7,10 +7,10 @@ export default () => (
   <Layout>
     <div>
       <ul>
-        <li><Link to='projects'>Projects</Link></li>
-        <li><Link to='papers'>Papers</Link></li>
-        <li><Link to='people'>People</Link></li>
-        <li><Link to='awards'>Awards</Link></li>
+        <li><Link to='/projects'>Projects</Link></li>
+        <li><Link to='/papers'>Papers</Link></li>
+        <li><Link to='/people'>People</Link></li>
+        <li><Link to='/awards'>Awards</Link></li>
       </ul>
     </div>
   </Layout>
