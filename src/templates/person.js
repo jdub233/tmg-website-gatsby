@@ -5,8 +5,8 @@ import Layout from "../components/layout";
 
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node;
-  const papers   = edges[0].node.portalData.PeoplePaperJoin;
-  const projects = edges[0].node.portalData.PeopleProjectJoin;
+  const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
+  const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
 
   return (
     <Layout>
@@ -14,9 +14,9 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       <h3>{person.fieldData.Full_Name}</h3>
       <div dangerouslySetInnerHTML={{ __html: person.fieldData.DescriptionHTML }} />
       <h4>Papers</h4>
-      {papers.map((node) => <div key={node.Papers__ID}>{node.Papers__Title}</div>)}
+      {papers.map((node) => <div key={node.Papers__ID}>{node.Papers_People_WebView__Title}</div>)}
       <h4>Projects</h4>
-      {projects.map((node) => <div key={node.recordId}>{node.Projects__Name}</div>)}
+      {projects.map((node) => <div key={node.recordId}>{node.Projects_People_WebView__Name}</div>)}
     </Layout>
   );
 };
@@ -38,14 +38,15 @@ export const query = graphql`
             cBadgeRawURL
           }
           portalData {
-            PeoplePaperJoin {
-              Papers__PaperID
-              Papers__Title
-              Papers__SC_published_pdf_Download_URL
+            PeoplePaperJoin_People_WebView {
+              Papers_People_WebView__Publication_URL
+              Papers_People_WebView__Title
+              Papers_People_WebView__SC_published_pdf_Download_URL
             }
-            PeopleProjectJoin {
-              Projects__Name
-              recordId
+            PeopleProjectJoin_People_WebView {
+              Projects_People_WebView__Name
+              Projects_People_WebView__cBadgeRawURL
+              Projects_People_WebView__slug
             }
           }
         }
