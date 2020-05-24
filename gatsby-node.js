@@ -24,4 +24,27 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.fieldData.slug, },
     });
   });
+
+  const projects = await graphql(`
+    query {
+      allProjectsJson {
+        edges {
+          node {
+            fieldData {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+  
+  projects.data.allProjectsJson.edges.map( ({node}) => {
+    createPage({
+      path: `projects/${node.fieldData.slug}`,
+      component: path.resolve(`./src/templates/project.js`),
+      context: { slug: node.fieldData.slug },
+    });
+  });
+  
 }

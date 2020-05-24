@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 const ProjectList = () => {
     const data = useStaticQuery(graphql`
@@ -27,12 +27,14 @@ const ProjectList = () => {
         <div>
             {data.allProjectsJson.edges.map( ({ node }) => (
                 <div key={node.id}>
-                  <img 
-                    width="140px" 
-                    alt="{node.fieldData.Name}"
-                    src={`https://trackr-media.tangiblemedia.org/publishedmedia/${node.fieldData.cBadgeRawURL}?width=140`} 
-                  />
-                  {node.fieldData.Name}
+                <Link to={`projects/${node.fieldData.slug}`}>
+                    <img 
+                      width="140px" 
+                      alt="{node.fieldData.Name}"
+                      src={`https://trackr-media.tangiblemedia.org/publishedmedia/${node.fieldData.cBadgeRawURL}?width=140`} 
+                    />
+                    {node.fieldData.Name}
+                </Link>
                 </div>
             ) )}
         </div>
