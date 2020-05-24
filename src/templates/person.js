@@ -4,8 +4,9 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout";
 
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
-  const person = edges[0].node;
-  const papers = edges[0].node.portalData.PeoplePaperJoin;
+  const person   = edges[0].node;
+  const papers   = edges[0].node.portalData.PeoplePaperJoin;
+  const projects = edges[0].node.portalData.PeopleProjectJoin;
 
   return (
     <Layout>
@@ -14,6 +15,8 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       <div dangerouslySetInnerHTML={{ __html: person.fieldData.DescriptionHTML }} />
       <h4>Papers</h4>
       {papers.map((node) => <div key={node.Papers__ID}>{node.Papers__Title}</div>)}
+      <h4>Projects</h4>
+      {projects.map((node) => <div key={node.recordId}>{node.Projects__Name}</div>)}
     </Layout>
   );
 };
@@ -39,6 +42,10 @@ export const query = graphql`
               Papers__PaperID
               Papers__Title
               Papers__SC_published_pdf_Download_URL
+            }
+            PeopleProjectJoin {
+              Projects__Name
+              recordId
             }
           }
         }
