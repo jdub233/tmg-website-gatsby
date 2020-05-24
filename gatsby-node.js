@@ -3,7 +3,7 @@ const path = require(`path`);
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
+  const people = await graphql(`
     query {
       allPeopleJson {
         edges {
@@ -17,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  result.data.allPeopleJson.edges.map( ({ node }) => {
+  people.data.allPeopleJson.edges.map( ({ node }) => {
     createPage({
       path: `people/${node.fieldData.slug}`,
       component: path.resolve(`./src/templates/person.js`),
