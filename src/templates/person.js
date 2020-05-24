@@ -14,7 +14,11 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       <h3>{person.fieldData.Full_Name}</h3>
       <div dangerouslySetInnerHTML={{ __html: person.fieldData.DescriptionHTML }} />
       <h4>Papers</h4>
-      {papers.map((node) => <div key={node.Papers__ID}>{node.Papers_People_WebView__Title}</div>)}
+      {papers.map((node) => (
+        <div key={node.Papers__ID}>
+          <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_People_WebView__SC_published_pdf_Download_URL}`}>{node.Papers_People_WebView__Title}</a>
+        </div>
+      ))}
       <h4>Projects</h4>
       {projects.map((node) => (
         <div key={node.recordId}>
