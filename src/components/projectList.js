@@ -27,7 +27,7 @@ const ProjectList = () => {
         <div>
             {data.allProjectsJson.edges.map( ({ node }) => (
                 <div key={node.id}>
-                <Link to={`projects/${node.fieldData.slug}`}>
+                <Link to={`/projects/${node.fieldData.slug}`}>
                     <img 
                       width="140px" 
                       alt="{node.fieldData.Name}"
