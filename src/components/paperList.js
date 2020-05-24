@@ -31,7 +31,7 @@ const PaperList = () => (
           <div>
               {data.allPapersJson.edges.map( ({ node }) => (
                   <div key={node.id}>
-                      {node.fieldData.Title}
+                    <a href={`${process.env.MEDIA_LIBRARY}/${node.fieldData.SC_published_pdf_Download_URL}`}>{node.fieldData.Title}</a>
                   </div>
               ) )}
           </div>
