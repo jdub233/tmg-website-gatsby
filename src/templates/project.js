@@ -1,7 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-const Project = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
+import Layout from "../components/layout";
+
+const Project = ({ data }) => <Layout><pre>{JSON.stringify(data, null, 4)}</pre></Layout>
 
 export const query = graphql`
   query($slug: String!) {
