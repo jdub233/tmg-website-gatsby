@@ -16,7 +16,11 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       <h4>Papers</h4>
       {papers.map((node) => <div key={node.Papers__ID}>{node.Papers_People_WebView__Title}</div>)}
       <h4>Projects</h4>
-      {projects.map((node) => <div key={node.recordId}>{node.Projects_People_WebView__Name}</div>)}
+      {projects.map((node) => (
+        <div key={node.recordId}>
+          <Link to={`/projects/${node.Projects_People_WebView__slug}`}>{node.Projects_People_WebView__Name}</Link>
+        </div>
+      ))}
     </Layout>
   );
 };
