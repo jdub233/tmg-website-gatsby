@@ -18,5 +18,6 @@ module.exports = {
         path: `${__dirname}/data/`,
       },
     },
+    `gatsby-plugin-sass`,
   ],
 }
