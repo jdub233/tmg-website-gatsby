@@ -10,6 +10,7 @@ const Project = ({ data: { allProjectsJson: { edges } } }) => {
     <Layout>
       <h2><Link to='/projects/'>Projects</Link></h2>
       <h3>{project.fieldData.Name}</h3>
+      <div>{project.fieldData.Members}</div>
       <div dangerouslySetInnerHTML={{ __html: project.fieldData.DescriptionHTML }} />
     </Layout>
   )
