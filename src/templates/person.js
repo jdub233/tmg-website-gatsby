@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
+const Person = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
 
 export const query = graphql`
   query($slug: String!) {
@@ -24,5 +24,4 @@ export const query = graphql`
     }
   }
 `
-
-export default ComponentName
+export default Person
