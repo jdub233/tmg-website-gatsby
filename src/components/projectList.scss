@@ -1,5 +1,6 @@
 .projectYearList {
     display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
 
     .projectItem {
         width: 140px;

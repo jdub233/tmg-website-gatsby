@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
-import "./paperList.scss";
+import "./projectList.scss";
 
 const ProjectList = () => {
     const data = useStaticQuery(graphql`
@@ -52,7 +52,7 @@ const ProjectYearList = ( {projects} ) => (
             alt="{node.fieldData.Name}"
             src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
           />
-          {node.fieldData.Name.length > 18 ? `${node.fieldData.Name.substring(0, 17)}...` : node.fieldData.Name}
+          <p>{node.fieldData.Name.length > 18 ? `${node.fieldData.Name.substring(0, 17)}...` : node.fieldData.Name}</p>
         </Link>
       </div>
     ))}
