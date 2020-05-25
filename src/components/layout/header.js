@@ -6,7 +6,7 @@ import "./header.scss";
 export default () => (
     <div className="header">
         <div className="supertitle"><a href="https://media.mit.edu">MIT Media Lab</a></div>
-        <Link to="/">Tangible Media Group</Link>
+        <h1><Link to="/">Tangible Media Group</Link></h1>
         <div className="navbar">
             <ul>
                 <li><Link activeClassName="active" to='/vision/'>vision</Link></li>
