@@ -8,8 +8,10 @@ import Footer from "./layout/footer";
 export default function Layout({ children }) {
     return (
         <div id="container">
-            <Header className="header"/>
-            {children}
+            <Header/>
+            <div className="content">
+                {children}
+            </div>
             <Footer />
         </div>
     );
