@@ -5,7 +5,7 @@ const PaperList = () => (
     <StaticQuery
         query={graphql`
       {
-        allPapersJson(sort: {fields: fieldData___Paper_Year}) {
+        allPapersJson(sort: {fields: fieldData___Paper_Year, order: DESC}) {
           edges {
             node {
               id
