@@ -31,7 +31,7 @@ const ProjectList = () => {
                     <img 
                       width="140px" 
                       alt="{node.fieldData.Name}"
-                      src={`https://trackr-media.tangiblemedia.org/publishedmedia/${node.fieldData.cBadgeRawURL}?width=140`} 
+                      src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`} 
                     />
                     {node.fieldData.Name}
                 </Link>
