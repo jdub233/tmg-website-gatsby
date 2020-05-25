@@ -1,5 +1,7 @@
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+
+import "./paperList.scss";
 
 const ProjectList = () => {
     const data = useStaticQuery(graphql`
@@ -41,16 +43,16 @@ const ProjectList = () => {
 }
 
 const ProjectYearList = ( {projects} ) => (
-  <div>
+  <div className="projectYearList">
     {projects.map(( node ) => (
-      <div key={node.id}>
-        <Link to={`/projects/${node.fieldData.slug}`}>
+      <div className="projectItem" key={node.id}>
+        <Link className="projectBadge" to={`/projects/${node.fieldData.slug}`}>
           <img
             width="140px"
             alt="{node.fieldData.Name}"
             src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
           />
-          {node.fieldData.Name}
+          {node.fieldData.Name.length > 18 ? `${node.fieldData.Name.substring(0, 17)}...` : node.fieldData.Name}
         </Link>
       </div>
     ))}
