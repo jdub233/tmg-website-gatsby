@@ -1,5 +1,8 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+
+import "./paperList.scss";
+import pdfIcon from "../img/pdf-icon.png";
 
 const PaperList = () => (
   <StaticQuery
@@ -36,25 +39,26 @@ const PaperList = () => (
 
       const sortedList = Object.entries(papersByYear).reverse().map( ([key, papers]) => (
           <div key={key}>
-            <h2>{key}</h2>
-            <PapersForYear papers={papers} />
+            <h3>{key}</h3>
+            {papers.map((node) => (
+              <div className="paperBox" key={node.id}>
+                <div><img src={pdfIcon} alt="download pdf icon" /></div>
+                <div className="citation">
+                  <a href={`${process.env.MEDIA_LIBRARY}/${node.fieldData.SC_published_pdf_Download_URL}`}>
+                    <h4>{node.fieldData.Title}</h4>
+                    <p>{node.fieldData.Citation}</p>
+                  </a>
+                </div>
+                <div>projects</div>
+              </div>
+            ))}
           </div>
       ));
 
-      return (<div>{sortedList}</div>);
+      return sortedList;
     }
   }
   ></StaticQuery>
-);
-
-const PapersForYear = ({papers}) => (
-  <div>
-    {papers.map(( node ) => (
-        <div key={node.id}>
-          <a href={`${process.env.MEDIA_LIBRARY}/${node.fieldData.SC_published_pdf_Download_URL}`}>{node.fieldData.Title}</a>
-        </div>
-    ))}
-  </div>
 );
 
 export default PaperList

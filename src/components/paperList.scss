@@ -1,0 +1,17 @@
+.paperBox {
+    width: 820px;
+    display: grid;
+    grid-template-columns: 10% 90% 10%;
+
+    h4 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .citation {
+        p {
+            font-family: "OpenSansLightItalic";
+            font-weight: normal;
+        }
+    }
+}
