@@ -1,0 +1,26 @@
+.people-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .person {
+        display: flex;
+
+        .description {
+            margin-top: 0px;
+            margin-left: 10px;
+
+            h4 {
+                font-size: 27px;
+                margin-top: 0px;
+            }
+        }
+
+        img {
+            margin-top: 2px;
+            width: 140px;
+            height: 140px;
+            border-radius: 4px;
+        }
+    }
+
+}
