@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'gatsby';
+
+import NavBar from "./navbar";
 
 import "./footer.scss";
 
 export default () => (
     <div id="footer">
-        <Link to="/">Tangible Media Group</Link>
+        <NavBar />
     </div>
 );
