@@ -48,8 +48,6 @@ const ProjectYearList = ( {projects} ) => (
       <div className="projectItem" key={node.id}>
         <Link className="projectBadge" to={`/projects/${node.fieldData.slug}`}>
           <img
-            width="140px"
-            height="140px"
             alt="{node.fieldData.Name}"
             src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
           />
