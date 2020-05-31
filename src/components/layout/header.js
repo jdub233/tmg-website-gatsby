@@ -11,8 +11,8 @@ export default () => (
         </div>
         <ul className="navbar">
             <li><Link activeClassName="active" to='/vision/'>vision</Link></li>
-            <li><Link activeClassName="active" to='/people/'>people</Link></li>
-            <li><Link activeClassName="active" to='/projects/'>projects</Link></li>
+            <li><Link activeClassName="active" partiallyActive={true} to='/people/'>people</Link></li>
+            <li><Link activeClassName="active" partiallyActive={true} to='/projects/'>projects</Link></li>
             <li><Link activeClassName="active" to='/papers/'>papers</Link></li>
             <li><Link activeClassName="active" to='/events/'>events</Link></li>
             <li><Link activeClassName="active" to='/awards/'>press &#38; awards</Link></li>
