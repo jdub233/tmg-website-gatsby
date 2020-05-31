@@ -3,16 +3,25 @@ import { StaticQuery, graphql, Link } from "gatsby";
 
 import "./peopleList.scss";
 
-const PeopleListItem = ( {node} ) => (
-  <div className="person" key={node.id} >
-    <Link to={`/people/${node.fieldData.slug}`}>
-      <img src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`} />
+const PeopleListItem = ({ node: { id, fieldData } }) => (
+  <div className="person" key={id} >
+    <Link to={`/people/${fieldData.slug}`}>
+      <img src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
-      <h4>{node.fieldData.Full_Name}</h4>
-      <div>{node.fieldData.Category}</div>
-      <div>{node.fieldData.SubCategory}</div>
+      <Link to={`/people/${fieldData.slug}`}>
+        <h4>{fieldData.Full_Name}</h4>
+      </Link>
+      <div>{fieldData.Category}</div>
+      <div>{fieldData.SubCategory}</div>
     </div>
+  </div>
+);
+
+const AlumniListItem = ({ node: { id, fieldData } }) => (
+  <div className="alumnus" key={id}>
+    <img src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
+    <h4>{fieldData.Full_Name}</h4>
   </div>
 );
 
@@ -106,9 +115,11 @@ const PeopleList = () => (
           </div>
 
           <h3>Alumni</h3>
-          {alumni.map(({ node }) => (
-            <PeopleListItem node={node} />
-          ))}
+          <div className="alumni-list">
+            {alumni.map(({ node }) => (
+              <AlumniListItem node={node} />
+            ))}
+          </div>
 
         </div>
     );}}
