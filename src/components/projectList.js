@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
 import "./projectList.scss";
 
 const ProjectList = () => {
-    const data = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
       allProjectsJson(sort: {fields: [fieldData___Project_Year], order: DESC}) {
         edges {
@@ -27,10 +27,25 @@ const ProjectList = () => {
 
   const { allProjectsJson: { edges: projects } } = data;
 
-  const projectsByYearObj = projects.reduce( (accumulator, { node }) => {
+  const [year, setYear] = useState('');
+
+  let projectsByYearObj = projects.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node ];
     return accumulator;
   }, {} );
+
+  // Filter to a specific year if one is selected.
+  if (year !== '') {    
+    const filteredYear = Object.entries(projectsByYearObj).filter(
+      (aYear) => aYear[0] === year
+    );
+    
+    // Wraps the filtered results in an object to match the full result object.
+    // Seems like there ought to be an easier way, but this is at least effective.
+    projectsByYearObj = {
+      [filteredYear[0][0]]: filteredYear[0][1]
+    };
+  }
 
   return( 
     Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
