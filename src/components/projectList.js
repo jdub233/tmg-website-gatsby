@@ -52,7 +52,7 @@ const ProjectList = () => {
 
   return( 
     <div>
-      <YearNav years={years} setYear={setYear} />
+      <YearNav years={years} setYear={setYear} currentYear={year} />
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
       <div key={key}>
         <h3>{key}</h3>
@@ -63,11 +63,14 @@ const ProjectList = () => {
   );
 }
 
-const YearNav = ({years, setYear}) => (
+const YearNav = ({years, setYear, currentYear}) => (
   <ul className="yearNav">
     {years.map((y) => (
       <li>
-        <a href="#" onClick={() => setYear(y)}>
+        <a 
+          href="#" onClick={() => setYear(y)}
+          className={`year${(y === currentYear) ? '-selected' : ''}`}
+        >
           {y}
         </a>
       </li>
