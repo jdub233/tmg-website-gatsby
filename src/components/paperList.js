@@ -2,7 +2,6 @@ import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 
 import "./paperList.scss";
-import pdfIcon from "../img/pdf-icon.png";
 
 const PaperList = () => (
   <StaticQuery
