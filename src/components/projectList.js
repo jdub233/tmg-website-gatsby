@@ -34,8 +34,11 @@ const ProjectList = () => {
     return accumulator;
   }, {} );
 
+  // Extract the years for the year based navigation.
+  const years = Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] );
+
   // Filter to a specific year if one is selected.
-  if (year !== '') {    
+  if (year !== '') {
     const filteredYear = Object.entries(projectsByYearObj).filter(
       (aYear) => aYear[0] === year
     );
@@ -48,14 +51,29 @@ const ProjectList = () => {
   }
 
   return( 
-    Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
-    <div key={key}>
-      <h3>{key}</h3>
-      <ProjectYearList projects={projects} />
+    <div>
+      <YearNav years={years} setYear={setYear} />
+      {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
+      <div key={key}>
+        <h3>{key}</h3>
+        <ProjectYearList projects={projects} />
+      </div>
+      ))}
     </div>
-    ))
   );
 }
+
+const YearNav = ({years, setYear}) => (
+  <ul className="yearNav">
+    {years.map((y) => (
+      <li>
+        <a href="#" onClick={() => setYear(y)}>
+          {y}
+        </a>
+      </li>
+    ))}
+  </ul>
+);
 
 const ProjectYearList = ( {projects} ) => (
   <div className="projectYearList">
