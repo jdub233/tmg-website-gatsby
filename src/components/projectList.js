@@ -27,7 +27,7 @@ const ProjectList = () => {
 
   const { allProjectsJson: { edges: projects } } = data;
 
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState('show all');
 
   let projectsByYearObj = projects.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node ];
@@ -35,10 +35,10 @@ const ProjectList = () => {
   }, {} );
 
   // Extract the years for the year based navigation.
-  const years = Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] );
+  const years = [ 'show all', ...Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] ) ];
 
   // Filter to a specific year if one is selected.
-  if (year !== '') {
+  if (year !== 'show all') {
     const filteredYear = Object.entries(projectsByYearObj).filter(
       (aYear) => aYear[0] === year
     );
