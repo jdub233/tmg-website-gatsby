@@ -1,11 +1,10 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
 import "./paperList.scss";
 
-const PaperList = () => (
-  <StaticQuery
-    query={graphql`
+const PaperList = () => {
+  const data = useStaticQuery(graphql`
       {
         allPapersJson(sort: {fields: fieldData___Paper_Year, order: DESC}) {
           edges {
@@ -35,32 +34,31 @@ const PaperList = () => (
           }
         }
       }
-    `}
-    render={({ allPapersJson: { edges: papers } }) => {
-      // Group papers by year with a reducer. 
-      const papersByYear = papers.reduce( (accumulator, {node}) => {
-        accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node ];
-        return accumulator;
-      }, {});
+    `);
 
-      const sortedList = Object.entries(papersByYear).reverse().map( ([key, papers]) => (
-          <div key={key}>
-            <h3>{key}</h3>
-            {papers.map((node) => (
-              <PaperBox node={node} />
-            ))}
-          </div>
-      ));
+  const { allPapersJson: { edges: papers } } = data;
+  
+  // Group papers by year with a reducer. 
+  let papersByYear = papers.reduce( (accumulator, {node}) => {
+    accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node ];
+    return accumulator;
+  }, {});
 
-      return (
-        <div>
-          {sortedList}
-        </div>
-      );
-    }
-  }
-  ></StaticQuery>
-);
+  const sortedList = Object.entries(papersByYear).reverse().map( ([key, papers]) => (
+      <div key={key}>
+        <h3>{key}</h3>
+        {papers.map((node) => (
+          <PaperBox node={node} />
+        ))}
+      </div>
+  ));
+
+  return (
+    <div>
+      {sortedList}
+    </div>
+  );
+};
 
 const PaperBox = ({ node: { id, fieldData, portalData }}) => (
   <div className="paperBox" key={id}>
