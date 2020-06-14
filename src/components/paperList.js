@@ -52,7 +52,11 @@ const PaperList = () => (
           </div>
       ));
 
-      return sortedList;
+      return (
+        <div>
+          {sortedList}
+        </div>
+      );
     }
   }
   ></StaticQuery>
