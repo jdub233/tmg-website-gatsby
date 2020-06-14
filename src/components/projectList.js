@@ -35,7 +35,7 @@ const ProjectList = () => {
   }, {} );
 
   // Extract the years for the year based navigation.
-  const years = [ 'show all', ...Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] ) ];
+  const years = [ 'show all', ...Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] ).reverse() ];
 
   // Filter to a specific year if one is selected.
   if (year !== 'show all') {
