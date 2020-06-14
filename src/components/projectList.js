@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 
+import YearNav from "./filters/yearNav";
+
 import "./projectList.scss";
 
 const ProjectList = () => {
@@ -62,21 +64,6 @@ const ProjectList = () => {
     </div>
   );
 }
-
-const YearNav = ({years, setYear, currentYear}) => (
-  <ul className="yearNav">
-    {years.map((y) => (
-      <li>
-        <a 
-          href="#" onClick={() => setYear(y)}
-          className={`year${(y === currentYear) ? '-selected' : ''}`}
-        >
-          {y}
-        </a>
-      </li>
-    ))}
-  </ul>
-);
 
 const ProjectYearList = ( {projects} ) => (
   <div className="projectYearList">
