@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+
+import YearNav from "./filters/yearNav";
 
 import "./paperList.scss";
 
@@ -37,12 +39,30 @@ const PaperList = () => {
     `);
 
   const { allPapersJson: { edges: papers } } = data;
+
+  const [year, setYear] = useState('show all');
   
   // Group papers by year with a reducer. 
   let papersByYear = papers.reduce( (accumulator, {node}) => {
     accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node ];
     return accumulator;
   }, {});
+
+  // Extract the years for the year based navigation.
+  const years = ['show all', ...Object.entries(papersByYear).map((aYear) => aYear[0]).reverse()];
+
+  // Filter to a specific year if one is selected.
+  if (year !== 'show all') {
+    const filteredYear = Object.entries(papersByYear).filter(
+      (aYear) => aYear[0] === year
+    );
+
+    // Wraps the filtered results in an object to match the full result object.
+    // Seems like there ought to be an easier way, but this is at least effective.
+    papersByYear = {
+      [filteredYear[0][0]]: filteredYear[0][1]
+    };
+  }
 
   const sortedList = Object.entries(papersByYear).reverse().map( ([key, papers]) => (
       <div key={key}>
@@ -55,6 +75,7 @@ const PaperList = () => {
 
   return (
     <div>
+      <YearNav years={years} setYear={setYear} currentYear={year} />
       {sortedList}
     </div>
   );
