@@ -84,7 +84,11 @@ const PaperList = () => {
 const PaperBox = ({ node: { id, fieldData, portalData }}) => (
   <div className="paperBox" key={id}>
     <div className="icon-link">
-      <a className="icon-link-anchor" href={`${process.env.MEDIA_LIBRARY}/${fieldData.SC_published_pdf_Download_URL}`}></a>
+      <a 
+        className="icon-link-anchor" 
+        href={`${process.env.MEDIA_LIBRARY}/${fieldData.SC_published_pdf_Download_URL}`}
+        aria-label="Download link"
+      >&nbsp;</a>
     </div>
     <div className="citation">
       <a href={`${process.env.MEDIA_LIBRARY}/${fieldData.SC_published_pdf_Download_URL}`}>
