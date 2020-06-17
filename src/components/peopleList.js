@@ -6,7 +6,7 @@ import "./peopleList.scss";
 const PeopleListItem = ({ node: { id, fieldData } }) => (
   <div className="person" key={id} >
     <Link to={`/people/${fieldData.slug}`}>
-      <img src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
+      <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
       <Link to={`/people/${fieldData.slug}`}>
@@ -20,7 +20,7 @@ const PeopleListItem = ({ node: { id, fieldData } }) => (
 
 const AlumniListItem = ({ node: { id, fieldData } }) => (
   <div className="alumnus" key={id}>
-    <img src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
+    <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
     <h4>{fieldData.Full_Name}</h4>
   </div>
 );
