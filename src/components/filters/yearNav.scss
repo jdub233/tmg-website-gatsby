@@ -17,12 +17,22 @@
             display: inline-block;
             padding: 0 .5em 0 .5em;
             line-height: 30px;
+            border: 0;
+            
+            font-family: inherit;
+            font-size: 100%;
+            text-transform: none;
+            background-color: #e1e1e1;
 
             font-size: 16px;
             text-shadow: #fff 1px 1px 0px;
 
             &:hover {
                 color:#848484 !important;
+            }
+
+            &:focus {
+                outline: 0em;
             }
 
             &-selected {
