@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
+import ProjectBoxes from "../components/shared/projectBoxes";
 
 import "./person.scss";
 
@@ -10,6 +11,18 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node.fieldData;
   const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
   const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
+
+  // Format portal data to match the format of the shared ProjectBoxes component.
+  const projectsNodes = projects.map( ( node ) => (
+    {
+      id: node.Projects_People_WebView__slug, 
+      fieldData: {
+        slug: node.Projects_People_WebView__slug,
+        Name: node.Projects_People_WebView__Name,
+        cBadgeRawURL: node.Projects_People_WebView__cBadgeRawURL,
+      }
+    }
+  ) );
 
   return (
     <Layout>
@@ -27,11 +40,7 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
         </div>
       ))}
       <h4>Projects</h4>
-      {projects.map((node) => (
-        <div key={node.recordId}>
-          <Link to={`/projects/${node.Projects_People_WebView__slug}`}>{node.Projects_People_WebView__Name}</Link>
-        </div>
-      ))}
+      <ProjectBoxes projects={projectsNodes} />
     </Layout>
   );
 };
