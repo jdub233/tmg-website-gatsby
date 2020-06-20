@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
 
-import "./person.scss"
+import "./detailPage.scss"
 
 const Project = ({ data: { allProjectsJson: { edges } } }) => {
   const project = edges[0].node.fieldData;
@@ -12,8 +12,8 @@ const Project = ({ data: { allProjectsJson: { edges } } }) => {
 
   return(
     <Layout>
-      <h2>{project.Name} <span className="person-category">{project.Members}</span></h2>
-      <div className="person-details">
+      <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
+      <div className="details">
         <img 
           className="badge" 
           alt={project.Name} 
@@ -27,6 +27,9 @@ const Project = ({ data: { allProjectsJson: { edges } } }) => {
           <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_WebView__SC_published_pdf_Download_URL}`}>
             {node.Papers_WebView__Title}
           </a>
+          {node.Papers_WebView__Venue && 
+            <span className="venue">{node.Papers_WebView__Venue}</span>
+          }
         </div>
       ))}
 

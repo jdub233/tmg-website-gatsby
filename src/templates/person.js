@@ -5,7 +5,7 @@ import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
 import ProjectBoxes from "../components/shared/projectBoxes";
 
-import "./person.scss";
+import "./detailPage.scss";
 
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node.fieldData;
@@ -27,9 +27,9 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
   return (
     <Layout>
       <h2>
-        {person.Full_Name} <span className="person-category">{person.Category}</span>
+        {person.Full_Name} <span className="subtitle">{person.Category}</span>
       </h2>
-      <div className="person-details">
+      <div className="details">
         <img className="badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
         <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
       </div>
