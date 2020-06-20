@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout";
+import NormalizeP from "../components/filters/normalizeP";
 
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node.fieldData;
@@ -16,7 +17,7 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       </h2>
       <div className="person-details">
         <img className="person-badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
-        <NormalizedP className="person-description" mixedMarkup={person.DescriptionHTML} />
+        <NormalizeP className="person-description" mixedMarkup={person.DescriptionHTML} />
       </div>
       <h4>Papers</h4>
       {papers.map((node) => (
@@ -33,16 +34,6 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
     </Layout>
   );
 };
-
-const NormalizedP = ( { mixedMarkup, className } ) => {
-  const normalizedMarkup = mixedMarkup.split('\r')
-    .filter(x => x !== "")
-    .map(graf => <p dangerouslySetInnerHTML={{ __html: graf }} />);
-
-  return (
-    <div className={className}>{normalizedMarkup}</div>
-  );
-}
 
 export const query = graphql`
   query($slug: String!) {
