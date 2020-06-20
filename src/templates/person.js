@@ -8,9 +8,6 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
   const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
 
-  const normalizedMarkup = person.DescriptionHTML.split('\r')
-    .filter(x => x !== "")
-    .map(graf => <p dangerouslySetInnerHTML={{ __html: graf }} />);
 
   return (
     <Layout>
@@ -19,7 +16,7 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       </h2>
       <div className="person-details">
         <img className="person-badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
-        <div className="person-description" >{normalizedMarkup}</div>
+        <NormalizedP className="person-description" mixedMarkup={person.DescriptionHTML} />
       </div>
       <h4>Papers</h4>
       {papers.map((node) => (
@@ -36,6 +33,16 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
     </Layout>
   );
 };
+
+const NormalizedP = ( { mixedMarkup, className } ) => {
+  const normalizedMarkup = mixedMarkup.split('\r')
+    .filter(x => x !== "")
+    .map(graf => <p dangerouslySetInnerHTML={{ __html: graf }} />);
+
+  return (
+    <div className={className}>{normalizedMarkup}</div>
+  );
+}
 
 export const query = graphql`
   query($slug: String!) {
