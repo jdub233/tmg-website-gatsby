@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
@@ -66,8 +66,10 @@ export const query = graphql`
               Papers_People_WebView__Publication_URL
               Papers_People_WebView__Title
               Papers_People_WebView__SC_published_pdf_Download_URL
+              Papers_People_WebView__Venue
             }
             PeopleProjectJoin_People_WebView {
+              recordId
               Projects_People_WebView__Name
               Projects_People_WebView__cBadgeRawURL
               Projects_People_WebView__slug
