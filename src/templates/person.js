@@ -33,14 +33,17 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
         <img className="badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
         <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
       </div>
-      <h4>Papers</h4>
+      {projectsNodes.length > 0 && <h3>Projects</h3>}
+      <ProjectBoxes projects={projectsNodes} />
+      {papers.length > 0 && <h3>Papers</h3>}
       {papers.map((node) => (
         <div key={node.Papers__ID}>
           <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_People_WebView__SC_published_pdf_Download_URL}`}>{node.Papers_People_WebView__Title}</a>
+          {node.Papers_People_WebView__Venue &&
+           <span className="venue">{node.Papers_People_WebView__Venue}</span>
+          }
         </div>
       ))}
-      <h4>Projects</h4>
-      <ProjectBoxes projects={projectsNodes} />
     </Layout>
   );
 };
