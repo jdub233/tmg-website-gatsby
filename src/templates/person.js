@@ -4,11 +4,12 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
 
+import "./person.scss";
+
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node.fieldData;
   const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
   const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
-
 
   return (
     <Layout>
@@ -16,8 +17,8 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
         {person.Full_Name} <span className="person-category">{person.Category}</span>
       </h2>
       <div className="person-details">
-        <img className="person-badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
-        <NormalizeP className="person-description" mixedMarkup={person.DescriptionHTML} />
+        <img className="badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
+        <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
       </div>
       <h4>Papers</h4>
       {papers.map((node) => (
