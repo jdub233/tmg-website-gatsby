@@ -4,15 +4,23 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout";
 
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
-  const person   = edges[0].node;
+  const person   = edges[0].node.fieldData;
   const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
   const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
 
+  const normalizedMarkup = person.DescriptionHTML.split('\r')
+    .filter(x => x !== "")
+    .map(graf => <p dangerouslySetInnerHTML={{ __html: graf }} />);
+
   return (
     <Layout>
-      <Link to='/people/'><h2>People</h2></Link>
-      <h3>{person.fieldData.Full_Name}</h3>
-      <div dangerouslySetInnerHTML={{ __html: person.fieldData.DescriptionHTML }} />
+      <h2>
+        {person.Full_Name} <span className="person-category">{person.Category}</span>
+      </h2>
+      <div className="person-details">
+        <img className="person-badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
+        <div className="person-description" >{normalizedMarkup}</div>
+      </div>
       <h4>Papers</h4>
       {papers.map((node) => (
         <div key={node.Papers__ID}>
