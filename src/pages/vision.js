@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./vision.scss";
+import "./home-vision.scss";
 import gui from "../img/vision-image-gui.jpg";
 
 import Layout from '../components/layout';
