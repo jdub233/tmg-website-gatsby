@@ -1,14 +1,42 @@
-.vision-grid {
+.vision-statement {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 6fr 4fr;
+    margin-left:10px;
 
     h2.vision-text {
-        font-size: 32px;
-        line-height: 40px;
+        font-size: 32px !important;
+        line-height: 40px !important;
+        padding-top: 0px;
         padding-right: 60px;
+
+        margin-top: 20px;
+    }
+
+    .vision-image {
+        img {
+            width: 300px;
+            height: 300px;
+        }
     }
 }
 
-.vision-text {
-    
+.half-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.text-block {
+    margin: 10px;
+
+    h3.box {
+        padding: 7px 10px 7px 10px;
+        background-color: #e1e1e1;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        margin-top: 0px;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
 }
