@@ -33,15 +33,10 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
         <NormalizeP className="description" mixedMarkup={project.DescriptionHTML} />
       </div>
       
-      {collection && <h4>{collection.Collections__Name}</h4>}
       {collection &&
-        <img
-          src={`${process.env.MEDIA_LIBRARY}/${collectionAssets[0].fieldData.sc_asset_relative_url}?width=780`}
-          alt={collectionAssets[0].fieldData.Title}
-        />
+        <Gallery assets={collectionAssets} name={collection.Collections__Name} />
       }
-      <Gallery assets={collectionAssets} />
-
+      
       <h4>Papers</h4>
       {papers.map((node) => (
         <div key={node.recordId}>
