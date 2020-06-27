@@ -1,9 +1,12 @@
 import React from "react";
 
+import "./gallery.scss"
+
 export default ({ assets, name }) => (
   <div className="gallery">
     <h4>{name}</h4>
     <img
+      className="gallery-main"
       src={`${process.env.MEDIA_LIBRARY}/${assets[0].fieldData.sc_asset_relative_url}?width=780`}
       alt={assets[0].fieldData.Title}
     />

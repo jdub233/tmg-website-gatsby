@@ -1,0 +1,10 @@
+.gallery {
+    &-main {
+        width: 780px;
+    }
+
+    &-thumbnails {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
