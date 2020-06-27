@@ -24,31 +24,33 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
   return(
     <Layout>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
-      <div className="details">
+      <div className="detail">
         <img 
-          className="badge" 
+          className="detail-badge" 
           alt={project.Name} 
           src={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=140`}
         />
-        <NormalizeP className="description" mixedMarkup={project.DescriptionHTML} />
-      </div>
-      
-      {collection &&
-        <Gallery assets={collectionAssets} name={collection.Collections__Name} />
-      }
-      
-      <h4>Papers</h4>
-      {papers.map((node) => (
-        <div key={node.recordId}>
-          <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_WebView__SC_published_pdf_Download_URL}`}>
-            {node.Papers_WebView__Title}
-          </a>
-          {node.Papers_WebView__Venue && 
-            <span className="venue">{node.Papers_WebView__Venue}</span>
-          }
-        </div>
-      ))}
+        <div className="detail-main">
+          <NormalizeP className="description" mixedMarkup={project.DescriptionHTML} />
 
+          {collection &&
+            <Gallery assets={collectionAssets} name={collection.Collections__Name} />
+          }
+          
+          <h4>Papers</h4>
+          {papers.map((node) => (
+            <div key={node.recordId}>
+              <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_WebView__SC_published_pdf_Download_URL}`}>
+                {node.Papers_WebView__Title}
+              </a>
+              {node.Papers_WebView__Venue &&
+                <span className="venue">{node.Papers_WebView__Venue}</span>
+              }
+            </div>
+          ))}
+
+        </div>
+      </div>
     </Layout>
   )
 };

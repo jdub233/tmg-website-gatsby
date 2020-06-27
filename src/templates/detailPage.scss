@@ -3,21 +3,23 @@
     color: #848484;
 }
 
-.details {
+.detail {
     display: grid;
     grid-template-columns: 2fr 10fr;
 
-    .badge {
+    &-badge {
         margin-top: 4px;
     }
 
-    .description {
-        margin-top: 0px;
+    &-main {
         margin-left: 10px;
 
-        p {
+        .description {
             margin-top: 0px;
-            margin-bottom: 20px;
+            p {
+                margin-top: 0px;
+                margin-bottom: 20px;
+            }
         }
     }
 }
