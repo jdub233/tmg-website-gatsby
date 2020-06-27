@@ -12,11 +12,13 @@ export default ({ assets, name }) => (
     />
     <div className="gallery-thumbnails">
       {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }) => (
-        <img
-          key={AssetID}
-          src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
-          alt={Title}
-        />
+        <button className="thumbnail">
+          <img
+            key={AssetID}
+            src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
+            alt={Title}
+          />
+        </button>
       ))}
     </div>
   </div>

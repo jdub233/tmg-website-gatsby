@@ -6,5 +6,23 @@
     &-thumbnails {
         display: flex;
         flex-wrap: wrap;
+        background-color: #e1e1e1;
+        border-radius: 4px;
+        width: 780px;
+
+        .thumbnail {
+            border: 0;
+            padding: 0 2px 2px 0;
+            background-color: #e1e1e1;
+
+            img {
+                border-radius: 4px;
+                &:hover {
+                    cursor: pointer;
+                    filter: grayscale(100%);
+                    opacity: 35%;
+                }
+            }
+        }
     }
 }
