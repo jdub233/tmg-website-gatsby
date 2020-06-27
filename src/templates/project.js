@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
+import Gallery from "../components/shared/gallery";
 
 import "./detailPage.scss"
 
@@ -15,19 +16,9 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
 
   // Filter the assets for the primary collection.
   let collectionAssets = null;
-  let gallery = null;
   if (collection) { 
     // Only allow assets that are part of the primary collection.
     collectionAssets = assets.filter((asset) => asset.fieldData.CollectionID === collection.Collections__CollectionID); 
-
-    gallery = collectionAssets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }) => (
-      <div key={AssetID}>
-        <img
-          src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?width=60`}
-          alt={Title}
-        />
-      </div>
-    ));
   }
 
   return(
@@ -49,7 +40,7 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
           alt={collectionAssets[0].fieldData.Title}
         />
       }
-      {gallery}
+      <Gallery assets={collectionAssets} />
 
       <h4>Papers</h4>
       {papers.map((node) => (
