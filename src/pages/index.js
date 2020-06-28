@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { graphql } from "gatsby";
 
 import "./home-vision.scss";
 import gui from "../img/vision-image-gui.jpg";
