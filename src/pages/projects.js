@@ -5,9 +5,7 @@ import ProjectList from "../components/projectList";
 
 export default () => (
   <Layout>
-    <div>
-        <h2>Projects</h2>
-        <ProjectList />
-    </div>
+      <h2>Projects</h2>
+      <ProjectList />
   </Layout>
 )
