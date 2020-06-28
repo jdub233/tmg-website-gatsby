@@ -12,6 +12,7 @@ export default ({ assets, name }) => {
         className="gallery-main"
         src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.sc_asset_relative_url}?width=780`}
         alt={assets[current].fieldData.Title}
+        onClick={ () => setCurrent( (current + 1) % assets.length ) }
       />
       <div className="gallery-thumbnails">
         {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }, index) => (
