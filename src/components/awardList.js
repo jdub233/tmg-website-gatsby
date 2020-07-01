@@ -47,6 +47,7 @@ const AwardList = () => {
               Title
               Type
               isPDFPublic
+              Year_Published
             }
           }
         }
@@ -56,21 +57,51 @@ const AwardList = () => {
 
   const { allAwardsJson: { edges: awards }, allPressJson: {edges: pressItems} } = data;
 
+  const awardsByYear = awards.reduce( ( accumulator, {node} ) => {
+    accumulator[node.fieldData.Award_Year] = [...accumulator[node.fieldData.Award_Year] || [], node ];
+    return accumulator;
+  }, {} );
+
+  const pressByYear = pressItems.reduce((accumulator, { node }) => {
+    accumulator[node.fieldData.Year_Published] = [...accumulator[node.fieldData.Year_Published] || [], node];
+    return accumulator;
+  }, {});
+
+  // A bit terse, but this extracts all the unique years for both press and awards.
+  const years = [...new Set([...Object.entries(pressByYear).map(aYear => aYear[0]), ...Object.entries(awardsByYear).map(aYear => aYear[0])]) ].sort().reverse();
+
   return (
     <div>
-      {awards.map(({ node }) => (
-        <div key={node.id}>
-          {node.fieldData.Title}
+      {years.map( (year) => (
+        <div>
+          <h3>{year}</h3>
+          { awardsByYear[year] &&
+            awardsByYear[year].map( ( award ) => (
+              <AwardBox award={award} />
+            ) )
+          } 
+          { pressByYear[year] &&
+            pressByYear[year].map ( ( press ) => (
+              <PressBox press={press} />
+            ) )
+          }
         </div>
-      ))}
-      {pressItems.map(({ node }) => (
-        <div key={node.id}>
-          {node.fieldData.Title}
-        </div>
-      ))}
+      ) )}
     </div>
   )
 }
+
+const AwardBox = ( { award: { id, fieldData } } ) => (
+  <div key={id}>
+    {fieldData.Title}
+  </div>
+);
+
+const PressBox = ({ press: { id, fieldData } }) => (
+  <div key={id}>
+    {fieldData.Title}
+  </div>
+);
 
 export default AwardList
 
