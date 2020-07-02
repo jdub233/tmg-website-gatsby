@@ -1,5 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 
 import "./awardList.scss";
 
@@ -23,6 +23,14 @@ const AwardList = () => {
               isPDFPublic
             }
             id
+            portalData {
+              proj_portal {
+                Projects_for_Awards__Name
+                Projects_for_Awards__cBadgeRawURL
+                Projects_for_Awards__slug
+                recordId
+              }
+            }
           }
         }
       }
@@ -93,7 +101,7 @@ const AwardList = () => {
   )
 }
 
-const AwardBox = ( { award: { id, fieldData } } ) => (
+const AwardBox = ( { award: { id, fieldData, portalData: { proj_portal: projects } } } ) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
       {fieldData.SummaryTitle && 
@@ -107,7 +115,20 @@ const AwardBox = ( { award: { id, fieldData } } ) => (
         {fieldData.AwardedTo}
       </p>
     </div>
-    <div className="award-box-project-badges">&nbsp;</div>
+    <div className="award-box-project-badges">
+      {projects && 
+        projects.map(({ Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordID }) => (
+          <Link to={`/projects/${Projects_for_Awards__slug}`} key={recordID} >
+            <img 
+              alt={Projects_for_Awards__Name}
+              src={`${process.env.MEDIA_LIBRARY}/${Projects_for_Awards__cBadgeRawURL}?width=60`}
+              width="60px"
+              height="60px"  
+            />
+          </Link>
+        ) )
+      }
+    </div>
   </div>
 );
 
