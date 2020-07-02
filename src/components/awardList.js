@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+
+import YearNav from "./filters/yearNav";
 
 import "./awardList.scss";
 
@@ -67,6 +69,8 @@ const AwardList = () => {
 
   const { allAwardsJson: { edges: awards }, allPressJson: {edges: pressItems} } = data;
 
+  const [year, setYear] = useState('show all');
+
   const awardsByYear = awards.reduce( ( accumulator, {node} ) => {
     accumulator[node.fieldData.Award_Year] = [...accumulator[node.fieldData.Award_Year] || [], node ];
     return accumulator;
@@ -80,9 +84,15 @@ const AwardList = () => {
   // A bit terse, but this extracts all the unique years for both press and awards.
   const years = [...new Set([...Object.entries(pressByYear).map(aYear => aYear[0]), ...Object.entries(awardsByYear).map(aYear => aYear[0])]) ].sort().reverse();
 
+  const yearsForNav = ['show all', ...years];
+  
+  // Filter to a specific year if one is selected.
+  const filteredYears = ( year !== 'show all' ) ? [year] : years;
+
   return (
     <div>
-      {years.map( (year) => (
+      <YearNav years={yearsForNav} setYear={setYear} currentYear={year} />
+      {filteredYears.map( (year) => (
         <div>
           <h3>{year}</h3>
           { awardsByYear[year] &&
