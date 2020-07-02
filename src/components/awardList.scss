@@ -7,38 +7,46 @@
     color: #848484;
 }
 
+.press-awards {
 
-.award-box {
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 10fr 2fr;
+    .year-item {        
 
-    &-tagline {
-        font-family: "OpenSansLightItalic";
-        font-size: 19px;
-        margin-bottom: .25em;
-    }
+        .award-box {
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 10fr 2fr;
 
-    h4 {
-        margin-block-start: 0px;
-    }
+            &-tagline {
+                font-family: "OpenSansLightItalic";
+                font-size: 19px;
+                margin-bottom: .25em;
+            }
 
-    &-textblock {
-        margin-bottom: 20px;
-    }
+            h4 {
+                margin-block-start: 0px;
+            }
 
-    &-details {
-        @extend %details;
-    }
+            &-textblock {
+                margin-bottom: 20px;
+            }
 
-    &-project-badges {
+            &-details {
+                @extend %details;
+            }
 
-    }
-}
+            &-project-badges {
+                text-align: right;
+                img {
+                    border-radius: 4px;
+                }
+            }
+        }
 
-.press-box {
+        .press-box {
 
-    &-details {
-        @extend %details;
+            &-details {
+                @extend %details;
+            }
+        }
     }
 }

@@ -90,10 +90,10 @@ const AwardList = () => {
   const filteredYears = ( year !== 'show all' ) ? [year] : years;
 
   return (
-    <div>
+    <div className="press-awards">
       <YearNav years={yearsForNav} setYear={setYear} currentYear={year} />
       {filteredYears.map( (year) => (
-        <div>
+        <div className="year-item">
           <h3>{year}</h3>
           { awardsByYear[year] &&
             awardsByYear[year].map( ( award ) => (
@@ -128,14 +128,13 @@ const AwardBox = ( { award: { id, fieldData, portalData: { proj_portal: projects
     <div className="award-box-project-badges">
       {projects && 
         projects.map(({ Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordID }) => (
-          <Link to={`/projects/${Projects_for_Awards__slug}`} key={recordID} >
-            <img 
-              alt={Projects_for_Awards__Name}
-              src={`${process.env.MEDIA_LIBRARY}/${Projects_for_Awards__cBadgeRawURL}?width=60`}
-              width="60px"
-              height="60px"  
-            />
-          </Link>
+          <ProjectBadge 
+            slug={Projects_for_Awards__slug} 
+            name={Projects_for_Awards__Name} 
+            srcURL={Projects_for_Awards__cBadgeRawURL}
+            recordID={recordID}
+            key={recordID}
+          />
         ) )
       }
     </div>
@@ -150,6 +149,18 @@ const PressBox = ({ press: { id, fieldData } }) => (
     <p className="press-box-details">Press: {fieldData.Published_In}</p>
   </div>
 );
+
+const ProjectBadge = ({slug, name, srcURL, recordID}) => (
+  <Link to={`/projects/${slug}`} key={recordID} >
+    <img
+      alt={name}
+      src={`${process.env.MEDIA_LIBRARY}/${srcURL}?width=60`}
+      width="60px"
+      height="60px"
+    />
+  </Link>
+);
+
 
 export default AwardList
 
