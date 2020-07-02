@@ -1,6 +1,8 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
+import "./awardList.scss";
+
 const AwardList = () => {
   const data = useStaticQuery(graphql`
     {
@@ -77,12 +79,12 @@ const AwardList = () => {
           <h3>{year}</h3>
           { awardsByYear[year] &&
             awardsByYear[year].map( ( award ) => (
-              <AwardBox award={award} />
+              <AwardBox key={award.id} award={award} />
             ) )
           } 
           { pressByYear[year] &&
             pressByYear[year].map ( ( press ) => (
-              <PressBox press={press} />
+              <PressBox key={press.id} press={press} />
             ) )
           }
         </div>
@@ -92,14 +94,29 @@ const AwardList = () => {
 }
 
 const AwardBox = ( { award: { id, fieldData } } ) => (
-  <div key={id}>
-    {fieldData.Title}
+  <div key={id} className="award-box">
+    <div className="award-box-content">
+      {fieldData.SummaryTitle && 
+        <p className="award-box-tagline">{fieldData.SummaryTitle}</p>
+      }
+      <h4>{fieldData.Title}</h4>
+      {fieldData.Description &&
+        <p className="award-box-textblock">{fieldData.Description}</p>
+      }
+      <p className="award-box-details">
+        {fieldData.AwardedTo}
+      </p>
+    </div>
+    <div className="award-box-project-badges">&nbsp;</div>
   </div>
 );
 
 const PressBox = ({ press: { id, fieldData } }) => (
-  <div key={id}>
-    {fieldData.Title}
+  <div className="press-box" key={id}>
+    <h4>
+      {(fieldData.Published_URL === "") ? `${fieldData.Title}` : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+    </h4>
+    <p className="press-box-details">Press: {fieldData.Published_In}</p>
   </div>
 );
 

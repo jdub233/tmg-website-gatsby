@@ -1,0 +1,44 @@
+%details {
+    font-family: "OpenSansLightItalic";
+    padding: 0px;
+    padding-bottom: 5px;
+    margin: 0px;
+
+    color: #848484;
+}
+
+
+.award-box {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+
+    &-tagline {
+        font-family: "OpenSansLightItalic";
+        font-size: 19px;
+        margin-bottom: .25em;
+    }
+
+    h4 {
+        margin-block-start: 0px;
+    }
+
+    &-textblock {
+        margin-bottom: 20px;
+    }
+
+    &-details {
+        @extend %details;
+    }
+
+    &-project-badges {
+
+    }
+}
+
+.press-box {
+
+    &-details {
+        @extend %details;
+    }
+}
