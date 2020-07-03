@@ -10,7 +10,8 @@ import "./detailPage.scss";
 const Person = ({ data: { allPeopleJson: { edges } } }) => {
   const person   = edges[0].node.fieldData;
   const papers = edges[0].node.portalData.PeoplePaperJoin_People_WebView;
-  const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView;
+  // Filter out projects with no slug, they are artifacts from unpublished projects.
+  const projects = edges[0].node.portalData.PeopleProjectJoin_People_WebView.filter(({ Projects_People_WebView__slug: slug }) => slug !== "" );
 
   // Format portal data to match the format of the shared ProjectBoxes component.
   const projectsNodes = projects.map( ( node ) => (
