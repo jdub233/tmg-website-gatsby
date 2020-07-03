@@ -29,9 +29,11 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
       <h2>
         {person.Full_Name} <span className="subtitle">{person.Category}</span>
       </h2>
-      <div className="details">
+      <div className="detail">
         <img className="badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
-        <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
+        <div className="detail-main">
+          <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
+        </div>
       </div>
       {projectsNodes.length > 0 && <h3>Projects</h3>}
       <ProjectBoxes projects={projectsNodes} />
