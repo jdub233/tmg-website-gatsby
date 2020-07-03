@@ -1,4 +1,36 @@
 .two-column {
     display: grid;
     grid-template-columns: 50% 50%;
+    column-gap: 20px;
+}
+
+.vision-link {
+    color: #787878;
+
+    &:visited {
+      color: #787878 !important;
+    }
+
+    &:hover {
+        color: #949494 !important;
+    }
+}
+
+.box {
+    padding: 7px 10px 7px 10px;
+    background-color: #e1e1e1;
+    border-radius: 4px;
+    margin-bottom: 20px;
+
+    strong {
+        font-family: "OpenSansBold";
+    }
+}
+
+.contact {
+    margin-bottom: 20px;
+}
+
+.contact-link {
+    font-family: "OpenSansLightItalic";
 }
