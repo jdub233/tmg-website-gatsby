@@ -9,6 +9,9 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `${process.env.SITE_URL}`
+  },
   plugins: [
     "gatsby-transformer-json",
     {
@@ -19,5 +22,18 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', disallow: '/' }]
+          }
+        }
+      }
+    },
   ],
 }
