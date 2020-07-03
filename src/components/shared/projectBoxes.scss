@@ -10,6 +10,20 @@
                 height: 140px;
                 border-radius: 4px;
             }
+            
+            &-title {
+                margin-top: -2px;
+                font-family: "OpenSansLightItalic";
+                font-weight: normal;
+                
+                color: #4a4a4a;
+
+                span {
+                    cursor: pointer;
+                    background: url(../../img/dotted.png) bottom left repeat-x;
+                }
+                
+            }
         }
     }
 }

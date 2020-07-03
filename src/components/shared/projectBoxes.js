@@ -12,7 +12,9 @@ export default ({ projects }) => (
                         alt="{node.fieldData.Name}"
                         src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
                     />
-                    <p>{node.fieldData.Name.length > 18 ? `${node.fieldData.Name.substring(0, 17)}...` : node.fieldData.Name}</p>
+                    <p className="projectBadge-title">
+                        <span>{node.fieldData.Name.length > 18 ? `${node.fieldData.Name.substring(0, 17)}...` : node.fieldData.Name}</span>
+                    </p>
                 </Link>
             </div>
         ))}
