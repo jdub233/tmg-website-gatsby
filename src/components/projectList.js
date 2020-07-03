@@ -32,10 +32,12 @@ const ProjectList = () => {
 
   const [searchString, setSearchString] = useState('');
 
-  let filteredProjects = projects;
+  let filteredProjects = {};
 
   if (searchString !== '') {
     filteredProjects = projects.filter( ({ node: { fieldData: { Name } } }) => Name.toLowerCase().includes( searchString.toLowerCase() ) );
+  } else {
+    filteredProjects = projects;
   }
 
   let projectsByYearObj = filteredProjects.reduce( (accumulator, { node }) => {
