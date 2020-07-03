@@ -35,7 +35,7 @@ const ProjectList = () => {
   let filteredProjects = projects;
 
   if (searchString !== '') {
-    filteredProjects = projects.filter((project) => project.node.fieldData.Name.toLowerCase().includes(searchString.toLowerCase()) );
+    filteredProjects = projects.filter( ({ node: { fieldData: { Name } } }) => Name.toLowerCase().includes( searchString.toLowerCase() ) );
   }
 
   let projectsByYearObj = filteredProjects.reduce( (accumulator, { node }) => {
@@ -63,7 +63,8 @@ const ProjectList = () => {
       <input 
         type="search" 
         placeholder="Search"
-        onChange={ (event) => setSearchString(event.target.value) }
+        aria-label="search"
+        onChange={ ({ target: { value } }) => setSearchString(value) }
       />
 
       <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
