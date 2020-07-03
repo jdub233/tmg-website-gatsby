@@ -68,7 +68,7 @@ export default () => (
 
             </div>
         </div>
-        <h2><a id="faq"></a>Frequently Asked Questions</h2>
+        <h2 name="faq">Frequently Asked Questions</h2>
         <p class="box">
             <strong>How do I apply?</strong><br />
             Submit an application through the main MIT Media Lab admissions process (<a href="http://www.media.mit.edu/admissions/how-to-apply">http://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices. If you decide to apply, please send us an email at <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" /> for our own records. Make sure to include a URL to your online portfolio in your application.
