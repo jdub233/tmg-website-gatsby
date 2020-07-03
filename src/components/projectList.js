@@ -30,7 +30,17 @@ const ProjectList = () => {
 
   const [year, setYear] = useState('show all');
 
-  let projectsByYearObj = projects.reduce( (accumulator, { node }) => {
+  const [searchString, setSearchString] = useState('');
+
+  let filteredProjects = {};
+
+  if (searchString !== '') {
+    filteredProjects = projects.filter( ({ node: { fieldData: { Name } } }) => Name.toLowerCase().includes( searchString.toLowerCase() ) );
+  } else {
+    filteredProjects = projects;
+  }
+
+  let projectsByYearObj = filteredProjects.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node ];
     return accumulator;
   }, {} );
@@ -39,11 +49,10 @@ const ProjectList = () => {
   const years = [ 'show all', ...Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] ).reverse() ];
 
   // Filter to a specific year if one is selected.
-  if (year !== 'show all') {
+  if (year !== 'show all' && searchString === '') {
     const filteredYear = Object.entries(projectsByYearObj).filter(
       (aYear) => aYear[0] === year
     );
-    
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
     projectsByYearObj = {
@@ -53,7 +62,14 @@ const ProjectList = () => {
 
   return( 
     <div>
-      <YearNav years={years} setYear={setYear} currentYear={year} />
+      <input 
+        type="search" 
+        placeholder="Search"
+        aria-label="search"
+        onChange={ ({ target: { value } }) => setSearchString(value) }
+      />
+
+      <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
       <div key={key}>
         <h3>{key}</h3>
