@@ -141,12 +141,35 @@ const AwardBox = ( { award: { id, fieldData, portalData: { proj_portal: projects
   </div>
 );
 
-const PressBox = ({ press: { id, fieldData } }) => (
+const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects } } }) => (
   <div className="press-box" key={id}>
-    <h4>
-      {(fieldData.Published_URL === "") ? `${fieldData.Title}` : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
-    </h4>
-    <p className="press-box-details">Press: {fieldData.Published_In}</p>
+    <div className="press-box-content">
+      <h4>
+        {(fieldData.Published_URL === "") ? `${fieldData.Title}` : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+      </h4>
+      {fieldData.isPDFPublic &&
+        <div className="icon-link">
+          <a
+            className="icon-link-anchor"
+            href={`${process.env.MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
+          >&nbsp;</a>
+        </div>
+      }
+      <p className="press-box-details">Press: {fieldData.Published_In}</p>
+    </div>
+    <div className="press-box-project-badges">
+      {projects &&
+        projects.map(({ Projects_for_Press__slug, Projects_for_Press__Name, Projects_for_Press__cBadgeRawURL, recordID }) => (
+          <ProjectBadge
+            slug={Projects_for_Press__slug}
+            name={Projects_for_Press__Name}
+            srcURL={Projects_for_Press__cBadgeRawURL}
+            recordID={recordID}
+            key={recordID}
+          />
+        ))
+      }
+    </div>
   </div>
 );
 
