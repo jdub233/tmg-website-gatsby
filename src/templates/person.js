@@ -53,8 +53,7 @@ const Person = ({ data: { allPeopleJson: { edges } } }) => {
 
 export const query = graphql`
   query($slug: String!) {
-    allPeopleJson(filter: { fieldData: {slug: {eq: $slug} }, 
-      portalData: { PeoplePaperJoin_People_WebView: { elemMatch: { Papers_People_WebView__ForWeb: {in: "Yes" } } } } } ) {
+    allPeopleJson(filter: { fieldData: {slug: {eq: $slug} } } ) {
       edges {
         node {
           fieldData {
