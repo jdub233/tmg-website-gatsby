@@ -9,6 +9,6 @@ export default () => (
         <li><Link activeClassName="active" to='/papers/'>papers</Link></li>
         <li><Link activeClassName="active" to='/events/'>events</Link></li>
         <li><Link activeClassName="active" to='/press-awards/'>press &#38; awards</Link></li>
-        <li><Link activeClassName="active" to='/contact-admissions/'>about &#38; contact</Link></li>
+        <li><Link activeClassName="active" to='/contact-admission/'>about &#38; contact</Link></li>
     </ul>
 );
