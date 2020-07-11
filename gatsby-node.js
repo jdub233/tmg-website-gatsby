@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
   
   projects.data.allProjectsJson.edges.map( ({node}) => {
     createPage({
-      path: `projects/${node.fieldData.slug}`,
+      path: `project/${node.fieldData.slug}`,
       component: path.resolve(`./src/templates/project.js`),
       context: { slug: node.fieldData.slug },
     });

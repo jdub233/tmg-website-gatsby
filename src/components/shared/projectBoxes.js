@@ -7,7 +7,7 @@ export default ({ projects }) => (
     <div className="projectBoxes">
         {projects.map((node) => (
             <div className="projectItem" key={node.id}>
-                <Link className="projectBadge" to={`/projects/${node.fieldData.slug}`}>
+                <Link className="projectBadge" to={`/project/${node.fieldData.slug}`}>
                     <img
                         alt="{node.fieldData.Name}"
                         src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
