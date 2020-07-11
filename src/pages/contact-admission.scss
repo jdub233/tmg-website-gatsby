@@ -1,7 +1,28 @@
 .two-column {
     display: grid;
     grid-template-columns: 50% 50%;
-    column-gap: 20px;
+    column-gap: 10px;
+
+    .column {
+        padding-right: 10px;
+    }
+
+    h3 {
+        margin-top: 10px;
+    }
+
+    .textblock {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    a {
+        background: url(../img/dotted.png) bottom left repeat-x;
+    }
+}
+
+.dotted {
+    background: url(../img/dotted.png) bottom left repeat-x;
 }
 
 .vision-link {
@@ -34,4 +55,5 @@
 
 .contact-link {
     font-family: "OpenSansLightItalic";
+    background: url(../img/dotted.png) bottom left repeat-x;
 }
