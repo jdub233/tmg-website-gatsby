@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
 
-import "./contact-admissions.scss";
+import "./contact-admission.scss";
 
 export default () => (
     <Layout>
