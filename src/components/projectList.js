@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import YearNav from "./filters/yearNav";
 import ProjectBoxes from "./shared/projectBoxes";
 
+import "./projectList.scss";
+
 const ProjectList = () => {
   const data = useStaticQuery(graphql`
     {
@@ -61,10 +63,11 @@ const ProjectList = () => {
   }
 
   return( 
-    <div>
+    <div className="projects">
       <input 
+        className="projects-search"
         type="search" 
-        placeholder="Search"
+        placeholder="Search project/author"
         aria-label="search"
         onChange={ ({ target: { value } }) => setSearchString(value) }
       />
