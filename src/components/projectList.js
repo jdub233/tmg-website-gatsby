@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import YearNav from "./filters/yearNav";
 import ProjectBoxes from "./shared/projectBoxes";
 
+import "./projectList.scss";
+
 const ProjectList = () => {
   const data = useStaticQuery(graphql`
     {
@@ -61,20 +63,24 @@ const ProjectList = () => {
   }
 
   return( 
-    <div>
+    <div className="projects">
       <input 
+        className="projects-search"
         type="search" 
-        placeholder="Search"
+        placeholder="Search project/author"
         aria-label="search"
         onChange={ ({ target: { value } }) => setSearchString(value) }
       />
 
       <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
-      <div key={key}>
-        <h3>{key}</h3>
-        <ProjectBoxes projects={projects} />
-      </div>
+        <div key={key}>
+          <h3 className="projects-year">{key}</h3>
+          <ProjectBoxes projects={projects.reverse()} />
+          {( ["2018", "2015", "2014"].includes( key ) ) && //temporary hack to preserve spacing for screenshots
+            <div style={{height: "21px"}}>&nbsp;</div>
+          }
+        </div>
       ))}
     </div>
   );

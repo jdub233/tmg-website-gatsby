@@ -1,9 +1,12 @@
 .projectBoxes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 960px;
 
     .projectItem {
         width: 140px;
+        height: 181px;
+
         .projectBadge {
             img {
                 width: 140px;
@@ -12,11 +15,11 @@
             }
             
             &-title {
-                margin-top: -2px;
                 font-family: "OpenSansLightItalic";
                 font-weight: normal;
-                
                 color: #4a4a4a;
+
+                margin-top: -1px;
 
                 span {
                     cursor: pointer;

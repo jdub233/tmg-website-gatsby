@@ -1,0 +1,25 @@
+.projects {
+    position: relative;
+
+    &-search {
+        position: absolute;
+        right: 140px;
+        top: -60px;
+
+        font-family: "OpenSansRegular", sans-serif;
+        font-size: 13px;
+        padding: 0 .5em 0 .5em;
+        height: 32px;
+
+        line-height: 1.65em;
+
+        &::placeholder {
+            color: #818181;
+        }
+    }
+
+    &-year {
+        margin-top: 10px;
+    }
+
+}
