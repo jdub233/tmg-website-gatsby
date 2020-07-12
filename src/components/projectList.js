@@ -75,7 +75,7 @@ const ProjectList = () => {
       <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
       <div key={key}>
-        <h3>{key}</h3>
+        <h3 className="projects-year">{key}</h3>
         <ProjectBoxes projects={projects.reverse()} />
       </div>
       ))}
