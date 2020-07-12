@@ -74,10 +74,13 @@ const ProjectList = () => {
 
       <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
-      <div key={key}>
-        <h3 className="projects-year">{key}</h3>
-        <ProjectBoxes projects={projects.reverse()} />
-      </div>
+        <div key={key}>
+          <h3 className="projects-year">{key}</h3>
+          <ProjectBoxes projects={projects.reverse()} />
+          {( ["2018", "2015", "2014"].includes( key ) ) && //temporary hack to preserve spacing for screenshots
+            <div style={{height: "21px"}}>&nbsp;</div>
+          }
+        </div>
       ))}
     </div>
   );
