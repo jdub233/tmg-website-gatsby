@@ -76,7 +76,7 @@ const ProjectList = () => {
       {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
       <div key={key}>
         <h3>{key}</h3>
-        <ProjectBoxes projects={projects} />
+        <ProjectBoxes projects={projects.reverse()} />
       </div>
       ))}
     </div>
