@@ -21,6 +21,7 @@ const ProjectList = () => {
               BadgeContainerURL
               Project_Year
               cBadgeRawURL
+              Members
             }
           }
         }
@@ -31,13 +32,15 @@ const ProjectList = () => {
   const { allProjectsJson: { edges: projects } } = data;
 
   const [year, setYear] = useState('show all');
-
   const [searchString, setSearchString] = useState('');
 
   let filteredProjects = {};
 
   if (searchString !== '') {
-    filteredProjects = projects.filter( ({ node: { fieldData: { Name } } }) => Name.toLowerCase().includes( searchString.toLowerCase() ) );
+    filteredProjects = projects.filter( ({ node: { fieldData: { Name, Members } } }) => (
+      Name.toLocaleLowerCase().includes( searchString.toLocaleLowerCase() ) ||
+      Members.toLocaleLowerCase().includes( searchString.toLocaleLowerCase() )
+    ) );
   } else {
     filteredProjects = projects;
   }
