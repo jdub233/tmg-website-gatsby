@@ -1,44 +1,51 @@
-.people-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.people {
 
-    .person {
-        display: flex;
+    .category-title {
+        margin-block-start: 35px;
+    }
 
-        .description {
-            margin-top: 0px;
-            margin-left: 10px;
+    &-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 
-            h4 {
-                font-size: 27px;
+        .person {
+            display: flex;
+
+            .description {
                 margin-top: 0px;
+                margin-left: 10px;
+
+                h4 {
+                    font-size: 27px;
+                    margin-top: 0px;
+                }
+
+                div {
+                    font-family: "OpenSansLightItalic";
+                    font-weight: normal;
+                }
             }
 
-            div {
-                font-family: "OpenSansLightItalic";
-                font-weight: normal;
+            img {
+                margin-top: 2px;
+                width: 140px;
+                height: 140px;
+                border-radius: 4px;
             }
-        }
-
-        img {
-            margin-top: 2px;
-            width: 140px;
-            height: 140px;
-            border-radius: 4px;
         }
     }
-}
 
-.alumni-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    .alumni-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
 
-    .alumnus {
-        display: flex;
-        img {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
+        .alumnus {
+            display: flex;
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 4px;
+            }
         }
     }
 }

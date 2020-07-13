@@ -18,7 +18,7 @@ const categories = [
 
 const CategoryList = ( {category, people} ) => (
   <div>
-    <h3>{category}</h3>
+    <h3 className="category-title">{category}</h3>
     <div className="people-list">
       {people.map(({ node }) => (
         <PeopleListItem node={node} />
@@ -76,7 +76,7 @@ const PeopleList = () => (
       const categorized = categories.map((category) => edges.filter(({ node }) => node.fieldData.Category === category ));
 
       return(
-        <div>
+        <div className="people">
           {categories.map( (category, index) => <CategoryList category={category} people={categorized[index]} /> )}
 
           <h3>Alumni</h3>
