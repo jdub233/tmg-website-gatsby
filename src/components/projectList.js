@@ -80,9 +80,6 @@ const ProjectList = () => {
         <div key={key}>
           <h3 className="projects-year">{key}</h3>
           <ProjectBoxes projects={projects.reverse()} />
-          {( ["2018", "2015", "2014"].includes( key ) ) && //temporary hack to preserve spacing for screenshots
-            <div style={{height: "21px"}}>&nbsp;</div>
-          }
         </div>
       ))}
     </div>
