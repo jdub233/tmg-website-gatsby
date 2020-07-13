@@ -11,15 +11,13 @@
         margin-top: 4px;
     }
 
-    &-main {
-        margin-left: 10px;
-
-        .description {
+    .description {
+        margin-top: 0px;
+        margin-left: 3.5px;
+        
+        p {
             margin-top: 0px;
-            p {
-                margin-top: 0px;
-                margin-bottom: 20px;
-            }
+            margin-bottom: 20px;
         }
     }
 }
@@ -28,4 +26,8 @@
     font-family: "OpenSansLightItalic";
     padding-left: 0.5em;
     color: #848484;
+}
+
+.papers-title {
+    margin-top: 10px;
 }
