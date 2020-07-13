@@ -30,7 +30,7 @@ const CategoryList = ( {category, people} ) => (
 
 const PeopleListItem = ({ node: { id, fieldData } }) => (
   <div className="person" key={id} >
-    <Link to={`/people/${fieldData.slug}`}>
+    <Link to={`/person/${fieldData.slug}`}>
       <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
