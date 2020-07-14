@@ -81,7 +81,7 @@ const PeopleList = () => (
 
           <h3>Alumni</h3>
           <div className="alumni-list">
-            {alumni.map(({ node }) => (
+            {alumni.reverse().map(({ node }) => (
               <AlumniListItem node={node} />
             ))}
           </div>
