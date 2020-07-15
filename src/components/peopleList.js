@@ -21,7 +21,7 @@ const CategoryList = ( {category, people} ) => (
     <h3 className="category-title">{category}</h3>
     <div className="people-list">
       {people.map(({ node }) => (
-        <PeopleListItem node={node} />
+        <PeopleListItem key={node.id} node={node} />
       ))}
     </div>
   </div>
