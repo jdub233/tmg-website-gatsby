@@ -28,8 +28,8 @@ const CategoryList = ( {category, people} ) => (
 )
 
 
-const PeopleListItem = ({ node: { id, fieldData } }) => (
-  <div className="person" key={id} >
+const PeopleListItem = ({ node: { fieldData } }) => (
+  <div className="person">
     <Link to={`/person/${fieldData.slug}`}>
       <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
@@ -43,8 +43,8 @@ const PeopleListItem = ({ node: { id, fieldData } }) => (
   </div>
 );
 
-const AlumniListItem = ({ node: { id, fieldData } }) => (
-  <div className="alumnus" key={id}>
+const AlumniListItem = ({ node: { fieldData } }) => (
+  <div className="alumnus">
     <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
     <h4>{fieldData.Full_Name}</h4>
   </div>
@@ -77,12 +77,12 @@ const PeopleList = () => (
 
       return(
         <div className="people">
-          {categories.map( (category, index) => <CategoryList category={category} people={categorized[index]} /> )}
+          {categories.map( (category, index) => <CategoryList key={category} category={category} people={categorized[index]} /> )}
 
           <h3>Alumni</h3>
           <div className="alumni-list">
             {alumni.reverse().map(({ node }) => (
-              <AlumniListItem node={node} />
+              <AlumniListItem key={node.id} node={node} />
             ))}
           </div>
 
