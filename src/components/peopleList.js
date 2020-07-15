@@ -37,8 +37,17 @@ const PeopleListItem = ({ node: { fieldData } }) => (
       <Link to={`/people/${fieldData.slug}`}>
         <h4>{fieldData.Full_Name}</h4>
       </Link>
-      <div>{fieldData.Category}</div>
-      <div>{fieldData.SubCategory}</div>
+      {(fieldData.Category === 'Professor') &&
+        <div dangerouslySetInnerHTML={{ __html: fieldData.CategoryOverride }} />
+      }
+
+      {(fieldData.Category !== 'Professor') &&
+        <div>{fieldData.Category}</div>
+      }
+      {(fieldData.Category !== 'Professor') &&
+        <div>{fieldData.SubCategory}</div>
+      }
+
     </div>
   </div>
 );
@@ -64,6 +73,7 @@ const PeopleList = () => (
               cBadgeRawURL
               Category
               SubCategory
+              CategoryOverride
             }
           }
         }
