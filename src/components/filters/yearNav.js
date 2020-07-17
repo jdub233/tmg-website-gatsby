@@ -5,7 +5,7 @@ import "./yearNav.scss";
 export default ({ years, setYear, currentYear, showPrevNext = false }) => (
     <ul className="yearNav">
         {showPrevNext && 
-            <li key="prev"><button class="prevNext" onClick={() => setYear( (currentYear === 1) ? (years.length) : currentYear - 1 )}>previous</button></li>
+            <li key="prev"><button className="prevNext" onClick={() => setYear( (currentYear === 1) ? (years.length) : currentYear - 1 )}>previous</button></li>
         }
         {years.map((y) => (
             <li key={y}>
@@ -19,7 +19,7 @@ export default ({ years, setYear, currentYear, showPrevNext = false }) => (
         ))}
         {showPrevNext &&
             <li key="next">
-                <button class="prevNext" onClick={() => setYear((currentYear === years.length) ? 1 : currentYear + 1)}>next</button>
+                <button className="prevNext" onClick={() => setYear((currentYear === years.length) ? 1 : currentYear + 1)}>next</button>
             </li>
         }
     </ul>
