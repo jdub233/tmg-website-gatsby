@@ -1,22 +1,29 @@
 .people {
 
+    .temp-spacer {
+        height: 0px;
+        margin-top: -19px;
+    }
+
     .category-title {
-        margin-block-start: 40px;
-        margin-block-end: 18px;
+        margin-block-start: 39px;
+        margin-block-end: 0px;
     }
 
     &-list {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 480px 460px;
         padding-right: 0px;
 
         .person {
             display: flex;
+            margin-top:20px;
+            height: 140px;
 
             .description {
                 margin-top: -3px;
                 margin-left: 20px;
-                margin-right: 10px;
+                margin-right: 20px;
 
                 h4 {
                     font-size: 27px;
