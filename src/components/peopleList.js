@@ -28,36 +28,36 @@ const CategoryList = ( {category, people} ) => (
 )
 
 
-const PeopleListItem = ({ node: { fieldData } }) => (
+const PeopleListItem = ({ node: { fieldData: {slug, Full_Name, cBadgeRawURL, CategoryOverride, Category, SubCategory} } }) => (
   <div className="person">
-    <Link to={`/person/${fieldData.slug}`}>
-      <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
+    <Link to={`/person/${slug}`}>
+      <img alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
-      <Link to={`/person/${fieldData.slug}`}>
-        <h4>{fieldData.Full_Name}</h4>
+      <Link to={`/person/${slug}`}>
+        <h4>{Full_Name}</h4>
       </Link>
-      {(fieldData.Category === 'Professor') &&
-        <div dangerouslySetInnerHTML={{ __html: fieldData.CategoryOverride }} />
+      {(Category === 'Professor') &&
+        <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />
       }
 
-      {(fieldData.Category !== 'Professor') &&
-        <div>{fieldData.Category}</div>
+      {(Category !== 'Professor') &&
+        <div>{Category}</div>
       }
-      {(fieldData.Category !== 'Professor') &&
-        <div>{fieldData.SubCategory}</div>
+      {(Category !== 'Professor') &&
+        <div>{SubCategory}</div>
       }
 
     </div>
   </div>
 );
 
-const AlumniListItem = ({ node: { fieldData } }) => (
+const AlumniListItem = ({ node: { fieldData:{Full_Name, cBadgeRawURL, SubCategory} } }) => (
   <div className="alumnus">
-    <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
+    <img alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
     <div className="alumnus-details">
-      <h4>{fieldData.Full_Name}</h4>
-      <div className="subcategory">{fieldData.SubCategory}</div>
+      <h4>{Full_Name}</h4>
+      <div className="subcategory">{SubCategory}</div>
     </div>
     
   </div>
