@@ -8,7 +8,7 @@ import ProjectBoxes from "../components/shared/projectBoxes";
 import "./detailPage.scss";
 
 const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => {
-  const person   = node.fieldData;
+  const { Full_Name, Category, cBadgeRawURL, DescriptionHTML }   = node.fieldData;
   const papers   = node.portalData.PeoplePaperJoin_People_WebView;
   // Filter out projects with no slug, they are artifacts from unpublished projects.
   const projects = node.portalData.PeopleProjectJoin_People_WebView.filter(({ Projects_People_WebView__slug: slug }) => slug !== "" );
@@ -28,11 +28,11 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
   return (
     <Layout>
       <h2>
-        {person.Full_Name} <span className="subtitle">{person.Category}</span>
+        {Full_Name} <span className="subtitle">{Category}</span>
       </h2>
       <div className="detail">
-        <img className="detail-badge" alt={person.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${person.cBadgeRawURL}?width=140`} />
-        <NormalizeP className="description" mixedMarkup={person.DescriptionHTML} />
+        <img className="detail-badge" alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+        <NormalizeP className="description" mixedMarkup={DescriptionHTML} />
       </div>
       {projectsNodes.length > 0 && <h3>Projects</h3>}
       <ProjectBoxes projects={projectsNodes} />
