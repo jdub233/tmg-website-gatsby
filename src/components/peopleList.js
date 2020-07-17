@@ -87,6 +87,7 @@ const PeopleList = () => (
 
       return(
         <div className="people">
+          <div className="temp-spacer">&nbsp;</div>
           {categories.map( (category, index) => <CategoryList key={category} category={category} people={categorized[index]} /> )}
 
           <h3>Alumni</h3>
