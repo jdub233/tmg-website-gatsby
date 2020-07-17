@@ -34,7 +34,7 @@ const PeopleListItem = ({ node: { fieldData } }) => (
       <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
-      <Link to={`/people/${fieldData.slug}`}>
+      <Link to={`/person/${fieldData.slug}`}>
         <h4>{fieldData.Full_Name}</h4>
       </Link>
       {(fieldData.Category === 'Professor') &&
