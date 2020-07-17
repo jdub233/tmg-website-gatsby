@@ -55,7 +55,11 @@ const PeopleListItem = ({ node: { fieldData } }) => (
 const AlumniListItem = ({ node: { fieldData } }) => (
   <div className="alumnus">
     <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
-    <h4>{fieldData.Full_Name}</h4>
+    <div className="alumnus-details">
+      <h4>{fieldData.Full_Name}</h4>
+      <div className="subcategory">{fieldData.SubCategory}</div>
+    </div>
+    
   </div>
 );
 

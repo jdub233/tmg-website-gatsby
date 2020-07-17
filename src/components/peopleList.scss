@@ -48,13 +48,29 @@
     .alumni-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        width: 960px;
 
         .alumnus {
             display: flex;
+            margin-bottom: 20px;
+
             img {
                 width: 60px;
                 height: 60px;
                 border-radius: 4px;
+            }
+
+            &-details {
+                margin-left: 20px;
+
+                h4 {
+                    margin-block-start: 0px;
+                }
+
+                .subcategory {
+                    font-family: "OpenSansLightItalic";
+                    color: #848484;
+                }
             }
         }
     }
