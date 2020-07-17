@@ -18,18 +18,18 @@ const categories = [
 
 const CategoryList = ( {category, people} ) => (
   <div>
-    <h3>{category}</h3>
+    <h3 className="category-title">{category}</h3>
     <div className="people-list">
       {people.map(({ node }) => (
-        <PeopleListItem node={node} />
+        <PeopleListItem key={node.id} node={node} />
       ))}
     </div>
   </div>
 )
 
 
-const PeopleListItem = ({ node: { id, fieldData } }) => (
-  <div className="person" key={id} >
+const PeopleListItem = ({ node: { fieldData } }) => (
+  <div className="person">
     <Link to={`/person/${fieldData.slug}`}>
       <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=140`} />
     </Link>
@@ -37,14 +37,23 @@ const PeopleListItem = ({ node: { id, fieldData } }) => (
       <Link to={`/people/${fieldData.slug}`}>
         <h4>{fieldData.Full_Name}</h4>
       </Link>
-      <div>{fieldData.Category}</div>
-      <div>{fieldData.SubCategory}</div>
+      {(fieldData.Category === 'Professor') &&
+        <div dangerouslySetInnerHTML={{ __html: fieldData.CategoryOverride }} />
+      }
+
+      {(fieldData.Category !== 'Professor') &&
+        <div>{fieldData.Category}</div>
+      }
+      {(fieldData.Category !== 'Professor') &&
+        <div>{fieldData.SubCategory}</div>
+      }
+
     </div>
   </div>
 );
 
-const AlumniListItem = ({ node: { id, fieldData } }) => (
-  <div className="alumnus" key={id}>
+const AlumniListItem = ({ node: { fieldData } }) => (
+  <div className="alumnus">
     <img alt={fieldData.Full_Name} src={`${process.env.MEDIA_LIBRARY}/${fieldData.cBadgeRawURL}?width=60`} />
     <h4>{fieldData.Full_Name}</h4>
   </div>
@@ -64,6 +73,7 @@ const PeopleList = () => (
               cBadgeRawURL
               Category
               SubCategory
+              CategoryOverride
             }
           }
         }
@@ -76,13 +86,14 @@ const PeopleList = () => (
       const categorized = categories.map((category) => edges.filter(({ node }) => node.fieldData.Category === category ));
 
       return(
-        <div>
-          {categories.map( (category, index) => <CategoryList category={category} people={categorized[index]} /> )}
+        <div className="people">
+          <div className="temp-spacer">&nbsp;</div>
+          {categories.map( (category, index) => <CategoryList key={category} category={category} people={categorized[index]} /> )}
 
           <h3>Alumni</h3>
           <div className="alumni-list">
-            {alumni.map(({ node }) => (
-              <AlumniListItem node={node} />
+            {alumni.reverse().map(({ node }) => (
+              <AlumniListItem key={node.id} node={node} />
             ))}
           </div>
 
