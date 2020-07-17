@@ -98,8 +98,8 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
       </a>
     </div>
     <div>
-      {portalData.proj_portal.map( ( { Projects_forPapers__slug, Projects_forPapers__cBadgeRawURL, Projects_forPapers__Name } ) => (
-        <Link to={`/projects/${Projects_forPapers__slug}`}>
+      {portalData.proj_portal.map( ( { Projects_forPapers__slug, Projects_forPapers__cBadgeRawURL, Projects_forPapers__Name, recordId } ) => (
+        <Link key={recordId} to={`/projects/${Projects_forPapers__slug}`}>
           <img
             src={`${process.env.MEDIA_LIBRARY}/${Projects_forPapers__cBadgeRawURL}?width=60`}
             width="60px"
