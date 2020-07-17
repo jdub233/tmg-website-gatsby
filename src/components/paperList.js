@@ -21,7 +21,7 @@ const PaperList = () => {
                 DOI_URL
                 PaperID
                 Paper_Year
-                SC_published_pdf_Download_URL
+                Download_URL: SC_published_pdf_Download_URL
                 Title
                 Venue
               }
@@ -87,12 +87,12 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
     <div className="icon-link">
       <a 
         className="icon-link-anchor" 
-        href={`${process.env.MEDIA_LIBRARY}/${fieldData.SC_published_pdf_Download_URL}`}
+        href={`${process.env.MEDIA_LIBRARY}/${fieldData.Download_URL}`}
         aria-label="Download link"
       >&nbsp;</a>
     </div>
     <div className="citation">
-      <a href={`${process.env.MEDIA_LIBRARY}/${fieldData.SC_published_pdf_Download_URL}`}>
+      <a href={`${process.env.MEDIA_LIBRARY}/${fieldData.Download_URL}`}>
         <h4>{fieldData.Title}</h4>
         <p>{fieldData.Citation}</p>
       </a>
