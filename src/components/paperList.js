@@ -30,6 +30,7 @@ const PaperList = () => {
                   Projects_forPapers__cBadgeRawURL
                   Projects_forPapers__Name
                   Projects_forPapers__slug
+                  recordId
                 }
               }
             }
@@ -68,7 +69,7 @@ const PaperList = () => {
       <div key={key}>
         <h3>{key}</h3>
         {papers.map((node) => (
-          <PaperBox node={node} />
+          <PaperBox key={node.id} node={node} />
         ))}
       </div>
   ));
@@ -81,8 +82,8 @@ const PaperList = () => {
   );
 };
 
-const PaperBox = ({ node: { id, fieldData, portalData }}) => (
-  <div className="paperBox" key={id}>
+const PaperBox = ({ node: { fieldData, portalData }}) => (
+  <div className="paperBox">
     <div className="icon-link">
       <a 
         className="icon-link-anchor" 
