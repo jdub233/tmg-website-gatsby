@@ -27,9 +27,9 @@ const PaperList = () => {
               }
               portalData {
                 proj_portal {
-                  Projects_forPapers__cBadgeRawURL
-                  Projects_forPapers__Name
-                  Projects_forPapers__slug
+                  BadgeURL: Projects_forPapers__cBadgeRawURL
+                  Name: Projects_forPapers__Name
+                  slug: Projects_forPapers__slug
                   recordId
                 }
               }
@@ -98,12 +98,12 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
       </a>
     </div>
     <div>
-      {portalData.proj_portal.map( ( { Projects_forPapers__slug, Projects_forPapers__cBadgeRawURL, Projects_forPapers__Name, recordId } ) => (
-        <Link key={recordId} to={`/projects/${Projects_forPapers__slug}`}>
+      {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => (
+        <Link key={recordId} to={`/projects/${slug}`}>
           <img
-            src={`${process.env.MEDIA_LIBRARY}/${Projects_forPapers__cBadgeRawURL}?width=60`}
+            src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
             width="60px"
-            alt={Projects_forPapers__Name}
+            alt={Name}
           />
         </Link>
       ))}
