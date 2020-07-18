@@ -1,7 +1,7 @@
 .paperBox {
     width: 820px;
     display: grid;
-    grid-template-columns: 80px 710px 110px;
+    grid-template-columns: 80px 710px 60px;
 
     .icon-link {
         width: 46px;
@@ -15,9 +15,14 @@
         }
     }
 
-    
-
     .related-projects {
         padding-left: 10px;
+        
+        &-link {
+            
+            img {
+                margin-bottom: 15px;
+            }
+        }
     }
 }

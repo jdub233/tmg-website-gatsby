@@ -96,7 +96,7 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
     <Citation fieldData={fieldData} />
     <div className="related-projects">
       {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => (
-        <Link key={recordId} to={`/projects/${slug}`}>
+        <Link className="related-projects-link" key={recordId} to={`/projects/${slug}`}>
           <img
             src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
             width="60px"
