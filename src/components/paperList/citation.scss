@@ -15,12 +15,31 @@
     }
 
     h5 {
-        font-family: "OpenSansLightItalic";
-        font-weight: normal;
-        font-size: 19px;
         margin-block-start: 0px;
         margin-block-end: 15px;
+
+        .show-abstract {
+            font-family: "OpenSansLightItalic";
+            font-weight: normal;
+            font-size: 19px;
+
+            /* button overrides */
+            background-color: rgb(250, 250, 250);
+            border: 0;
+            padding: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
         
+        
+    }
+
+    &-doi  {
+        font-family: "OpenSansLightItalic";
+        font-weight: normal;
+        margin-block-end: 2px;
     }
 
     &-abstract {
