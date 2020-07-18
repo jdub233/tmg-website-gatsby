@@ -3,6 +3,8 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 
 import YearNav from "./filters/yearNav";
 
+import Citation from "./paperList/citation";
+
 import "./paperList.scss";
 
 const PaperList = () => {
@@ -91,13 +93,8 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
         aria-label="Download link"
       >&nbsp;</a>
     </div>
-    <div className="citation">
-      <a href={`${process.env.MEDIA_LIBRARY}/${fieldData.Download_URL}`}>
-        <h4>{fieldData.Title}</h4>
-        <p>{fieldData.Citation}</p>
-      </a>
-    </div>
-    <div>
+    <Citation fieldData={fieldData} />
+    <div className="related-projects">
       {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => (
         <Link key={recordId} to={`/projects/${slug}`}>
           <img
@@ -110,7 +107,6 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
     </div>
   </div>
 );
-
 
 export default PaperList
 
