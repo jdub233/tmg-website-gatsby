@@ -95,15 +95,21 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
     </div>
     <Citation fieldData={fieldData} />
     <div className="related-projects">
-      {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => (
-        <Link className="related-projects-link" key={recordId} to={`/projects/${slug}`}>
-          <img
-            src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
+      {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => {
+        // Filter out any blank records.
+        if (slug === '') {
+          return null;
+        }
+  
+        return (
+          <Link className="related-projects-link" key={recordId} to={`/projects/${slug}`}>
+            <img
+              src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
             width="60px"
             alt={Name}
           />
         </Link>
-      ))}
+      )})}
     </div>
   </div>
 );
