@@ -10,7 +10,9 @@ export default ({ fieldData: { Download_URL, Title, Citation, DOI_URL, Abstract 
                 <h4>{Title}</h4>
             </a>
             <p>{Citation}</p>
-            <div className="citation-doi">DOI: {DOI_URL}</div>
+            {DOI_URL !== '' &&
+                <div className="citation-doi">DOI: {DOI_URL}</div>
+            }
             <h5>
                 <button className="show-abstract" onClick={() => setShowAbstract(!showAbstract)}> 
                     Abstract <span className="show-abstract-icon">{showAbstract ? '-' : '+'}</span>
