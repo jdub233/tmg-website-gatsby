@@ -11,12 +11,8 @@ export default ( {fieldData} ) => {
             </a>
             <p>{fieldData.Citation}</p>
             <p className="citation-doi">DOI: {fieldData.DOI_URL}</p>
-            <h5 onClick={() => setShowAbstract(!showAbstract)}>Abstract { showAbstract ? "-" : "+" }</h5>
-
-            { showAbstract &&
-                <div className="citation-abstract">{fieldData.Abstract}</div>
-            }
-
+            <h5 onClick={() => setShowAbstract(!showAbstract)}>Abstract { showAbstract ? '-' : '+' }</h5>
+            <div className={`citation-abstract${ !showAbstract ? '-hide' : ''}`}>{fieldData.Abstract}</div>
         </div>
     );
 };

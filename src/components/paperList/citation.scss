@@ -26,5 +26,9 @@
     &-abstract {
         margin-top: -10px;
         margin-bottom: 10px;
+
+        &-hide {
+            display: none;
+        }
     }
 }
