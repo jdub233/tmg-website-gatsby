@@ -22,24 +22,28 @@
             font-family: "OpenSansLightItalic";
             font-weight: normal;
             font-size: 19px;
+            color: #4a4a4a;
 
             /* button overrides */
             background-color: rgb(250, 250, 250);
             border: 0;
             padding: 0;
 
+            &-icon {
+                color: #cfcfcf;
+            }
+
             &:hover {
                 cursor: pointer;
             }
         }
-        
-        
     }
 
     &-doi  {
         font-family: "OpenSansLightItalic";
         font-weight: normal;
         margin-block-end: 2px;
+        color: #848484;
     }
 
     &-abstract {
