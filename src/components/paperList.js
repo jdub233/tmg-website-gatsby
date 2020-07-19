@@ -102,10 +102,10 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
         }
   
         return (
-          <Link className="related-projects-link" key={recordId} to={`/projects/${slug}`}>
+          <Link className="related-projects-link" key={recordId} to={`/project/${slug}`}>
             <img
               src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
-            width="60px"
+              width="60px"
             alt={Name}
           />
         </Link>
