@@ -40,8 +40,11 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
       {papers.map((node) => (
         <div key={node.recordId}>
           <a href={`${process.env.MEDIA_LIBRARY}/${node.Download_URL}`}>{node.Title}</a>
-          {node.Venue && 
-           <span className="venue">{node.Venue} {node.PaperYear}</span>
+          {node.Venue && node.Publication_URL && 
+           <a className="publication-url" href={node.Publication_URL}><span className="venue">{node.Venue} {node.PaperYear}</span></a>
+          }
+          {!node.Publication_URL && node.Venue &&
+            <span className="venue">{node.Venue} {node.PaperYear}</span>
           }
         </div>
       ))}
