@@ -1,7 +1,9 @@
 .paperBox {
     width: 820px;
     display: grid;
-    grid-template-columns: 10% 90% 10%;
+    grid-template-columns: 80px 710px 60px;
+
+    margin-bottom: 13px;
 
     .icon-link {
         width: 46px;
@@ -15,15 +17,14 @@
         }
     }
 
-    h4 {
-        margin: 0;
-        padding: 0;
-    }
-
-    .citation {
-        p {
-            font-family: "OpenSansLightItalic";
-            font-weight: normal;
+    .related-projects {
+        padding-left: 10px;
+        
+        &-link {
+            
+            img {
+                margin-bottom: 14.5px;
+            }
         }
     }
 }
