@@ -39,9 +39,9 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
       {papers.length > 0 && <h3 className="papers-title">Papers</h3>}
       {papers.map((node) => (
         <div key={node.recordId}>
-          <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_People_WebView__SC_published_pdf_Download_URL}`}>{node.Papers_People_WebView__Title}</a>
-          {node.Papers_People_WebView__Venue &&
-           <span className="venue">{node.Papers_People_WebView__Venue}</span>
+          <a href={`${process.env.MEDIA_LIBRARY}/${node.Download_URL}`}>{node.Title}</a>
+          {node.Venue && 
+           <span className="venue">{node.Venue} {node.PaperYear}</span>
           }
         </div>
       ))}
@@ -68,10 +68,11 @@ export const query = graphql`
           portalData {
             PeoplePaperJoin_People_WebView {
               recordId
-              Papers_People_WebView__Publication_URL
-              Papers_People_WebView__Title
-              Papers_People_WebView__SC_published_pdf_Download_URL
-              Papers_People_WebView__Venue
+              Publication_URL: Papers_People_WebView__Publication_URL
+              Title: Papers_People_WebView__Title
+              Download_URL: Papers_People_WebView__SC_published_pdf_Download_URL
+              Venue: Papers_People_WebView__Venue
+              PaperYear: PeoplePaperJoin_People_WebView__cPaperYear
             }
             PeopleProjectJoin_People_WebView {
               recordId
