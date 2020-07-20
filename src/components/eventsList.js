@@ -52,13 +52,12 @@ const EventsList = () => {
     };
   }
 
-
   return (
     <div>
       <YearNav years={years} setYear={setYear} currentYear={year} />
       {Object.entries(eventsByYearObj).reverse().map( ([key, events]) => (
-        <div key={key}>
-          <h3>{key}</h3>
+        <div className="year" key={key}>
+          <h3 className="year-header">{key}</h3>
           <EventYearList events={events} />
         </div>
       ) )}
@@ -69,9 +68,9 @@ const EventsList = () => {
 const EventYearList = ( { events } ) => (
   <div className="events">
     {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Type } } ) => (
-      <div key={EventID}>
+      <div className="events-item" key={EventID}>
         <h4>{Title}</h4>
-        <div className="venue">
+        <div className="events-item-venue">
           {Venue_Link 
             ? <a href={Venue_Link}>{Venue_Name}</a>
             : <div>{ Venue_Name }</div>

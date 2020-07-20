@@ -1,10 +1,25 @@
-.events {
-    .venue {
-        font-size: 19px;
-        font-family: "OpenSansLightItalic";
-    }
-    .event-details {
-        font-family: "OpenSansLightItalic";
-    }
+.year {
 
+    .events {
+        width: 780px;
+
+        &-item {
+            margin-bottom: 20px;
+
+            h4 {
+                margin-top: 0px;
+            }
+
+            &-venue {
+                font-size: 19px;
+                font-family: "OpenSansLightItalic";
+                margin-bottom: .25em;
+            }
+            .event-details {
+                font-family: "OpenSansLightItalic";
+                color: #848484;
+                padding-bottom: 5px;
+            }
+        }
+    }   
 }
