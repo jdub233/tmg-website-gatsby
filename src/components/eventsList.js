@@ -67,7 +67,7 @@ const EventsList = () => {
 }
 
 const EventYearList = ( { events } ) => (
-  <div className="eventYearList">
+  <div className="events">
     {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, Event_Year, Type } } ) => (
       <div>
         <h4>{Title}</h4>
