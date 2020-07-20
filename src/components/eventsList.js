@@ -68,8 +68,8 @@ const EventsList = () => {
 
 const EventYearList = ( { events } ) => (
   <div className="events">
-    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, Event_Year, Type } } ) => (
-      <div>
+    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Type } } ) => (
+      <div key={EventID}>
         <h4>{Title}</h4>
         <div className="venue">
           {Venue_Link 
