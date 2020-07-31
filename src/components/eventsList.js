@@ -65,6 +65,7 @@ const EventsList = () => {
 
   return (
     <div>
+      <TypeFilter setEventType={setEventType} eventType={eventType} />
       <YearNav years={years} setYear={setYear} currentYear={year} />
       {Object.entries(eventsByYearObj).reverse().map( ([key, events]) => (
         <div className="year" key={key}>
@@ -75,6 +76,15 @@ const EventsList = () => {
     </div> 
   );
 }
+
+const TypeFilter = ({setEventType, eventType}) => (
+  <div className="type-filter">
+    <button className={`type-filter-option${(eventType === 'Exhibition') ? '-selected' : ''}`} onClick={() => setEventType('Exhibition')}>Exhibitions</button>
+    <button className={`type-filter-option${(eventType === 'Conference') ? '-selected' : ''}`} onClick={() => setEventType('Conference')}>Conferences</button>
+    <button className={`type-filter-option${(eventType === 'Presentation') ? '-selected' : ''}`} onClick={() => setEventType('Presentation')}>Presentations</button>
+    <button className={`type-filter-option${(eventType === 'show all') ? '-selected' : ''}`} onClick={() => setEventType('show all')}>show all</button>
+  </div>
+);
 
 const EventYearList = ( { events } ) => (
   <div className="events">
