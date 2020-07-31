@@ -30,9 +30,20 @@ const EventsList = () => {
   const { allEventsJson: { edges: events } } = data;
 
   const [year, setYear] = useState('show all');
+  const [eventType, setEventType] = useState('show all');
+
+  let filteredEvents = events;
+
+  //filter by type before reducing
+  if (eventType !== 'show all') {
+    filteredEvents = events.filter(
+      ({ node: { fieldData: { Type } } }) => Type === eventType
+    );
+  }
+
 
   // Group events by year with reduce.
-  let eventsByYearObj = events.reduce( (accumulator, { node }) => {
+  let eventsByYearObj = filteredEvents.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Event_Year] = [ ...accumulator[node.fieldData.Event_Year] || [], node ];
     return accumulator;
   }, {} );
