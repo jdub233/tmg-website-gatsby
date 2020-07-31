@@ -41,7 +41,6 @@ const EventsList = () => {
     );
   }
 
-
   // Group events by year with reduce.
   let eventsByYearObj = filteredEvents.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Event_Year] = [ ...accumulator[node.fieldData.Event_Year] || [], node ];
