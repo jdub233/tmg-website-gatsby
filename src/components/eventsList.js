@@ -58,9 +58,12 @@ const EventsList = () => {
 
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
-    eventsByYearObj = {
-      [filteredYear[0][0]]: filteredYear[0][1]
-    };
+    (filteredYear.length !==0) 
+      ? eventsByYearObj = {
+        [filteredYear[0][0]]: filteredYear[0][1]
+      }
+      : eventsByYearObj = {};
+    
   }
 
   return (
@@ -101,7 +104,6 @@ const EventYearList = ( { events } ) => (
             { (Type === "Presentation") ? `${Presenter} / ` : null }
             { Event_Year ? `${Event_Year}` : null }
         </div>
-
       </div>
     ) )}
   </div>
