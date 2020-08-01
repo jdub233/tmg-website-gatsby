@@ -13,6 +13,7 @@ const EventsList = () => {
           node {
             fieldData {
               Event_Year
+              Event_Month
               Event_Link
               EventID
               Venue_Name
@@ -90,21 +91,25 @@ const TypeFilter = ({setEventType, eventType}) => (
 
 const EventYearList = ( { events } ) => (
   <div className="events">
-    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Type } } ) => (
-      <div className="events-item" key={EventID}>
-        <h4>{Title}</h4>
-        <div className="events-item-venue">
-          {Venue_Link 
-            ? <a href={Venue_Link}>{Venue_Name}</a>
-            : <div>{ Venue_Name }</div>
-            }
-        </div>
-        <div className="event-details">
+    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Event_Month, Type } } ) => {
+      const eventDate = new Date(Event_Year, Event_Month);
+
+      return (
+        <div className="events-item" key={EventID}>
+          <h4>{Title}</h4>
+          <div className="events-item-venue">
+            {Venue_Link 
+              ? <a href={Venue_Link}>{Venue_Name}</a>
+              : <div>{ Venue_Name }</div>
+              }
+          </div>
+          <div className="event-details">
             { (Type === "Presentation") ? `${Presenter} / ` : null }
-            { Event_Year ? `${Event_Year}` : null }
+            {eventDate.toLocaleString('default', { month: 'long' })}, {eventDate.getFullYear()}
+          </div>
         </div>
-      </div>
-    ) )}
+      )}
+    )}
   </div>
 );
 
