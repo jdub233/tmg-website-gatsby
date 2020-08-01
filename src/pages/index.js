@@ -2,11 +2,11 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import "./home-vision.scss";
-import gui from "../img/vision-image-gui.jpg";
 
 import Layout from '../components/layout';
 import ProjectBoxes from "../components/shared/projectBoxes";
-import VisionHeadline from "../components/shared/visionHeadline";
+
+import Statement from "../components/vision/statement";
 
 export default ({ data: { allProjectsJson: { edges: projects } } }) => {
 
@@ -14,12 +14,7 @@ export default ({ data: { allProjectsJson: { edges: projects } } }) => {
 
   return (
     <Layout>
-      <div className="vision-statement">
-        <VisionHeadline />
-        <div className="vision-image">
-          <img alt="TUI iceberg" src={gui} />
-        </div>
-      </div>
+      <Statement />
       <div className="text-block">
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
         <ProjectBoxes projects={projectsNodes} />

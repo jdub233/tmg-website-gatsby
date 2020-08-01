@@ -1,19 +1,13 @@
 import React from "react";
 
 import "./home-vision.scss";
-import gui from "../img/vision-image-gui.jpg";
 
 import Layout from '../components/layout';
-import VisionHeadline from "../components/shared/visionHeadline";
+import Statement from "../components/vision/statement";
 
 export default () => (
     <Layout>
-        <div className="vision-statement">
-            <VisionHeadline />
-            <div className="vision-image">
-                <img alt="TUI iceberg" src={gui} />
-            </div>
-        </div>
+        <Statement />
         <div className="half-column">
             <div className="text-block">
                 <h3 className="box">Tangible Bits</h3>

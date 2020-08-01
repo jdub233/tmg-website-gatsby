@@ -1,0 +1,32 @@
+.vision-statement {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    margin-top: 20px;
+
+    h2.vision-text {
+        font-size: 32px !important;
+        line-height: 40px !important;
+        padding-top: 0px;
+        padding-right: 60px;
+
+        margin-top: 20px;
+    }
+
+    .illustration {
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        &-caption {
+            min-height: 105px;
+            margin-top: 5px;
+            font-family: "OpenSansLightItalic";
+            color: #848484;
+
+            strong {
+                font-family: "OpenSansBoldItalic";
+            }
+        }
+    }
+}
