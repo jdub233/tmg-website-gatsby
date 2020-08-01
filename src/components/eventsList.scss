@@ -1,10 +1,68 @@
-.eventYearList {
-    .venue {
-        font-size: 19px;
-        font-family: "OpenSansLightItalic";
-    }
-    .event-details {
-        font-family: "OpenSansLightItalic";
-    }
+.type-filter {
+    text-align: right;
+    margin-top: -60px;
+    margin-right: 5px;
+    padding-bottom: 17px;
+    
+    &-option, %event-button {
+        font-size: 16px;
+        font-family: "AlternateGothicFSNo3", sans-serif;
+        padding: 0 .5em 0 .5em;
+        height: 30px;
+        color: #4a4a4a;
+        cursor: pointer;
+        
 
+        // potentially global for all links
+        text-decoration-color:rgb(74, 74, 74);
+        text-decoration-line: none;
+        text-shadow:rgb(255, 255, 255) 1px 1px 0px;
+        -webkit-font-smoothing:antialiased;
+        background-color: transparent;
+        border: 0;
+        
+
+        &-selected {
+            @extend %event-button;
+
+            color: #848484 !important;
+            background: linear-gradient(to bottom, #fff, #eae9e9);
+            border-radius: 7px;
+            box-shadow: 0 1px 1px rgba(2, 28, 0, 0.5);
+
+            &:visited {
+                color: #848484 !important;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+.year {
+
+    .events {
+        width: 780px;
+
+        &-item {
+            margin-bottom: 20px;
+
+            h4 {
+                margin-top: 0px;
+            }
+
+            &-venue {
+                font-size: 19px;
+                font-family: "OpenSansLightItalic";
+                margin-bottom: .25em;
+            }
+            .event-details {
+                font-family: "OpenSansLightItalic";
+                color: #848484;
+                padding-bottom: 5px;
+            }
+        }
+    }   
 }

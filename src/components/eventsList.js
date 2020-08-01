@@ -13,6 +13,7 @@ const EventsList = () => {
           node {
             fieldData {
               Event_Year
+              Event_Month
               Event_Link
               EventID
               Venue_Name
@@ -30,9 +31,19 @@ const EventsList = () => {
   const { allEventsJson: { edges: events } } = data;
 
   const [year, setYear] = useState('show all');
+  const [eventType, setEventType] = useState('show all');
+
+  let filteredEvents = events;
+
+  //filter by type before reducing
+  if (eventType !== 'show all') {
+    filteredEvents = events.filter(
+      ({ node: { fieldData: { Type } } }) => Type === eventType
+    );
+  }
 
   // Group events by year with reduce.
-  let eventsByYearObj = events.reduce( (accumulator, { node }) => {
+  let eventsByYearObj = filteredEvents.reduce( (accumulator, { node }) => {
     accumulator[node.fieldData.Event_Year] = [ ...accumulator[node.fieldData.Event_Year] || [], node ];
     return accumulator;
   }, {} );
@@ -47,18 +58,21 @@ const EventsList = () => {
 
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
-    eventsByYearObj = {
-      [filteredYear[0][0]]: filteredYear[0][1]
-    };
+    (filteredYear.length !==0) 
+      ? eventsByYearObj = {
+        [filteredYear[0][0]]: filteredYear[0][1]
+      }
+      : eventsByYearObj = {};
+    
   }
-
 
   return (
     <div>
+      <TypeFilter setEventType={setEventType} eventType={eventType} />
       <YearNav years={years} setYear={setYear} currentYear={year} />
       {Object.entries(eventsByYearObj).reverse().map( ([key, events]) => (
-        <div key={key}>
-          <h3>{key}</h3>
+        <div className="year" key={key}>
+          <h3 className="year-header">{key}</h3>
           <EventYearList events={events} />
         </div>
       ) )}
@@ -66,24 +80,36 @@ const EventsList = () => {
   );
 }
 
-const EventYearList = ( { events } ) => (
-  <div className="eventYearList">
-    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, Event_Year, Type } } ) => (
-      <div>
-        <h4>{Title}</h4>
-        <div className="venue">
-          {Venue_Link 
-            ? <a href={Venue_Link}>{Venue_Name}</a>
-            : <div>{ Venue_Name }</div>
-            }
-        </div>
-        <div className="event-details">
-            { (Type === "Presentation") ? `${Presenter} / ` : null }
-            { Event_Year ? `${Event_Year}` : null }
-        </div>
+const TypeFilter = ({setEventType, eventType}) => (
+  <div className="type-filter">
+    <button className={`type-filter-option${(eventType === 'Exhibition') ? '-selected' : ''}`} onClick={() => setEventType('Exhibition')}>Exhibitions</button>
+    <button className={`type-filter-option${(eventType === 'Conference') ? '-selected' : ''}`} onClick={() => setEventType('Conference')}>Conferences</button>
+    <button className={`type-filter-option${(eventType === 'Presentation') ? '-selected' : ''}`} onClick={() => setEventType('Presentation')}>Presentations</button>
+    <button className={`type-filter-option${(eventType === 'show all') ? '-selected' : ''}`} onClick={() => setEventType('show all')}>show all</button>
+  </div>
+);
 
-      </div>
-    ) )}
+const EventYearList = ( { events } ) => (
+  <div className="events">
+    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Event_Month, Type } } ) => {
+      const eventDate = new Date(Event_Year, Event_Month);
+
+      return (
+        <div className="events-item" key={EventID}>
+          <h4>{Title}</h4>
+          <div className="events-item-venue">
+            {Venue_Link 
+              ? <a href={Venue_Link}>{Venue_Name}</a>
+              : <div>{ Venue_Name }</div>
+              }
+          </div>
+          <div className="event-details">
+            { (Type === "Presentation") ? `${Presenter} / ` : null }
+            {eventDate.toLocaleString('default', { month: 'long' })}, {eventDate.getFullYear()}
+          </div>
+        </div>
+      )}
+    )}
   </div>
 );
 
