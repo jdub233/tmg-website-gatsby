@@ -1,20 +1,24 @@
 .type-filter {
     text-align: right;
-    margin-top: -52px;
-    padding-bottom: 18px;
+    margin-top: -60px;
+    margin-right: 5px;
+    padding-bottom: 17px;
     
     &-option, %event-button {
         font-size: 16px;
         font-family: "AlternateGothicFSNo3", sans-serif;
-
+        padding: 0 .5em 0 .5em;
+        height: 30px;
+        color: #4a4a4a;
         cursor: pointer;
+        
 
         // potentially global for all links
         text-decoration-color:rgb(74, 74, 74);
         text-decoration-line: none;
         text-shadow:rgb(255, 255, 255) 1px 1px 0px;
         -webkit-font-smoothing:antialiased;
-        background-color: #ffffff;
+        background-color: transparent;
         border: 0;
         
 
