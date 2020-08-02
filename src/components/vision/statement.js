@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
 
 import VisionHeadline from "./visionHeadline";
 
@@ -68,7 +69,15 @@ export default () => {
                     </div>
                     <img alt={phase} src={phaseImages[phaseIndex]} />
                 </div>
-                {phaseCaptions[phaseIndex]}
+            <SwitchTransition>
+                <CSSTransition 
+                    key={phase}
+                    timeout={200}
+                    classNames="illustration-caption"
+                >
+                    {phaseCaptions[phaseIndex]}
+                </CSSTransition>
+            </SwitchTransition>
             </div>
         </div>
     )
