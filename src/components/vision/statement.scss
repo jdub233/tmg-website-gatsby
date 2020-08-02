@@ -64,8 +64,14 @@
                     border: 0em;
                     padding-right: 30px;
                     padding-left: 30px;
+                    cursor: pointer;
 
                     margin: 5px 6px 7px 6px;
+
+                    &:focus {
+                        outline-color: transparent;
+                        outline-width: 0em;
+                    }
 
                     &:last-child {
                         padding-left: 8px;
