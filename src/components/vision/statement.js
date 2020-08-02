@@ -4,6 +4,8 @@ import VisionHeadline from "./visionHeadline";
 
 import "./statement.scss";
 import gui from "../../img/vision-image-gui.jpg";
+import tui from "../../img/vision-image-tui.jpg";
+import ra from "../../img/vision-image-ra.jpg";
 
 export default () => {
     return (
