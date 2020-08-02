@@ -7,6 +7,24 @@ import gui from "../../img/vision-image-gui.jpg";
 import tui from "../../img/vision-image-tui.jpg";
 import ra from "../../img/vision-image-ra.jpg";
 
+const GUICaption = () => (
+    <div className="illustration-caption">
+        A <strong>Graphical User Interface</strong> only lets us see information and interact with it indirectly, as if we were looking through the surface of the water to interact with the forms below.
+    </div>
+);
+
+const TUICaption = () => (
+    <div className="illustration-caption">
+        A <strong>Tangible User Interface</strong> is like an iceberg: there is a portion of the digital that emerges beyond the surface of the water—into the physical realm—so that we may interact directly with it.
+    </div>
+);
+
+const RACaption = () => (
+    <div className="illustration-caption">
+        <strong>Radical Atoms</strong> describes our vision for the future of interaction, in which all digital information has physical manifestation so that we can interact directly with it—as if the iceberg had risen from the depths to reveal its sunken mass.
+    </div>
+);
+
 export default () => {
     const phases = [
         'GUI',
@@ -20,7 +38,15 @@ export default () => {
         ra,
     ];
 
+    const phaseCaptions = [
+        <GUICaption />,
+        <TUICaption />,
+        <RACaption />,
+    ];
+
     const [phase, setPhase] = useState('TUI');
+
+    const phaseIndex = phases.findIndex(a => a === phase);
 
     const buttons = phases.map((x) => (
         <button 
@@ -40,11 +66,9 @@ export default () => {
                     <div className="slides-nav">
                         {buttons}
                     </div>
-                    <img alt={phase} src={phaseImages[(phases.findIndex(a => a === phase))]} />
+                    <img alt={phase} src={phaseImages[phaseIndex]} />
                 </div>
-                <div className="illustration-caption">
-                    A <strong>Graphical User Interface</strong> only lets us see information and interact with it indirectly, as if we were looking through the surface of the water to interact with the forms below.
-                </div>
+                {phaseCaptions[phaseIndex]}
             </div>
         </div>
     )
