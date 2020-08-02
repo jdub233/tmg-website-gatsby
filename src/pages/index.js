@@ -1,8 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-import "./home-vision.scss";
-
 import Layout from '../components/layout';
 import ProjectBoxes from "../components/shared/projectBoxes";
 
@@ -15,7 +13,7 @@ export default ({ data: { allProjectsJson: { edges: projects } } }) => {
   return (
     <Layout>
       <Statement />
-      <div className="text-block">
+      <div>
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
         <ProjectBoxes projects={projectsNodes} />
       </div>

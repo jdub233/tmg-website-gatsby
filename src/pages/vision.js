@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./home-vision.scss";
+import "./vision.scss";
 
 import Layout from '../components/layout';
 import Statement from "../components/vision/statement";
