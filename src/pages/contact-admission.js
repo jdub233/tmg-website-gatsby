@@ -68,29 +68,29 @@ export default () => (
             </div>
         </div>
         <h2 name="faq">Frequently Asked Questions</h2>
-        <p class="box">
+        <p className="box">
             <strong>How do I apply?</strong><br />
             Submit an application through the main MIT Media Lab admissions process (<a href="http://www.media.mit.edu/admissions/how-to-apply">http://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices. If you decide to apply, please send us an email at <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" /> for our own records. Make sure to include a URL to your online portfolio in your application.
         </p>
-        <p class="box">
+        <p className="box">
             <strong>What’s the timeline for applications?</strong><br />
             Applications are due in December, and decisions are usually released by the end of March (<a href="http://www.media.mit.edu/admissions">http://www.media.mit.edu/admissions</a>).
         </p>
-        <p class="box">
+        <p className="box">
             <strong>What kind of applicants does the Tangible Media Group look for?</strong><br />
             Our group is first and foremost a research group in human computer interaction (HCI), and our members are passionate about the future of HCI. Whether or not you have HCI experience, you should be familiar with prior work in the area and have ideas of interactions you would like to explore.<br /><br />
             Being able to build functioning artifacts that demonstrate your ideas is key. In general, we look for applicants with both engineering (computer programming, electrical, mechanical) and design (interaction, industrial/product, architecture) backgrounds. A good balance of fluency in both technology and design is ideal, but a very strong background in one can offset weaker knowledge of the other, provided the applicant can demonstrate the ability to pick up new skills quickly.<br /><br />
             In addition, we value strong communication skills, both oral and written, as our work is regularly presented to visitors and submitted to major conferences and journals. The ability to think on your feet and explain your ideas clearly is essential.
         </p>
-        <p class="box">
+        <p className="box">
             <strong>How do I demonstrate my skills in my application?</strong><br />
             Your online portfolio is your most important tool to demonstrate your abilities. You may include as many projects as you choose in the portfolio, but be sure to especially highlight work that demonstrate your creativity, originality and technical competency. Present your work clearly and concisely with pictures, videos and publications if available. If you include a group project, please be clear about your exact contribution. Please, also reference any academic publications you have at HCI conferences such as CHI, UIST, CSCW, SIGGRAPH or TEI.
         </p>
-        <p class="box">
+        <p className="box">
             <strong>I already have a Masters. Can I apply directly to the PhD?</strong><br />
             To pursue a PhD in the Tangible Media Group, we expect all students to begin with the 2-year master’s program at the Media Lab. This is our rule, even if you have multiple master’s from other institutions.
         </p>
-        <p class="box">
+        <p className="box">
             <strong>May I come visit the group and present my work?</strong><br />
             If you are interested in visiting our group, please email us a brief introduction including your skills, research interests and link to your online portfolio. We receive many such requests and are unfortunately unable to accommodate all of them.<br /><br />
             (The Media Lab as a whole organizes an open-house for prospective students in the fall. Check the main website for information.)
