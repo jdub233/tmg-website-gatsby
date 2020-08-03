@@ -12,7 +12,7 @@ export default ({ data: { allProjectsJson: { edges: projects } } }) => {
 
   return (
     <Layout>
-      <Statement />
+      <Statement home={true} />
       <div>
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
         <ProjectBoxes projects={projectsNodes} />

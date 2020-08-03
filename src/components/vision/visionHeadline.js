@@ -1,4 +1,5 @@
 import React from "react";
+import "./visionHeadline.scss";
 
 export default () => (
     <h2 className="vision-text">

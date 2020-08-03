@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { Link } from "gatsby";
 
 import VisionHeadline from "./visionHeadline";
 
@@ -26,7 +27,7 @@ const RACaption = () => (
     </div>
 );
 
-export default () => {
+export default ({home = false}) => {
     const phases = [
         'GUI',
         'TUI',
@@ -59,7 +60,26 @@ export default () => {
 
     return (
         <div className="vision-statement">
-            <VisionHeadline />
+            <div>
+                <VisionHeadline />
+                {home &&
+                    <>
+                        <h3 className="more">
+                            <Link className="more-link" to="/vision/">
+                                More on our vision +
+                            </Link>
+                        </h3>
+                        <div className="contact-us">
+                            <Link to="/contact-admission/">
+                                Contact us
+                            </Link> 
+                            <Link to="/contact-admission/">
+                                Admission/FAQ
+                            </Link>
+                        </div>
+                    </>
+                }
+            </div>
             <div className="illustration">
                 <div className="illustration-slides">
                     <div className="atoms">Atoms</div>
