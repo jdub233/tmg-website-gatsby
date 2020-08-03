@@ -18,30 +18,10 @@
             width: 300px;
             position: relative;
 
-            .slide-img {
+            img {
                 width: 300px;
                 height: 300px;
                 border-radius: 4px;
-
-                /*transitions*/
-                &-enter {
-                    opacity: 0;
-
-                    &-active {
-                        opacity: 1;
-                        transition: opacity 200ms;
-                    }
-                }
-
-                &-exit {
-                    opacity: 1;
-
-                    &-active {
-                        opacity: .9;
-                        transition: opacity 200ms;
-                    }
-                }                
-
             }
             
             %labels {

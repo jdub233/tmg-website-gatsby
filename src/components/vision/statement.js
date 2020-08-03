@@ -67,15 +67,7 @@ export default () => {
                     <div className="slides-nav">
                         {buttons}
                     </div>
-                    <SwitchTransition>
-                        <CSSTransition
-                            key={phase}
-                            timeout={200}
-                            classNames="slide-img"
-                        >
-                            <img alt={phase} src={phaseImages[phaseIndex]} className="slide-img" />
-                        </CSSTransition>
-                    </SwitchTransition>
+                    <img alt={phase} src={phaseImages[phaseIndex]} />
                 </div>
             <SwitchTransition>
                 <CSSTransition 
