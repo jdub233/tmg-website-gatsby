@@ -1,22 +1,16 @@
 import React from "react";
 
-import "./home-vision.scss";
-import gui from "../img/vision-image-gui.jpg";
+import "./vision.scss";
 
 import Layout from '../components/layout';
-import VisionHeadline from "../components/shared/visionHeadline";
+import Statement from "../components/vision/statement";
 
 export default () => (
     <Layout>
-        <div className="vision-statement">
-            <VisionHeadline />
-            <div className="vision-image">
-                <img alt="TUI iceberg" src={gui} />
-            </div>
-        </div>
+        <Statement />
         <div className="half-column">
             <div className="text-block">
-                <h3 class="box">Tangible Bits</h3>
+                <h3 className="box">Tangible Bits</h3>
                 <p>
                     In 1997, Hiroshi Ishii &amp; Brygg Ulmer presented their vision of “<a href={`${process.env.MEDIA_LIBRARY}publishedmedia/Papers/349-Tangible%20Bits%20Beyond%20Pixels/Published/PDF`}>Tangible Bits</a>” at the CHI '97 conference. They proposed the concept of a Tangible User Interface (TUI), based on the physical embodiment of digital information and computation, in order to transcend the current dominant paradigm of “Painted Bits” or Graphical User Interfaces (GUI). Humans have evolved a heightened ability to sense and manipulate the physical world, yet the GUI based on intangible pixels takes little advantage of this capacity. The TUI builds upon our natural dexterity by embodying digital information in physical space. TUIs expand the affordances of physical objects, surfaces, and spaces so they can support direct engagement with the digital world.
                 </p>
@@ -25,7 +19,7 @@ export default () => (
                 </p>
             </div>
             <div className="text-block">
-                <h3 class="box">Radical Atoms</h3>
+                <h3 className="box">Radical Atoms</h3>
                 <p>
                     To address this issue of inconsistency, we presented our new vision, which we call “<a href={`${process.env.MEDIA_LIBRARY}publishedmedia/Papers/485-Radical%20Atoms%20Beyond%20Tangible/Published/PDF`}>Radical Atoms</a>”, in 2012. Radical Atoms takes a leap beyond Tangible Bits by assuming a hypothetical generation of materials that can change form and appearance dynamically, becoming as reconfigurable as pixels on a screen.
                 </p>
@@ -38,7 +32,7 @@ export default () => (
             </div>
         </div>
         <div className="text-block">
-            <h3 class="box">Vision–driven Design Research</h3>
+            <h3 className="box">Vision–driven Design Research</h3>
             <p>
                 Looking back on the history of Human-Computer Interaction (HCI), we notice that quantum leaps have rarely resulted from studies on users’ needs; they have instead stemmed from the passion and dreams of visionaries like Dr.  <a href="http://en.wikipedia.org/wiki/Douglas_Engelbart">Douglas Engelbart</a>. By looking beyond current limitations, we believe that vision-driven design is critical to foster these quantum leaps, while also complementing needs-driven and technology-driven design. From Tangible Bits, an early example of our vision-driven research, we shifted to Radical Atoms, which seeks out new guiding principles and concepts to view the world of bits and atoms in a new light, with the goal of trailblazing a new realm in interaction design.
             </p>
