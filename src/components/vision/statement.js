@@ -89,15 +89,15 @@ export default ({home = false}) => {
                     </div>
                     <img alt={phase} src={phaseImages[phaseIndex]} />
                 </div>
-            <SwitchTransition>
-                <CSSTransition 
-                    key={phase}
-                    timeout={200}
-                    classNames="illustration-caption"
-                >
-                    {phaseCaptions[phaseIndex]}
-                </CSSTransition>
-            </SwitchTransition>
+                <SwitchTransition>
+                    <CSSTransition 
+                        key={phase}
+                        timeout={200}
+                        classNames="illustration-caption"
+                    >
+                        {phaseCaptions[phaseIndex]}
+                    </CSSTransition>
+                </SwitchTransition>
             </div>
         </div>
     )
