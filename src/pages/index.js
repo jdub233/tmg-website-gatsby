@@ -1,9 +1,10 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+
+import "./index.scss"
 
 import Layout from '../components/layout';
 import ProjectBoxes from "../components/shared/projectBoxes";
-
 import Statement from "../components/vision/statement";
 
 export default ({ data: { allProjectsJson: { edges: projects } } }) => {
@@ -16,6 +17,7 @@ export default ({ data: { allProjectsJson: { edges: projects } } }) => {
       <div>
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
         <ProjectBoxes projects={projectsNodes} />
+        <h3 className="more-projects"><Link to="/projects/">See more projects +</Link></h3>
       </div>
     </Layout>
   );
