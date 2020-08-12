@@ -10,7 +10,12 @@ export default () => (
                 to='/people/'
             >people</Link>
         </li>
-        <li><Link activeClassName="active" partiallyActive={true} to='/projects/'>projects</Link></li>
+        <li>
+            <Link activeClassName="active" 
+                getProps={ ({ location: { pathname } }) => ( pathname.startsWith('/project') ? { className: "active" } : null ) }
+                to='/projects/'
+            >projects</Link>
+        </li>
         <li><Link activeClassName="active" to='/papers/'>papers</Link></li>
         <li><Link activeClassName="active" to='/events/'>events</Link></li>
         <li><Link activeClassName="active" to='/press-awards/'>press &#38; awards</Link></li>
