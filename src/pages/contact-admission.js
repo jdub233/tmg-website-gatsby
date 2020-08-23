@@ -36,7 +36,7 @@ export default () => (
                     To apply, submit an application through the MIT Media Lab <a href="http://www.media.mit.edu/admissions/how-to-apply">application process</a>. Applications are due in December, and decisions are released in March (see this year’s calendar). Note that we only accept new masters students. If you wish to pursue a PhD with the Tangible Media Group, we expect you to first complete a masters from the MIT Media Lab. We do not accept students directly into the PhD even with masters from other institutions.
                 </p>
                 <p className="textblock">
-                    A full application should include a portfolio of past work (designs, publications, patents, etc.) and a description of technical skills, experiences and research interests. If you decide to apply to the Tangible Media Group, please email a full resume and a link to your portfolio to <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" /> in addition to completing the official application.
+                    A full application should include a portfolio of past work (designs, publications, patents, etc.) and a description of technical skills, experiences and research interests.
                 </p>
             </div>
             <div className="column">
@@ -70,7 +70,7 @@ export default () => (
         <h2 name="faq">Frequently Asked Questions</h2>
         <p className="box">
             <strong>How do I apply?</strong><br />
-            Submit an application through the main MIT Media Lab admissions process (<a href="http://www.media.mit.edu/admissions/how-to-apply">http://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices. If you decide to apply, please send us an email at <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" /> for our own records. Make sure to include a URL to your online portfolio in your application.
+            Submit an application through the main MIT Media Lab admissions process (<a href="http://www.media.mit.edu/admissions/how-to-apply">http://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices.
         </p>
         <p className="box">
             <strong>What’s the timeline for applications?</strong><br />
