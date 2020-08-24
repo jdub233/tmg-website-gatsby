@@ -15,6 +15,7 @@ export default ({ data: { allProjectsJson: { edges: projects }, site: { siteMeta
   return (
     <Layout>
       <Helmet>
+        <title>Tangible Media Group</title>
         <link rel="canonical" href={siteUrl} />
       </Helmet>
       <Statement home={true} />
