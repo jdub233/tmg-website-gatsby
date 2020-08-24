@@ -44,7 +44,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node}, ...rest ] }, allA
           <h4>Papers</h4>
           {papers.map((node) => (
             <div key={node.recordId}>
-              <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_WebView__SC_published_pdf_Download_URL}`}>
+              <a href={`${process.env.MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
                 {node.Papers_WebView__Title}
               </a>
               {node.Papers_WebView__Venue &&
@@ -89,7 +89,7 @@ export const query = graphql`
             ProjectPaperJoin_displayProject {
               Papers_WebView__Title
               Papers_WebView__Publication_URL
-              Papers_WebView__SC_published_pdf_Download_URL
+              Paper_Download_URL: Papers_WebView__SC_published_pdf_Download_URL
               Papers_WebView__Venue
               recordId
             }
