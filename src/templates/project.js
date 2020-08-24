@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Helmet } from "react-helmet";
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
@@ -7,7 +8,7 @@ import Gallery from "../components/shared/gallery";
 
 import "./detailPage.scss"
 
-const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: assets } } }) => {
+const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: assets }, site: { siteMetadata: { siteUrl } } } }) => {
   const project = edges[0].node.fieldData;
   const papers = edges[0].node.portalData.ProjectPaperJoin_displayProject;
 
@@ -23,6 +24,9 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
 
   return(
     <Layout>
+      <Helmet>
+        <link rel="canonical" href={`${siteUrl}/project/${project.slug}`} />
+      </Helmet>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
       <div className="detail">
         <img 
@@ -57,6 +61,11 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
 
 export const query = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allProjectsJson(filter: {fieldData: {slug: {eq: $slug}}}) {
       edges {
         node {
