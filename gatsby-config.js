@@ -13,6 +13,7 @@ module.exports = {
     siteUrl: `${process.env.SITE_URL}`
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     "gatsby-transformer-json",
     {
       resolve: `gatsby-source-filesystem`,
