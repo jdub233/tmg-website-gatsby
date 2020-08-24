@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import "./index.scss"
 
@@ -7,12 +8,15 @@ import Layout from '../components/layout';
 import ProjectBoxes from "../components/shared/projectBoxes";
 import Statement from "../components/vision/statement";
 
-export default ({ data: { allProjectsJson: { edges: projects } } }) => {
+export default ({ data: { allProjectsJson: { edges: projects }, site: { siteMetadata: { siteUrl } } } }) => {
 
   const projectsNodes = projects.slice(0, 6).map( ( {node} ) => node );
 
   return (
     <Layout>
+      <Helmet>
+        <link rel="canonical" href={siteUrl} />
+      </Helmet>
       <Statement home={true} />
       <div>
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
@@ -25,6 +29,11 @@ export default ({ data: { allProjectsJson: { edges: projects } } }) => {
 
 export const query = graphql`
   {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allProjectsJson(filter: {fieldData: {Featured: {eq: "Yes"}}}, sort: {fields: fieldData___Project_Year, order: DESC}) {
       edges {
         node {
