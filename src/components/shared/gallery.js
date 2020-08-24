@@ -9,7 +9,7 @@ export default ({ assets, name }) => {
 
   // Compensate for zero indexing in the rest of the component.
   const setCurrentZeroIndexed = (x) => {
-    setCurrent( x -1 );
+    setCurrent( x - 1 );
   }
 
   // Fast way to generate an integer array that can be sent to the existing YearNav component.
