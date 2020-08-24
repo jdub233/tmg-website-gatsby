@@ -25,6 +25,15 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node}, ...rest ] }, allA
   return(
     <Layout>
       <Helmet>
+        <title>{project.Name}</title>
+        <meta property="og:title" content={project.Name} />
+        <meta property="og:url" content={`${siteUrl}/project/${project.slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@tangible_media" />
+        <meta name="twitter:title" content={project.Name} />
+        <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <link rel="canonical" href={`${siteUrl}/project/${project.slug}`} />
       </Helmet>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
