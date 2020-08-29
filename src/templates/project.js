@@ -12,6 +12,12 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
   const project = fieldData;
   const papers = portalData.ProjectPaperJoin_displayProject;
 
+  // For twitter card summary, strip html tags and pad with spaces, then trim all extra spaces from the result.
+  let twitterDescriptionSummary = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+
+  // Truncate
+  twitterDescriptionSummary = ( twitterDescriptionSummary.length < 200 ) ? twitterDescriptionSummary : `${twitterDescriptionSummary.substring(0, 196)} ...`;
+
   // Normally there is only one public collection.
   const collection = portalData.CollectionsForWeb[0];
 
@@ -33,6 +39,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tangible_media" />
         <meta name="twitter:title" content={project.Name} />
+        <meta name="twitter:description" content={twitterDescriptionSummary} />
         <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <link rel="canonical" href={`${siteUrl}/project/${project.slug}`} />
       </Helmet>
