@@ -8,12 +8,12 @@ import Gallery from "../components/shared/gallery";
 
 import "./detailPage.scss"
 
-const Project = ({ data: { allProjectsJson: { edges: [ {node}, ...rest ] }, allAssetsJson: { nodes: assets }, site: { siteMetadata: { siteUrl } } } }) => {
-  const project = node.fieldData;
-  const papers = node.portalData.ProjectPaperJoin_displayProject;
+const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, portalData }}, ...rest ] }, allAssetsJson: { nodes: assets }, site: { siteMetadata: { siteUrl } } } }) => {
+  const project = fieldData;
+  const papers = portalData.ProjectPaperJoin_displayProject;
 
   // Normally there is only one public collection.
-  const collection = node.portalData.CollectionsForWeb[0];
+  const collection = portalData.CollectionsForWeb[0];
 
   // Filter the assets for the primary collection.
   let collectionAssets = null;
