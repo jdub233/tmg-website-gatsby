@@ -12,11 +12,8 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
   const project = fieldData;
   const papers = portalData.ProjectPaperJoin_displayProject;
 
-  // For twitter card summary, strip html tags and pad with spaces, then trim all extra spaces from the result.
-  let twitterDescriptionSummary = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
-
-  // Truncate
-  twitterDescriptionSummary = ( twitterDescriptionSummary.length < 200 ) ? twitterDescriptionSummary : `${twitterDescriptionSummary.substring(0, 196)} ...`;
+  // For meta tag descriptions; strip html tags and pad with spaces, then trim all extra spaces from the result.
+  const descriptionPlain = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
 
   // Normally there is only one public collection.
   const collection = portalData.CollectionsForWeb[0];
@@ -32,14 +29,18 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
     <Layout>
       <Helmet>
         <title>{project.Name}</title>
-        <meta property="og:title" content={project.Name} />
-        <meta property="og:url" content={`${siteUrl}/project/${project.slug}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <meta name="title" content={project.Name} />
+        <meta name="description" content={descriptionPlain} />
+        <meta name="og:title" content={project.Name} />
+        <meta name="og:url" content={`${siteUrl}/project/${project.slug}`} />
+        <meta name="og:type" content="website" />
+        <meta name="og:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tangible_media" />
         <meta name="twitter:title" content={project.Name} />
-        <meta name="twitter:description" content={twitterDescriptionSummary} />
+        <meta name="twitter:description" content={
+          (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
+        } />
         <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <link rel="canonical" href={`${siteUrl}/project/${project.slug}`} />
       </Helmet>
