@@ -42,7 +42,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
           (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
         } />
         <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
-        <link rel="canonical" href={`${siteUrl}/project/${project.slug}`} />
+        <link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
       </Helmet>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
       <div className="detail">
