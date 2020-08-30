@@ -33,7 +33,7 @@ export default () => (
                     The Tangible Media Group seeks creative, technically competent, hard-working, and team-oriented graduate students. Applicants are expected to have a strong interest in HCI (Human-Computer Interaction) research and experience in Interaction Design. Successful applicants possess varied technical and design skills in computer programming, electrical engineering, mechanical engineering, as well as interaction/product/architectural design. Oral and written communication skills are essential, as work is regularly presented to visitors and submitted to major conferences and journals.
                 </p>
                 <p className="textblock">
-                    To apply, submit an application through the MIT Media Lab <a href="http://www.media.mit.edu/admissions/how-to-apply">application process</a>. Applications are due in December, and decisions are released in March (see this year’s calendar). Note that we only accept new masters students. If you wish to pursue a PhD with the Tangible Media Group, we expect you to first complete a masters from the MIT Media Lab. We do not accept students directly into the PhD even with masters from other institutions.
+                    To apply, submit an application through the MIT Media Lab <a href="https://www.media.mit.edu/admissions/how-to-apply">application process</a>. Applications are due in December, and decisions are released in March (see this year’s calendar). Note that we only accept new masters students. If you wish to pursue a PhD with the Tangible Media Group, we expect you to first complete a masters from the MIT Media Lab. We do not accept students directly into the PhD even with masters from other institutions.
                 </p>
                 <p className="textblock">
                     A full application should include a portfolio of past work (designs, publications, patents, etc.) and a description of technical skills, experiences and research interests.
@@ -46,7 +46,7 @@ export default () => (
                     <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#117;&#114;&#111;&#112;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" />
                 </p>
                 <p className="textblock">
-                    The Tangible Media Group has <a href="http://web.mit.edu/urop/">UROP</a> openings for technically talented hard-working MIT undergraduates, developing
+                    The Tangible Media Group has <a href="https://web.mit.edu/urop/">UROP</a> openings for technically talented hard-working MIT undergraduates, developing
                     software, electronics, and mechanisms for working prototypes of Tangible
                     User Interfaces. Strong programming skills, electrical /mechanical engineering
                     skills, and design aesthetics required. In some cases, UROP students have
@@ -70,11 +70,11 @@ export default () => (
         <h2 name="faq">Frequently Asked Questions</h2>
         <p className="box">
             <strong>How do I apply?</strong><br />
-            Submit an application through the main MIT Media Lab admissions process (<a href="http://www.media.mit.edu/admissions/how-to-apply">http://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices.
+            Submit an application through the main MIT Media Lab admissions process (<a href="https://www.media.mit.edu/admissions/how-to-apply">https://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices.
         </p>
         <p className="box">
             <strong>What’s the timeline for applications?</strong><br />
-            Applications are due in December, and decisions are usually released by the end of March (<a href="http://www.media.mit.edu/admissions">http://www.media.mit.edu/admissions</a>).
+            Applications are due in December, and decisions are usually released by the end of March (<a href="https://www.media.mit.edu/admissions">https://www.media.mit.edu/admissions</a>).
         </p>
         <p className="box">
             <strong>What kind of applicants does the Tangible Media Group look for?</strong><br />
