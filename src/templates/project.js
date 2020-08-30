@@ -1,5 +1,6 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
@@ -7,12 +8,15 @@ import Gallery from "../components/shared/gallery";
 
 import "./detailPage.scss"
 
-const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: assets } } }) => {
-  const project = edges[0].node.fieldData;
-  const papers = edges[0].node.portalData.ProjectPaperJoin_displayProject;
+const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, portalData }}, ...rest ] }, allAssetsJson: { nodes: assets }, site: { siteMetadata: { siteUrl } } } }) => {
+  const project = fieldData;
+  const papers = portalData.ProjectPaperJoin_displayProject;
+
+  // For meta tag descriptions; strip html tags and pad with spaces, then trim all extra spaces from the result.
+  const descriptionPlain = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
 
   // Normally there is only one public collection.
-  const collection = edges[0].node.portalData.CollectionsForWeb[0];
+  const collection = portalData.CollectionsForWeb[0];
 
   // Filter the assets for the primary collection.
   let collectionAssets = null;
@@ -23,6 +27,23 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
 
   return(
     <Layout>
+      <Helmet>
+        <title>{project.Name}</title>
+        <meta name="title" content={project.Name} />
+        <meta name="description" content={descriptionPlain} />
+        <meta name="og:title" content={project.Name} />
+        <meta name="og:url" content={`${siteUrl}/project/${project.slug}`} />
+        <meta name="og:type" content="website" />
+        <meta name="og:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@tangible_media" />
+        <meta name="twitter:title" content={project.Name} />
+        <meta name="twitter:description" content={
+          (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
+        } />
+        <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
+      </Helmet>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
       <div className="detail">
         <img 
@@ -40,7 +61,7 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
           <h4>Papers</h4>
           {papers.map((node) => (
             <div key={node.recordId}>
-              <a href={`${process.env.MEDIA_LIBRARY}/${node.Papers_WebView__SC_published_pdf_Download_URL}`}>
+              <a href={`${process.env.MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
                 {node.Papers_WebView__Title}
               </a>
               {node.Papers_WebView__Venue &&
@@ -57,6 +78,11 @@ const Project = ({ data: { allProjectsJson: { edges }, allAssetsJson: { nodes: a
 
 export const query = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allProjectsJson(filter: {fieldData: {slug: {eq: $slug}}}) {
       edges {
         node {
@@ -80,7 +106,7 @@ export const query = graphql`
             ProjectPaperJoin_displayProject {
               Papers_WebView__Title
               Papers_WebView__Publication_URL
-              Papers_WebView__SC_published_pdf_Download_URL
+              Paper_Download_URL: Papers_WebView__SC_published_pdf_Download_URL
               Papers_WebView__Venue
               recordId
             }

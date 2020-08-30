@@ -9,7 +9,7 @@ export default ({ assets, name }) => {
 
   // Compensate for zero indexing in the rest of the component.
   const setCurrentZeroIndexed = (x) => {
-    setCurrent( x -1 );
+    setCurrent( x - 1 );
   }
 
   // Fast way to generate an integer array that can be sent to the existing YearNav component.
@@ -30,7 +30,7 @@ export default ({ assets, name }) => {
       </div>
       <div className="gallery-thumbnails">
         {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }, index) => (
-          <button onClick={() => setCurrent(index)} className="thumbnail">
+          <button key={AssetID} onClick={() => setCurrent(index)} className="thumbnail">
             <img
               key={AssetID}
               src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
