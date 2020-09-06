@@ -17,13 +17,13 @@ export default ({ assets, name }) => {
 
   return (
     <div className="gallery">
-      <h4>{name}</h4>
-      <div 
+      <h3>{name}</h3>
+      <div
+        className="gallery-main"
         onClick={() => setCurrent((current + 1) % assets.length)}
         role="presentation"
       >
         <img
-          className="gallery-main"
           src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.sc_asset_relative_url}?width=780`}
           alt={assets[current].fieldData.Title}
         />

@@ -1,6 +1,14 @@
 .gallery {
+    margin-top: 30px;
+
     &-main {
         width: 780px;
+        margin-bottom: 1px;
+
+        img {
+            border-radius: 4px;
+            width: 780px;
+        }
     }
 
     &-thumbnails {
@@ -9,13 +17,19 @@
         background-color: #e1e1e1;
         border-radius: 4px;
         width: 780px;
+        margin-bottom: -7px;
 
         .thumbnail {
             border: 0;
-            padding: 0 2px 2px 0;
+            padding: 0 0 3px 0;
             background-color: #e1e1e1;
 
+            &:first-child {
+                margin-left: 0.5em;
+            }
+
             img {
+                height: 60px;
                 border-radius: 4px;
                 &:hover {
                     cursor: pointer;
