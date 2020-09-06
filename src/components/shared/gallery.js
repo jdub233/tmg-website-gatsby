@@ -17,7 +17,14 @@ export default ({ assets, name }) => {
 
   return (
     <div className="gallery">
-      <h3>{name}</h3>
+      <div className="gallery-header">
+        <div className="gallery-header-titles">
+          <h3>{name}</h3>
+          <div className="image-title">{assets[current].fieldData.Title}</div>
+        </div>
+        
+        <div className="image-download-link">Download high resolution</div>
+      </div>
       <div
         className="gallery-main"
         onClick={() => setCurrent((current + 1) % assets.length)}
