@@ -24,17 +24,17 @@ export default ({ assets, name }) => {
         role="presentation"
       >
         <img
-          src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.sc_asset_relative_url}?width=780`}
+          src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.RelativeURL}?width=780`}
           alt={assets[current].fieldData.Title}
         />
       </div>
       <div className="gallery-thumbnails">
-        {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }, index) => (
+        {assets.map(({ fieldData: { AssetID, Title, RelativeURL } }, index) => (
           <button key={AssetID} onClick={() => setCurrent(index)} className="thumbnail">
             <img
               className={( current === index ) ? 'selected' : ''}
               key={AssetID}
-              src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
+              src={`${process.env.MEDIA_LIBRARY}/${RelativeURL}?height=60`}
               alt={Title}
             />
           </button>

@@ -125,7 +125,7 @@ export const query = graphql`
           Description
           Projects__slug
           Title
-          sc_asset_relative_url
+          RelativeURL: sc_asset_relative_url
           CollectionID
           Collections__ForWeb
         }
