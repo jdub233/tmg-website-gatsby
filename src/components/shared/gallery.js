@@ -23,7 +23,7 @@ export default ({ assets, name }) => {
           <div className="image-title">{assets[current].fieldData.Title}</div>
         </div>
         
-        <div className="image-download-link">Download high resolution</div>
+        <button className="image-download-link">Download high resolution</button>
       </div>
       <div
         className="gallery-main"
