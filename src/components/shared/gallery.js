@@ -50,7 +50,7 @@ export default ({ assets, name }) => {
         ))}
       </div>
       <GalleryNav years={assetIndex} setYear={setCurrentZeroIndexed} currentYear={current + 1} showPrevNext={true} />
-      <Modal show={showModal} setShow={setShowModal} />
+      <Modal show={showModal} setShow={setShowModal} relativeURL={assets[current].fieldData.RelativeURL} />
     </div>
   )
 };

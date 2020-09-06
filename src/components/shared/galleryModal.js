@@ -1,7 +1,7 @@
 import React from "react";
 import "./galleryModal.scss";
 
-export default ({ show, setShow }) => (
+export default ({ show, setShow, relativeURL }) => (
     <div
         className="modal"
         style={{display: show ? 'block' : 'none' }}
@@ -26,7 +26,11 @@ export default ({ show, setShow }) => (
             </p>
             <div>
                 <button onClick={() => setShow(false)}>No, thanks</button>
-                <a>Accept &amp; download </a>
+                <a
+                    href={`${process.env.MEDIA_LIBRARY}/${relativeURL}`}
+                >
+                    Accept &amp; download
+                </a>
             </div>
         </div>
     </div>
