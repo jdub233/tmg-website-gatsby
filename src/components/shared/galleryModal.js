@@ -5,12 +5,29 @@ export default ({ show, setShow }) => (
     <div
         className="modal"
         style={{display: show ? 'block' : 'none' }}
-        onClick={ () => setShow(!show) }
     >
         <div className="modal-main">
             <h3>Copyright &amp; Usage policy</h3>
             <p>By downloading this picture, you accept that it is licensed to you under the following conditions:</p>
-            <p>This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</p>
+            <p>
+                <a style={{float: 'left', display: 'block', margin: '.4em 1em 0 0'}}
+                    rel="license" 
+                    href="https://creativecommons.org/licenses/by-nc-nd/3.0/"
+                >
+                    <img 
+                        alt="Creative Commons License" 
+                        style={{borderWidth: 0}}
+                        src="https://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" 
+                    />
+                </a>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a>.
+            </p>
+            <p>
+                &copy; 2012 Tangible Media Group / MIT Media Lab
+            </p>
+            <div>
+                <button onClick={() => setShow(false)}>No, thanks</button>
+                <a>Accept &amp; download </a>
+            </div>
         </div>
     </div>
 );
