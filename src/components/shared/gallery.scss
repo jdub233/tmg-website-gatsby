@@ -8,6 +8,10 @@
         img {
             border-radius: 4px;
             width: 780px;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 
