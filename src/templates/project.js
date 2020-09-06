@@ -58,7 +58,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
             <Gallery assets={collectionAssets} name={collection.Collections__Name} />
           }
           
-          <h4>Papers</h4>
+          <h3 className="detail-main-papers">Papers</h3>
           {papers.map((node) => (
             <div key={node.recordId}>
               <a href={`${process.env.MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
