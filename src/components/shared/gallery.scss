@@ -37,6 +37,11 @@
                     opacity: 35%;
                 }
             }
+
+            .selected {
+                filter: grayscale(100%);
+                opacity: 35%;
+            }
         }
     }
 }

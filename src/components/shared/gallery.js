@@ -32,6 +32,7 @@ export default ({ assets, name }) => {
         {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }, index) => (
           <button key={AssetID} onClick={() => setCurrent(index)} className="thumbnail">
             <img
+              className={( current === index ) ? 'selected' : ''}
               key={AssetID}
               src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
               alt={Title}
