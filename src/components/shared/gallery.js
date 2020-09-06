@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 import GalleryNav from "../filters/yearNav";
+import Modal from "./galleryModal";
 
 import "./gallery.scss"
 
 export default ({ assets, name }) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent]     = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   // Compensate for zero indexing in the rest of the component.
   const setCurrentZeroIndexed = (x) => {
@@ -23,7 +25,7 @@ export default ({ assets, name }) => {
           <div className="image-title">{assets[current].fieldData.Title}</div>
         </div>
         
-        <button className="image-download-link">Download high resolution</button>
+        <button onClick={() => setShowModal(!showModal) } className="image-download-link">Download high resolution</button>
       </div>
       <div
         className="gallery-main"
@@ -48,6 +50,7 @@ export default ({ assets, name }) => {
         ))}
       </div>
       <GalleryNav years={assetIndex} setYear={setCurrentZeroIndexed} currentYear={current + 1} showPrevNext={true} />
+      <Modal show={showModal} setShow={setShowModal} />
     </div>
   )
 };
