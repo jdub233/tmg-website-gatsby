@@ -36,6 +36,8 @@
                     filter: grayscale(100%);
                     opacity: 35%;
                 }
+
+                transition: all 0.3s;
             }
 
             .selected {
