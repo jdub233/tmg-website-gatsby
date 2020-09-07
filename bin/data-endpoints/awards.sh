@@ -4,13 +4,13 @@ curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Aw
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer $2" \
     --data-raw '{
-    "query":[
-        {"ForWeb": "Yes"}
-    ],
-    "sort":[
-        {"fieldName": "Award Year", "sortOrder": "descend"}
-    ],
-    "limit": "200"
+        "query":[
+            {"ForWeb": "Yes"}
+        ],
+        "sort":[
+            {"fieldName": "Award Year", "sortOrder": "descend"}
+        ],
+        "limit": "200"
     }' \
     | jq '.response.data' \
     > data/awards.json
