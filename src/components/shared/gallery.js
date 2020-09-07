@@ -44,7 +44,7 @@ export default ({ assets, name }) => {
               className={( current === index ) ? 'selected' : ''}
               key={AssetID}
               src={`${process.env.MEDIA_LIBRARY}/${RelativeURL}?height=60`}
-              alt={Title}
+              alt={Title ? Title : `${name} item ${current + 1}`}
             />
           </button>
         ))}
