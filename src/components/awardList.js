@@ -172,7 +172,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
 );
 
 const ProjectBadge = ({slug, name, srcURL}) => (
-  <Link to={`/projects/${slug}`} >
+  <Link to={`/project/${slug}`} >
     <img
       alt={name}
       src={`${process.env.GATSBY_MEDIA_LIBRARY}/${srcURL}?width=60`}
