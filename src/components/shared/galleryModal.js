@@ -24,7 +24,7 @@ export default ({ show, setShow, relativeURL }) => (
             <p>
                 &copy; 2012 Tangible Media Group / MIT Media Lab
             </p>
-            <div>
+            <div className="download-options">
                 <button onClick={() => setShow(false)}>No, thanks</button>
                 <a
                     href={`${process.env.MEDIA_LIBRARY}/${relativeURL}`}
