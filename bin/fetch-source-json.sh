@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir data
+
 TRACKR_BEARER_TOKEN=$(./bin/auth-endpoints/auth-trackr.sh $1 $2)
 
 ## Trackr tables
