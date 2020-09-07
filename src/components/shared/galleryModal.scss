@@ -1,0 +1,69 @@
+@mixin buttonbox {
+    display: inline-block;
+    padding: 0 .5em 0 .5em;
+    line-height: 30px;
+
+    background: linear-gradient(to bottom, #fff, #eae9e9);
+    box-shadow: 0 1px 1px rgba(2, 28, 0, 0.5);
+    border-radius: 7px;
+    border: 0;            
+
+    font-family: "AlternateGothicFSNo3", sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+
+    text-shadow: #fff 1px 1px 0px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+
+    .modal-main {
+        position:fixed;
+        background: white;
+        width: 500px;
+        height: auto;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+
+        padding: .5em 1em 1em 1em;
+        box-shadow: 0 7px 10px rgba(0, 0, 0, 0.6);
+        border-radius: 7px;
+        border: 1px #aaa solid;
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .download-options {
+            margin-bottom: 10px;
+
+            button {
+                @include buttonbox();
+                margin-right: 10px;
+                color: #4a4a4a;
+                &:hover {
+                    color:#848484 !important;
+                }
+            }
+
+            a {
+                @include buttonbox();
+                color: #2597cc !important;
+            }
+        }
+    }
+}
+

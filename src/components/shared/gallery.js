@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
 import GalleryNav from "../filters/yearNav";
+import Modal from "./galleryModal";
 
 import "./gallery.scss"
 
 export default ({ assets, name }) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent]     = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   // Compensate for zero indexing in the rest of the component.
   const setCurrentZeroIndexed = (x) => {
@@ -17,29 +19,38 @@ export default ({ assets, name }) => {
 
   return (
     <div className="gallery">
-      <h4>{name}</h4>
-      <div 
+      <div className="gallery-header">
+        <div className="gallery-header-titles">
+          <h3>{name}</h3>
+          <div className="image-title">{assets[current].fieldData.Title}</div>
+        </div>
+        
+        <button onClick={() => setShowModal(!showModal) } className="image-download-link">Download high resolution</button>
+      </div>
+      <div
+        className="gallery-main"
         onClick={() => setCurrent((current + 1) % assets.length)}
         role="presentation"
       >
         <img
-          className="gallery-main"
-          src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.sc_asset_relative_url}?width=780`}
+          src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.RelativeURL}?width=780`}
           alt={assets[current].fieldData.Title}
         />
       </div>
       <div className="gallery-thumbnails">
-        {assets.map(({ fieldData: { AssetID, Title, sc_asset_relative_url } }, index) => (
+        {assets.map(({ fieldData: { AssetID, Title, RelativeURL } }, index) => (
           <button key={AssetID} onClick={() => setCurrent(index)} className="thumbnail">
             <img
+              className={( current === index ) ? 'selected' : ''}
               key={AssetID}
-              src={`${process.env.MEDIA_LIBRARY}/${sc_asset_relative_url}?height=60`}
-              alt={Title}
+              src={`${process.env.MEDIA_LIBRARY}/${RelativeURL}?height=60`}
+              alt={Title ? Title : `${name} item ${current + 1}`}
             />
           </button>
         ))}
       </div>
       <GalleryNav years={assetIndex} setYear={setCurrentZeroIndexed} currentYear={current + 1} showPrevNext={true} />
+      <Modal show={showModal} setShow={setShowModal} relativeURL={assets[current].fieldData.RelativeURL} />
     </div>
   )
 };

@@ -11,15 +11,14 @@
         margin-top: 4px;
     }
 
-    .description {
-        margin-top: 0px;
-        margin-left: 3.5px;
-        
-        p {
-            margin-top: 0px;
-            margin-bottom: 20px;
+    &-main {
+        margin-left: 10px;
+
+        &-papers {
+            margin-top: -10px;
         }
     }
+
 }
 
 .publication-url {
