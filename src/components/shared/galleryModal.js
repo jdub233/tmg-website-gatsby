@@ -26,9 +26,7 @@ export default ({ show, setShow, relativeURL }) => (
             </p>
             <div className="download-options">
                 <button onClick={() => setShow(false)}>No, thanks</button>
-                <a
-                    href={`${process.env.MEDIA_LIBRARY}/${relativeURL}`}
-                >
+                <a href={`${process.env.MEDIA_LIBRARY}/${relativeURL}`}>
                     Accept &amp; download
                 </a>
             </div>
