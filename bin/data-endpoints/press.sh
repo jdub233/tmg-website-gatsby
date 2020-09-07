@@ -14,5 +14,5 @@ curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Pr
             {"fieldName": "Day Published", "sortOrder": "descend"}
         ]
     }' \
-    | jq '.response.data' \
+    | ./node_modules/node-jq/bin/jq '.response.data' \
     > data/press.json

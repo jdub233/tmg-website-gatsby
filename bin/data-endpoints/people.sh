@@ -16,5 +16,5 @@ curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Pe
     "limit.PeopleProjectJoin People WebView": "300",
     "limit": "200"
   }' \
-  | jq '.response.data' \
+  | ./node_modules/node-jq/bin/jq '.response.data' \
   > data/people.json
