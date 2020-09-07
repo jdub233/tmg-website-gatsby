@@ -31,7 +31,7 @@ const CategoryList = ( {category, people} ) => (
 const PeopleListItem = ({ node: { fieldData: {slug, Full_Name, cBadgeRawURL, CategoryOverride, Category, SubCategory} } }) => (
   <div className="person">
     <Link to={`/person/${slug}`}>
-      <img alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
       <Link to={`/person/${slug}`}>
@@ -54,7 +54,7 @@ const PeopleListItem = ({ node: { fieldData: {slug, Full_Name, cBadgeRawURL, Cat
 
 const AlumniListItem = ({ node: { fieldData:{Full_Name, cBadgeRawURL, SubCategory} } }) => (
   <div className="alumnus">
-    <img alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
+    <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
     <div className="alumnus-details">
       <h4>{Full_Name}</h4>
       <div className="subcategory">{SubCategory}</div>

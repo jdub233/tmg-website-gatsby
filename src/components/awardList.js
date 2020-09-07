@@ -150,7 +150,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
         <div className="icon-link">
           <a
             className="icon-link-anchor"
-            href={`${process.env.MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
+          href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
           >&nbsp;</a>
         </div>
       }
@@ -175,7 +175,7 @@ const ProjectBadge = ({slug, name, srcURL}) => (
   <Link to={`/projects/${slug}`} >
     <img
       alt={name}
-      src={`${process.env.MEDIA_LIBRARY}/${srcURL}?width=60`}
+      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${srcURL}?width=60`}
       width="60px"
       height="60px"
     />

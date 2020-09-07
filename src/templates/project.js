@@ -34,14 +34,14 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
         <meta name="og:title" content={project.Name} />
         <meta name="og:url" content={`${siteUrl}/project/${project.slug}`} />
         <meta name="og:type" content="website" />
-        <meta name="og:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <meta name="og:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tangible_media" />
         <meta name="twitter:title" content={project.Name} />
         <meta name="twitter:description" content={
           (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
         } />
-        <meta name="twitter:image" content={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
+        <meta name="twitter:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
       </Helmet>
       <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
@@ -49,7 +49,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
         <img 
           className="detail-badge" 
           alt={project.Name} 
-          src={`${process.env.MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=140`}
+          src={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=140`}
         />
         <div className="detail-main">
           <NormalizeP className="description" mixedMarkup={project.DescriptionHTML} />
@@ -61,7 +61,7 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
           {(papers.length > 0) && <h3 className="detail-main-papers">Papers</h3>}
           {papers.map((node) => (
             <div key={node.recordId}>
-              <a href={`${process.env.MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
+              <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
                 {node.Papers_WebView__Title}
               </a>
               {node.Papers_WebView__Venue &&

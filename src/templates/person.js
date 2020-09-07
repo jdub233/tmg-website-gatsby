@@ -31,7 +31,7 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
         {Full_Name} <span className="subtitle">{Category}</span>
       </h2>
       <div className="detail">
-        <img className="detail-badge" alt={Full_Name} src={`${process.env.MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+        <img className="detail-badge" alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
         <NormalizeP className="description" mixedMarkup={DescriptionHTML} />
       </div>
       {projectsNodes.length > 0 && <h3>Projects</h3>}
@@ -39,7 +39,7 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
       {papers.length > 0 && <h3 className="papers-title">Papers</h3>}
       {papers.map((node) => (
         <div key={node.recordId}>
-          <a href={`${process.env.MEDIA_LIBRARY}/${node.Download_URL}`}>{node.Title}</a>
+          <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.Download_URL}`}>{node.Title}</a>
           {node.Venue && node.Publication_URL && 
            <a className="publication-url" href={node.Publication_URL}><span className="venue">{node.Venue} {node.PaperYear}</span></a>
           }

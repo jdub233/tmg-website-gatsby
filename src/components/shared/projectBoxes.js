@@ -18,7 +18,7 @@ export default ({ projects }) => (
                 <Link className="projectBadge" to={`/project/${node.fieldData.slug}`}>
                     <img
                         alt="{node.fieldData.Name}"
-                        src={`${process.env.MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
+                        src={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
                     />
                     <p className="projectBadge-title">
                         <NameSpan name={node.fieldData.Name} />

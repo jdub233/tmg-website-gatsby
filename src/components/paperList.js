@@ -89,7 +89,7 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
     <div className="icon-link">
       <a 
         className="icon-link-anchor" 
-        href={`${process.env.MEDIA_LIBRARY}/${fieldData.Download_URL}`}
+        href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.Download_URL}`}
         aria-label="Download link"
       >&nbsp;</a>
     </div>
@@ -104,7 +104,7 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
         return (
           <Link className="related-projects-link" key={recordId} to={`/project/${slug}`}>
             <img
-              src={`${process.env.MEDIA_LIBRARY}/${BadgeURL}?width=60`}
+              src={`${process.env.GATSBY_MEDIA_LIBRARY}/${BadgeURL}?width=60`}
               width="60px"
               alt={Name}
             />
