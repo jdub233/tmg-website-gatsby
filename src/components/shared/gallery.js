@@ -33,7 +33,7 @@ export default ({ assets, name }) => {
         role="presentation"
       >
         <img
-          src={`${process.env.MEDIA_LIBRARY}/${assets[current].fieldData.RelativeURL}?width=780`}
+          src={`${process.env.GATSBY_MEDIA_LIBRARY}/${assets[current].fieldData.RelativeURL}?width=780`}
           alt={assets[current].fieldData.Title}
         />
       </div>
@@ -43,7 +43,7 @@ export default ({ assets, name }) => {
             <img
               className={( current === index ) ? 'selected' : ''}
               key={AssetID}
-              src={`${process.env.MEDIA_LIBRARY}/${RelativeURL}?height=60`}
+              src={`${process.env.GATSBY_MEDIA_LIBRARY}/${RelativeURL}?height=60`}
               alt={Title ? Title : `${name} item ${current + 1}`}
             />
           </button>

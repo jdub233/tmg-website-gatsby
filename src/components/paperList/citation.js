@@ -6,7 +6,7 @@ export default ({ fieldData: { Download_URL, Title, Citation, DOI_URL, Abstract 
 
     return (
         <div className="citation">
-            <a href={`${process.env.MEDIA_LIBRARY}/${Download_URL}`}>
+            <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${Download_URL}`}>
                 <h4>{Title}</h4>
             </a>
             <p>{Citation}</p>
