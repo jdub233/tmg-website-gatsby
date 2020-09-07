@@ -93,7 +93,7 @@ const AwardList = () => {
     <div className="press-awards">
       <YearNav years={yearsForNav} setYear={setYear} currentYear={year} />
       {filteredYears.map( (year) => (
-        <div className="year-item">
+        <div key={year} className="year-item">
           <h3>{year}</h3>
           { awardsByYear[year] &&
             awardsByYear[year].map( ( award ) => (
@@ -127,13 +127,12 @@ const AwardBox = ( { award: { id, fieldData, portalData: { proj_portal: projects
     </div>
     <div className="award-box-project-badges">
       {projects && 
-        projects.map(({ Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordID }) => (
+        projects.map(({ Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordId }) => (
           <ProjectBadge 
             slug={Projects_for_Awards__slug} 
             name={Projects_for_Awards__Name} 
             srcURL={Projects_for_Awards__cBadgeRawURL}
-            recordID={recordID}
-            key={recordID}
+            key={recordId}
           />
         ) )
       }
@@ -159,13 +158,12 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
     </div>
     <div className="press-box-project-badges">
       {projects &&
-        projects.map(({ Projects_for_Press__slug, Projects_for_Press__Name, Projects_for_Press__cBadgeRawURL, recordID }) => (
+        projects.map(({ Projects_for_Press__slug, Projects_for_Press__Name, Projects_for_Press__cBadgeRawURL, recordId }) => (
           <ProjectBadge
             slug={Projects_for_Press__slug}
             name={Projects_for_Press__Name}
             srcURL={Projects_for_Press__cBadgeRawURL}
-            recordID={recordID}
-            key={recordID}
+            key={recordId}
           />
         ))
       }
@@ -173,8 +171,8 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
   </div>
 );
 
-const ProjectBadge = ({slug, name, srcURL, recordID}) => (
-  <Link to={`/projects/${slug}`} key={recordID} >
+const ProjectBadge = ({slug, name, srcURL}) => (
+  <Link to={`/projects/${slug}`} >
     <img
       alt={name}
       src={`${process.env.MEDIA_LIBRARY}/${srcURL}?width=60`}
