@@ -12,5 +12,5 @@ curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Aw
     ],
     "limit": "200"
     }' \
-    | ./node_modules/node-jq/bin/jq '.response.data' \
+    | jq '.response.data' \
     > data/awards.json

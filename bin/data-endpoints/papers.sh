@@ -13,5 +13,5 @@ curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Pa
     ],
     "limit": "400"
   }' \
-  | ./node_modules/node-jq/bin/jq '.response.data' \
+  | jq '.response.data' \
   > data/papers.json
