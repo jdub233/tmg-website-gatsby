@@ -10,7 +10,15 @@ export default () => (
         <h2>About us</h2>
         <h3>What is the Tangible Media Group?</h3>
         <p>
-            The Tangible Media Group, led by Professor Hiroshi Ishii, explores the <Link className="dotted" to="/vision/"> Tangible Bits and Radical Atoms visions</Link>  to seamlessly couple the dual worlds of bits and atoms. We are designing human interfaces that employ physical objects, surfaces, and spaces as tangible embodiments of digital information and processes.
+            The Tangible Media Group (TMG) strives to push the boundaries of HCI (Human-Computer Interaction) by inventing new digital/physical materials and inspiring people through engaging interactive applications. Our work centers on the
+            vision of new materials, which we call <Link className="dotted" to="/vision/">"Tangible Bits" and "Radical Atoms."</Link> We seek to advance the mission-critical fields such as design, communication, and artistic expression. Among them, we
+            are focusing on "Tangible Telepresence" to reinvent distancing and to strengthen the connectedness among people
+            separated spatially and temporally by introducing "tangibility" to interpersonal communication and collaboration channels.
+        </p>
+        <p>
+            We pursue a transdisciplinary focus. We expect TMG researchers to speak the languages of art, design, science, and
+            technology fluently and express their ideas across all these disciplines. We aim to develop original ideas and visions
+            focusing on how they will push the field of HCI forward through influential publishable material.
         </p>
         <h3><Link className="vision-link" to="/vision/">More on our vision +</Link></h3>
         <h2>Contact us</h2>
@@ -20,49 +28,54 @@ export default () => (
         <h3>General inquiries</h3>
         <p className="contact">
             Please contact our administrative assistant for general inquiries about our research:<br />
-            <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" />        </p>
+            tangible-admin [at] media.mit.edu       
+        </p>
         <h2>Joining the Tangible Media Group</h2>
         <div className="two-column">
             <div className="column">
                 <h3>Graduate Students</h3>
                 <p className="box">
                     For inquiries about joining TMG as a graduate student, please contact:<br />
-                    <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#097;&#100;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" />
+                    tangible-admission [at] media.mit.edu
                 </p>
                 <p className="textblock">
-                    The Tangible Media Group seeks creative, technically competent, hard-working, and team-oriented graduate students. Applicants are expected to have a strong interest in HCI (Human-Computer Interaction) research and experience in Interaction Design. Successful applicants possess varied technical and design skills in computer programming, electrical engineering, mechanical engineering, as well as interaction/product/architectural design. Oral and written communication skills are essential, as work is regularly presented to visitors and submitted to major conferences and journals.
-                </p>
-                <p className="textblock">
-                    To apply, submit an application through the MIT Media Lab <a href="https://www.media.mit.edu/admissions/how-to-apply">application process</a>. Applications are due in December, and decisions are released in March (see this year’s calendar). Note that we only accept new masters students. If you wish to pursue a PhD with the Tangible Media Group, we expect you to first complete a masters from the MIT Media Lab. We do not accept students directly into the PhD even with masters from other institutions.
-                </p>
-                <p className="textblock">
-                    A full application should include a portfolio of past work (designs, publications, patents, etc.) and a description of technical skills, experiences and research interests.
+                    The Tangible Media Group seeks creative, design sensitive, technologically competent, hard-working, and team-oriented
+                    graduate students. Since we implement fully functioning and aesthetically pleasing tangible interfaces to bridge
+                    physical and digital worlds, our work requires a broad skill set of product design, electronic engineering, materials
+                    science, mechanical engineering, digital fabrication, and computer programming. We expect applicants to have the
+                    knowledge and track record in HCI (Human-Computer Interaction) research and experience in Interaction Design. Oral and
+                    written communication skills are essential, as work is regularly presented to visitors and submitted to major
+                    conferences and journals.
                 </p>
             </div>
             <div className="column">
                 <h3>Undergraduate Students (UROPs)</h3>
                 <p className="box">
                     For inquiries about joining TMG as a UROP, please contact:<br />
-                    <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#117;&#114;&#111;&#112;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" />
+                    tangible-urop [at] media.mit.edu
                 </p>
                 <p className="textblock">
-                    The Tangible Media Group has <a href="https://web.mit.edu/urop/">UROP</a> openings for technically talented hard-working MIT undergraduates, developing
-                    software, electronics, and mechanisms for working prototypes of Tangible
-                    User Interfaces. Strong programming skills, electrical /mechanical engineering
-                    skills, and design aesthetics required. In some cases, UROP students have
-                    joined the group as graduate students. Please see the UROP openings page
-                    for available positions and application procedures.
+                    The Tangible Media Group has <a href="https://web.mit.edu/urop/">UROP</a> openings for technically talented hard-working MIT undergraduates, developing software, electronics, and mechanisms for
+                    working prototypes of Tangible User Interfaces. Strong programming skills, electrical/mechanical engineering skills, and
+                    design aesthetics required. In some cases, UROP students have later joined the group as graduate students. Please see
+                    the UROP openings page for available positions and application procedures.
                 </p>
                 <h3 style={{paddingTop: "10px"}}>Post Doc</h3>
                 <p className="box">
                     For inquiries about joining TMG as a Post Doc, please contact:<br />
-                    <ContactEmail encodedEmail="&#116;&#097;&#110;&#103;&#105;&#098;&#108;&#101;&#045;&#112;&#111;&#115;&#116;&#100;&#111;&#099;&#064;&#109;&#101;&#100;&#105;&#097;&#046;&#109;&#105;&#116;&#046;&#101;&#100;&#117;" />
+                    tangible-postdoc [at] media.mit.edu
                 </p>
                 <p className="textblock">
-                    The Tangible Media Group is seeking a postdoc for a one to two-year appointment. Applicants should have an outstanding research track record in the field of HCI and interaction design and have technical expertise in one or more domain (CS, EE, ME including fabrication). The position involves managing research within the group, guiding junior researchers and students, and coordinating collaborative projects with corporate sponsors.
+                    The Tangible Media Group is seeking a postdoc for a one to two-year appointment. Applicants should have an outstanding
+                    research track record in the field of HCI and interaction design and have technical expertise in one or more domains
+                    (CS, EE, ME including fabrication). The position involves managing research within the group, guiding junior researchers
+                    and students, and coordinating collaborative projects with corporate sponsors.
                 </p>
                 <p className="textblock">
-                    To apply, please send us a link to a portfolio of past work (projects, publications, patents, etc.), a full CV, and a description of technical skills, experiences and research interests. Please email all materials to tangible-postdoc@media.mit.edu with the subject "Postdoc Application". Self-funded applicants through scholarships or fellowships will receive priority consideration.
+                    To apply, please send us a link to a portfolio of past work (projects, publications, patents, etc.), a full CV, and a
+                    description of technical skills, experiences and research interests. Please email all materials to
+                    tangible-postdoc [at] media.mit.edu with the subject "Postdoc Application". Self-funded applicants through scholarships or
+                    fellowships will receive priority consideration.
                 </p>
 
             </div>
@@ -88,16 +101,23 @@ export default () => (
         </p>
         <p className="box">
             <strong>I already have a Masters. Can I apply directly to the PhD?</strong><br />
-            To pursue a PhD in the Tangible Media Group, we expect all students to begin with the 2-year master’s program at the Media Lab. This is our rule, even if you have multiple master’s from other institutions.
+            To pursue a PhD in the Tangible Media Group, it is required by the MAS program that all students begin with the 2-year
+            master’s program at the Media Lab. This is our rule, even if you have multiple master’s from other institutions:
+            <a href="https://www.media.mit.edu/graduate-program/apply/">https://www.media.mit.edu/graduate-program/apply/</a>
         </p>
         <p className="box">
             <strong>May I come visit the group and present my work?</strong><br />
-            If you are interested in visiting our group, please email us a brief introduction including your skills, research interests and link to your online portfolio. We receive many such requests and are unfortunately unable to accommodate all of them.<br /><br />
-            (The Media Lab as a whole organizes an open-house for prospective students in the fall. Check the main website for information.)
+            We select which applicants will be interviewed based on the review of their online portfolio and CV. Given the current
+            COVID-19 pandemic, we will only conduct remote interviews via video conferencing.
+            <br /><br />
+            (The Media Lab as a whole organizes an open-house for prospective students in the fall. Check the main website for
+            information: <a href="https://www.media.mit.edu/events/mas-open-house/">https://www.media.mit.edu/events/mas-open-house/)</a>
+        </p>
+        <p className="box">
+            <strong>What are the portfolio requirements for Tangible Media?</strong><br />
+            We require an interactive, online internet portfolio for applicants to be considered seriously. The portfolio should
+            integrate hyper-linked pages, images, and videos. On top of that, we want to evaluate the aesthetics and usability of
+            their website design.
         </p>
     </Layout>
-);
-
-const ContactEmail = ({encodedEmail}) => (
-    <a className="contact-link" href={`mailto:${encodedEmail}`}>{encodedEmail}</a>
 );
