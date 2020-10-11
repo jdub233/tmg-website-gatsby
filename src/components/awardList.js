@@ -117,7 +117,9 @@ const AwardBox = ( { award: { id, fieldData, portalData: { proj_portal: projects
       {fieldData.SummaryTitle && 
         <p className="award-box-tagline">{fieldData.SummaryTitle}</p>
       }
-      <h4>{fieldData.Title}</h4>
+      <h4>
+        {(fieldData.Award_URL === "") ? fieldData.Title : <a href={fieldData.Award_URL}>{fieldData.Title}</a>}
+      </h4>
       {fieldData.Description &&
         <p className="award-box-textblock">{fieldData.Description}</p>
       }
@@ -144,7 +146,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
-        {(fieldData.Published_URL === "") ? `${fieldData.Title}` : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+        {(fieldData.Published_URL === "") ? fieldData.Title : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
       </h4>
       {fieldData.isPDFPublic &&
         <div className="icon-link">
