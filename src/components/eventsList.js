@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
 import YearNav from "./filters/yearNav";
+import FormattedDate from "../components/shared/formattedDate";
 
 import "./eventsList.scss";
 
@@ -94,7 +95,6 @@ const TypeFilter = ({setEventType, eventType}) => (
 const EventYearList = ( { events } ) => (
   <div className="events">
     {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, Event_Year, Event_Month, Type, cDateFragment } } ) => {
-      const eventDate = new Date(Event_Year, Event_Month);
 
       return (
         <div className="events-item" key={EventID}>
@@ -109,7 +109,7 @@ const EventYearList = ( { events } ) => (
           </div>
           <div className="event-details">
             { (Type === "Presentation") ? `${Presenter} / ` : null }
-            {eventDate.toLocaleString('default', { month: 'long' })}, {eventDate.getFullYear()}
+            <FormattedDate dateString={cDateFragment} />
           </div>
         </div>
       )}
