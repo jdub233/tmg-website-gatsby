@@ -46,7 +46,27 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.fieldData.slug },
     });
   });
-  
+
+  const events = await graphql(`
+    query {
+      allEventsJson {
+        edges {
+          node {
+            recordId
+          }
+        }
+      }
+    }
+  `);
+
+  events.data.allEventsJson.edges.map( ({node}) => {
+    createPage({
+      path: `event/${node.recordId}`,
+      component: path.resolve(`./src/templates/event.js`),
+      context: { recordId: node.recordId },
+    });
+  });
+
 }
 
 // Extra type definitions for fields with inconsistent values.
@@ -57,7 +77,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       fieldData: FieldData
     }
     type FieldData {
-      Event_Day: String
+      Event_Day: Int
     }
   `;
 
