@@ -31,8 +31,6 @@ export const query = graphql`
       edges {
         node {
           fieldData {
-            Event_Year
-            Event_Month
             Event_Link
             EventID
             Venue_Name
