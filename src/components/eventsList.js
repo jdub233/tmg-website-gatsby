@@ -108,7 +108,7 @@ const EventYearList = ( { events } ) => (
             }
           </div>
           <div className="event-details">
-            { (Type === "Presentation") ? `${Presenter} / ` : null }
+            { (Type === "Presentation" && Presenter) ? `${Presenter} / ` : null }
             <FormattedDate dateString={cDateFragment} />
           </div>
         </div>
