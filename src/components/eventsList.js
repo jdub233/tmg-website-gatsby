@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import YearNav from "./filters/yearNav";
 
@@ -21,7 +21,9 @@ const EventsList = () => {
               Presenter
               Title
               Type
+              cDateFragment
             }
+            recordId
           }
         }
       }
@@ -91,17 +93,19 @@ const TypeFilter = ({setEventType, eventType}) => (
 
 const EventYearList = ( { events } ) => (
   <div className="events">
-    {events.map( ( { fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID , Event_Year, Event_Month, Type } } ) => {
+    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, Event_Year, Event_Month, Type, cDateFragment } } ) => {
       const eventDate = new Date(Event_Year, Event_Month);
 
       return (
         <div className="events-item" key={EventID}>
-          <h4>{Title}</h4>
+          <h4>
+            <Link to={`/event/${recordId}`}>{Title}</Link>
+          </h4>
           <div className="events-item-venue">
             {Venue_Link 
               ? <a href={Venue_Link}>{Venue_Name}</a>
               : <div>{ Venue_Name }</div>
-              }
+            }
           </div>
           <div className="event-details">
             { (Type === "Presentation") ? `${Presenter} / ` : null }
