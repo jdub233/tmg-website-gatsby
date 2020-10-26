@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/Event/_find" \
+curl --location --request POST "$1/fmi/data/v1/databases/TMG%20Trackr/layouts/EventWeb/_find" \
     --header 'Content-Type: application/json' \
     --header "Authorization: Bearer $2" \
     --data-raw '{
