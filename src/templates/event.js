@@ -40,23 +40,25 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
   return (
     <Layout>
       <h2>{Title}</h2>
-      {Event_Link  &&
-        <h4 className="event-link"><a href={Event_Link}>Event Link</a></h4>
-      }
-      <p className="event-venue">
-        {Venue_Link && `Venue: `}
-        {Venue_Link
-          ? <a href={Venue_Link}>{Venue_Name}</a>
-          : Venue_Name
+      <div className="event">
+        {Event_Link &&
+          <h4 className="event-link"><a href={Event_Link}>Event Link</a></h4>
         }
-      </p>
-      <p className="event-date"><FormattedDate dateString={cDateFragment} /></p>
-      <NormalizeP mixedMarkup={DescriptionHTML} />
-      {projectsNodes.length > 0 && <h3 className="event-projects">Projects</h3>}
-      <ProjectBoxes projects={projectsNodes} />
+        <p className="event-venue">
+          {Venue_Link && `Venue: `}
+          {Venue_Link
+            ? <a href={Venue_Link}>{Venue_Name}</a>
+            : Venue_Name
+          }
+        </p>
+        <p className="event-date"><FormattedDate dateString={cDateFragment} /></p>
+        <NormalizeP mixedMarkup={DescriptionHTML} />
         {collection &&
           <Gallery assets={collectionAssets} name={collection.Name} />
         }
+      </div>
+      {projectsNodes.length > 0 && <h3 className="event-projects">Projects</h3>}
+      <ProjectBoxes projects={projectsNodes} />
     </Layout>
   )
 }

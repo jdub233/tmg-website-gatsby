@@ -1,25 +1,29 @@
-.event-link {
-    margin-top: 0px;
-    margin-bottom: -15px !important;
-}
+.event {
+    width: 780px;
 
-.event-venue {
-    font-family: "OpenSansLightItalic";
-    font-size: 19px;
-    margin-bottom: 5px;
+    &-link {
+        margin-top: 0px;
+        margin-bottom: -15px !important;
+    }
 
-    a:hover {
-        color: #848484 !important;
+    &-venue {
+        font-family: "OpenSansLightItalic";
+        font-size: 19px;
+        margin-bottom: 5px;
+
+        a:hover {
+            color: #848484 !important;
+        }
+    }
+
+    &-date {
+        font-family: "OpenSansLightItalic";
+        margin: 0;
+        padding-bottom: 5px;
+        color: #848484;
     }
 }
 
-.event-date {
-    font-family: "OpenSansLightItalic";
-    margin: 0;
-    padding-bottom: 5px;
-    color: #848484;
-}
-
-h3.event-projects {
+.event-projects {
     margin-top: 40px;
 }
