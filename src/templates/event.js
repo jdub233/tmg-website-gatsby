@@ -54,7 +54,9 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
       <NormalizeP mixedMarkup={DescriptionHTML} />
       {projectsNodes.length > 0 && <h3 className="event-projects">Projects</h3>}
       <ProjectBoxes projects={projectsNodes} />
-      <Gallery assets={collectionAssets} name={collection.Name} />
+        {collection &&
+          <Gallery assets={collectionAssets} name={collection.Name} />
+        }
     </Layout>
   )
 }
