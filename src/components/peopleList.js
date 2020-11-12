@@ -52,11 +52,15 @@ const PeopleListItem = ({ node: { fieldData: {slug, Full_Name, cBadgeRawURL, Cat
   </div>
 );
 
-const AlumniListItem = ({ node: { fieldData:{Full_Name, cBadgeRawURL, SubCategory} } }) => (
+const AlumniListItem = ({ node: { fieldData:{ slug, Full_Name, cBadgeRawURL, SubCategory } } }) => (
   <div className="alumnus">
-    <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
+    <Link to={`/person/${slug}`}>
+      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
+    </Link>
     <div className="alumnus-details">
-      <h4>{Full_Name}</h4>
+      <Link to={`/person/${slug}`}>
+        <h4>{Full_Name}</h4>
+      </Link>
       <div className="subcategory">{SubCategory}</div>
     </div>
     
