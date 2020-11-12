@@ -90,8 +90,8 @@ const PeopleList = () => (
   `}
     render={({ allPeopleJson: {edges} }) => {
 
-      const alumni = edges.filter(({ node }) => node.fieldData.Category === 'Alumni');
-      const categorized = categories.map((category) => edges.filter(({ node }) => node.fieldData.Category === category ));
+      const alumni = edges.filter(({ node: { fieldData: { Category } } }) => Category === 'Alumni');
+      const categorized = categories.map((category) => edges.filter(({ node: { fieldData: { Category } } }) => Category === category ));
 
       return(
         <div className="people">
