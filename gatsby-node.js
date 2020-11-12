@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const people = await graphql(`
     query {
-      allPeopleJson(filter: {fieldData: {Category: {ne: "Alumni"}}}) {
+      allPeopleJson {
         edges {
           node {
             fieldData {
