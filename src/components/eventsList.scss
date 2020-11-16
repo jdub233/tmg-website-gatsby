@@ -1,3 +1,11 @@
+.events {
+    h4 {
+        a:hover {
+            color: #848484 !important;
+        }
+    }
+}
+
 .type-filter {
     text-align: right;
     margin-top: -60px;
@@ -11,7 +19,6 @@
         height: 30px;
         color: #4a4a4a;
         cursor: pointer;
-        
 
         // potentially global for all links
         text-decoration-color:rgb(74, 74, 74);
