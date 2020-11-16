@@ -152,7 +152,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
         <div className="icon-link">
           <a
             className="icon-link-anchor"
-          href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
+            href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
           >&nbsp;</a>
         </div>
       }
