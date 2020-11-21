@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 import "./vision.scss";
 
@@ -7,6 +8,9 @@ import Statement from "../components/vision/statement";
 
 export default () => (
     <Layout>
+        <Helmet>
+            <title>Tangible Media Group | Vision</title>
+        </Helmet>
         <Statement />
         <div className="half-column">
             <div className="text-block">

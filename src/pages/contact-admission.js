@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'gatsby';
+import { Helmet } from "react-helmet";
 
 import Layout from '../components/layout';
 
@@ -7,6 +8,9 @@ import "./contact-admission.scss";
 
 export default () => (
     <Layout>
+        <Helmet>
+            <title>Tangible Media Group | About us</title>
+        </Helmet>
         <h2>About us</h2>
         <h3>What is the Tangible Media Group?</h3>
         <p>

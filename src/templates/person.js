@@ -1,5 +1,6 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from "react";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
@@ -27,6 +28,9 @@ const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => 
 
   return (
     <Layout>
+      <Helmet>
+        <title>Tangible Media Group | {Full_Name}</title>
+      </Helmet>
       <h2>
         {Full_Name} <span className="subtitle">{Category}</span>
       </h2>

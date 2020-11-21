@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import Layout from "../components/layout";
 import NormalizeP from "../components/filters/normalizeP";
@@ -39,6 +40,9 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
 
   return (
     <Layout>
+      <Helmet>
+        <title>{Title}</title>
+      </Helmet>
       <h2>{Title}</h2>
       <div className="event">
         {Event_Link &&
