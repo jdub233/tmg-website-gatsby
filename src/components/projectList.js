@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import React, { useState } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import YearNav from "./filters/yearNav";
-import ProjectBoxes from "./shared/projectBoxes";
+import YearNav from './filters/yearNav';
+import ProjectBoxes from './shared/projectBoxes';
 
-import "./projectList.scss";
+import './projectList.scss';
 
 const ProjectList = () => {
   const data = useStaticQuery(graphql`
@@ -37,21 +37,21 @@ const ProjectList = () => {
   let filteredProjects = {};
 
   if (searchString !== '') {
-    filteredProjects = projects.filter( ({ node: { fieldData: { Name, Members } } }) => (
-      Name.toLocaleLowerCase().includes( searchString.toLocaleLowerCase() ) ||
-      Members.toLocaleLowerCase().includes( searchString.toLocaleLowerCase() )
-    ) );
+    filteredProjects = projects.filter(({ node: { fieldData: { Name, Members } } }) => (
+      Name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
+      || Members.toLocaleLowerCase().includes(searchString.toLocaleLowerCase())
+    ));
   } else {
     filteredProjects = projects;
   }
 
-  let projectsByYearObj = filteredProjects.reduce( (accumulator, { node }) => {
-    accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node ];
+  let projectsByYearObj = filteredProjects.reduce((accumulator, { node }) => {
+    accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node];
     return accumulator;
-  }, {} );
+  }, {});
 
   // Extract the years for the year based navigation.
-  const years = [ 'show all', ...Object.entries(projectsByYearObj).map( ( aYear ) => aYear[0] ).reverse() ];
+  const years = ['show all', ...Object.entries(projectsByYearObj).map((aYear) => aYear[0]).reverse()];
 
   // Filter to a specific year if one is selected.
   if (year !== 'show all' && searchString === '') {
@@ -65,25 +65,25 @@ const ProjectList = () => {
     };
   }
 
-  return( 
+  return (
     <div className="projects">
-      <input 
+      <input
         className="projects-search"
-        type="search" 
+        type="search"
         placeholder="Search project/author"
         aria-label="search"
-        onChange={ ({ target: { value } }) => setSearchString(value) }
+        onChange={({ target: { value } }) => setSearchString(value)}
       />
 
-      <YearNav years={years} setYear={setYear} currentYear={ (searchString === '') ? year : 'show all'} />
-      {Object.entries(projectsByYearObj).reverse().map(([key, projects]) => (
+      <YearNav years={years} setYear={setYear} currentYear={(searchString === '') ? year : 'show all'} />
+      {Object.entries(projectsByYearObj).reverse().map(([key, items]) => (
         <div key={key}>
           <h3 className="projects-year">{key}</h3>
-          <ProjectBoxes projects={projects.reverse()} />
+          <ProjectBoxes projects={items.reverse()} />
         </div>
       ))}
     </div>
   );
-}
+};
 
-export default ProjectList
+export default ProjectList;
