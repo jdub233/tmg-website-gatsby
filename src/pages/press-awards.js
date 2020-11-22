@@ -1,8 +1,8 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
-import Layout from "../components/layout";
-import AwardList from "../components/awardList";
+import Layout from '../components/layout';
+import AwardList from '../components/awardList';
 
 export default () => (
   <Layout>
@@ -12,4 +12,4 @@ export default () => (
     <h2>Press &amp; Awards</h2>
     <AwardList />
   </Layout>
-); 
+);
