@@ -1,10 +1,10 @@
-import React, { useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useState } from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
-import YearNav from "./filters/yearNav";
-import FormattedDate from "../components/shared/formattedDate";
+import YearNav from './filters/yearNav';
+import FormattedDate from './shared/formattedDate';
 
-import "./eventsList.scss";
+import './eventsList.scss';
 
 const EventsList = () => {
   const data = useStaticQuery(graphql`
@@ -30,7 +30,7 @@ const EventsList = () => {
       }
     }
   `);
-  
+
   const { allEventsJson: { edges: events } } = data;
 
   const [year, setYear] = useState('show all');
@@ -38,50 +38,49 @@ const EventsList = () => {
 
   let filteredEvents = events;
 
-  //filter by type before reducing
+  // Filter by event type from state, before reducing.
   if (eventType !== 'show all') {
     filteredEvents = events.filter(
-      ({ node: { fieldData: { Type } } }) => Type === eventType
+      ({ node: { fieldData: { Type } } }) => Type === eventType,
     );
   }
 
   // Group events by year with reduce.
-  let eventsByYearObj = filteredEvents.reduce( (accumulator, { node }) => {
-    accumulator[node.fieldData.Event_Year] = [ ...accumulator[node.fieldData.Event_Year] || [], node ];
+  let eventsByYearObj = filteredEvents.reduce((accumulator, { node }) => {
+    accumulator[node.fieldData.Event_Year] = [...accumulator[node.fieldData.Event_Year] || [], node];
     return accumulator;
-  }, {} );
+  }, {});
 
   const years = ['show all', ...Object.entries(eventsByYearObj).map((aYear) => aYear[0]).reverse()];
 
   // Filter to a specific year if one is selected.
   if (year !== 'show all') {
     const filteredYear = Object.entries(eventsByYearObj).filter(
-      (aYear) => aYear[0] === year
+      (aYear) => aYear[0] === year,
     );
 
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
     (filteredYear.length !==0) 
       ? eventsByYearObj = {
-        [filteredYear[0][0]]: filteredYear[0][1]
+        [filteredYear[0][0]]: filteredYear[0][1],
       }
       : eventsByYearObj = {};
-    
   }
 
   return (
     <div>
       <TypeFilter setEventType={setEventType} eventType={eventType} />
       <YearNav years={years} setYear={setYear} currentYear={year} />
-      {Object.entries(eventsByYearObj).reverse().map( ([key, events]) => (
+      {Object.entries(eventsByYearObj).reverse().map(([key, events]) => (
         <div className="year" key={key}>
           <h3 className="year-header">{key}</h3>
           <EventYearList events={events} />
         </div>
-      ) )}
-    </div> 
+      ))}
+    </div>
   );
-}
+};
 
 const TypeFilter = ({setEventType, eventType}) => (
   <div className="type-filter">
@@ -92,9 +91,9 @@ const TypeFilter = ({setEventType, eventType}) => (
   </div>
 );
 
-const EventYearList = ( { events } ) => (
+const EventYearList = ({ events }) => (
   <div className="events">
-    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, Event_Year, Event_Month, Type, cDateFragment } } ) => {
+    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, Event_Year, Event_Month, Type, cDateFragment } }) => {
 
       return (
         <div className="events-item" key={EventID}>
@@ -108,13 +107,13 @@ const EventYearList = ( { events } ) => (
             }
           </div>
           <div className="event-details">
-            { (Type === "Presentation" && Presenter) ? `${Presenter} / ` : null }
+            { (Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null }
             <FormattedDate dateString={cDateFragment} />
           </div>
         </div>
-      )}
-    )}
+      );
+    })}
   </div>
 );
 
-export default EventsList
+export default EventsList;
