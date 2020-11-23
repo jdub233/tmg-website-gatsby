@@ -1,55 +1,79 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-import Layout from "../components/layout";
-import NormalizeP from "../components/filters/normalizeP";
-import ProjectBoxes from "../components/shared/projectBoxes";
+import Layout from '../components/layout';
+import NormalizeP from '../components/filters/normalizeP';
+import ProjectBoxes from '../components/shared/projectBoxes';
 
-import "./detailPage.scss";
+import './detailPage.scss';
 
-const Person = ({ data: { allPeopleJson: { edges: [ {node}, ...rest ] } } }) => {
-  const { Full_Name, Category, cBadgeRawURL, DescriptionHTML }   = node.fieldData;
-  const papers   = node.portalData.PeoplePaperJoin_People_WebView;
+// eslint-disable-next-line no-unused-vars
+const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => {
+  const {
+    FullName,
+    Category,
+    cBadgeRawURL,
+    DescriptionHTML,
+  } = node.fieldData;
+
+  const papers = node.portalData.PeoplePaperJoin_People_WebView;
   // Filter out projects with no slug, they are artifacts from unpublished projects.
-  const projects = node.portalData.PeopleProjectJoin_People_WebView.filter(({ Projects_People_WebView__slug: slug }) => slug !== "" );
+  const projects = node.portalData.PeopleProjectJoin_People_WebView.filter(({ Projects_People_WebView__slug: slug }) => slug !== '');
 
   // Format portal data to match the format of the shared ProjectBoxes component.
-  const projectsNodes = projects.map( ( node ) => (
+  const projectsNodes = projects.map((project) => (
     {
-      id: node.Projects_People_WebView__slug, 
+      id: project.Projects_People_WebView__slug,
       fieldData: {
-        slug: node.Projects_People_WebView__slug,
-        Name: node.Projects_People_WebView__Name,
-        cBadgeRawURL: node.Projects_People_WebView__cBadgeRawURL,
-      }
+        slug: project.Projects_People_WebView__slug,
+        Name: project.Projects_People_WebView__Name,
+        cBadgeRawURL: project.Projects_People_WebView__cBadgeRawURL,
+      },
     }
-  ) );
+  ));
 
   return (
     <Layout>
       <Helmet>
-        <title>Tangible Media Group | {Full_Name}</title>
+        <title>
+          Tangible Media Group |
+          {' '}
+          {FullName}
+        </title>
       </Helmet>
       <h2>
-        {Full_Name} <span className="subtitle">{Category}</span>
+        {FullName}
+        <span className="subtitle">{Category}</span>
       </h2>
       <div className="detail">
-        <img className="detail-badge" alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+        <img className="detail-badge" alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
         <NormalizeP className="description" mixedMarkup={DescriptionHTML} />
       </div>
       {projectsNodes.length > 0 && <h3>Projects</h3>}
       <ProjectBoxes projects={projectsNodes} />
       {papers.length > 0 && <h3 className="papers-title">Papers</h3>}
-      {papers.map((node) => (
-        <div key={node.recordId}>
-          <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.Download_URL}`}>{node.Title}</a>
-          {node.Venue && node.Publication_URL && 
-           <a className="publication-url" href={node.Publication_URL}><span className="venue">{node.Venue} {node.PaperYear}</span></a>
-          }
-          {!node.Publication_URL && node.Venue &&
-            <span className="venue">{node.Venue} {node.PaperYear}</span>
-          }
+      {papers.map((paper) => (
+        <div key={paper.recordId}>
+          <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${paper.Download_URL}`}>{paper.Title}</a>
+          {paper.Venue && paper.Publication_URL
+            && (
+              <a className="publication-url" href={paper.Publication_URL}>
+                <span className="venue">
+                  {paper.Venue}
+                  {' '}
+                  {paper.PaperYear}
+                </span>
+              </a>
+            )}
+          {!paper.Publication_URL && paper.Venue
+            && (
+              <span className="venue">
+                {paper.Venue}
+                {' '}
+                {paper.PaperYear}
+              </span>
+            )}
         </div>
       ))}
     </Layout>
@@ -64,7 +88,7 @@ export const query = graphql`
           fieldData {
             slug
             First_Name
-            Full_Name
+            FullName: Full_Name
             Last_Name
             DescriptionHTML
             Category
@@ -92,5 +116,6 @@ export const query = graphql`
       }
     }
   }
-`
-export default Person
+`;
+
+export default Person;

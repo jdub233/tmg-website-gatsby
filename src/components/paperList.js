@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import React, { useState } from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import YearNav from "./filters/yearNav";
+import YearNav from './filters/yearNav';
 
-import Citation from "./paperList/citation";
+import Citation from './paperList/citation';
 
-import "./paperList.scss";
+import './paperList.scss';
 
 const PaperList = () => {
   const data = useStaticQuery(graphql`
@@ -44,10 +45,10 @@ const PaperList = () => {
   const { allPapersJson: { edges: papers } } = data;
 
   const [year, setYear] = useState('show all');
-  
-  // Group papers by year with a reducer. 
-  let papersByYear = papers.reduce( (accumulator, {node}) => {
-    accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node ];
+
+  // Group papers by year with a reducer.
+  let papersByYear = papers.reduce((accumulator, { node }) => {
+    accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node];
     return accumulator;
   }, {});
 
@@ -57,23 +58,23 @@ const PaperList = () => {
   // Filter to a specific year if one is selected.
   if (year !== 'show all') {
     const filteredYear = Object.entries(papersByYear).filter(
-      (aYear) => aYear[0] === year
+      (aYear) => aYear[0] === year,
     );
 
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
     papersByYear = {
-      [filteredYear[0][0]]: filteredYear[0][1]
+      [filteredYear[0][0]]: filteredYear[0][1],
     };
   }
 
-  const sortedList = Object.entries(papersByYear).reverse().map( ([key, papers]) => (
-      <div key={key}>
-        <h3>{key}</h3>
-        {papers.map((node) => (
-          <PaperBox key={node.id} node={node} />
-        ))}
-      </div>
+  const sortedList = Object.entries(papersByYear).reverse().map(([key, items]) => (
+    <div key={key}>
+      <h3>{key}</h3>
+      {items.map((node) => (
+        <PaperBox key={node.id} node={node} />
+      ))}
+    </div>
   ));
 
   return (
@@ -84,23 +85,27 @@ const PaperList = () => {
   );
 };
 
-const PaperBox = ({ node: { fieldData, portalData }}) => (
+const PaperBox = ({ node: { fieldData, portalData } }) => (
   <div className="paperBox">
     <div className="icon-link">
-      <a 
-        className="icon-link-anchor" 
+      <a
+        className="icon-link-anchor"
         href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.Download_URL}`}
         aria-label="Download link"
-      >&nbsp;</a>
+      >
+        &nbsp;
+      </a>
     </div>
     <Citation fieldData={fieldData} />
     <div className="related-projects">
-      {portalData.proj_portal.map( ( { slug, BadgeURL, Name, recordId } ) => {
+      {portalData.proj_portal.map(({
+        slug, BadgeURL, Name, recordId,
+      }) => {
         // Filter out any blank records.
         if (slug === '') {
           return null;
         }
-  
+
         return (
           <Link className="related-projects-link" key={recordId} to={`/project/${slug}`}>
             <img
@@ -109,19 +114,19 @@ const PaperBox = ({ node: { fieldData, portalData }}) => (
               alt={Name}
             />
           </Link>
-      )})}
+        );
+      })}
     </div>
-
-    {fieldData.PaperID === 695 && //artificial spacers to improve VRT fidelity
-      <div style={{height: "6.4px"}}>&nbsp;</div>  
-    }
-
-    {fieldData.PaperID === 697 && //artificial spacers to improve VRT fidelity
-      <div style={{ height: "9px" }}>&nbsp;</div>
-    }
-
   </div>
 );
 
-export default PaperList
+PaperBox.propTypes = {
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape({
+      Download_URL: PropTypes.string.isRequired,
+    }).isRequired,
+    portalData: PropTypes.object,
+  }).isRequired,
+};
 
+export default PaperList;

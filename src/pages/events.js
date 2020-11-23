@@ -1,8 +1,8 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import Layout from '../components/layout';
-import EventsList from "../components/eventsList";
+import EventsList from '../components/eventsList';
 
 export default () => (
   <Layout>

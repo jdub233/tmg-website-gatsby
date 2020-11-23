@@ -1,8 +1,8 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { Helmet } from 'react-helmet';
 
-import Layout from '../components/layout'
-import PeopleList from "../components/peopleList";
+import Layout from '../components/layout';
+import PeopleList from '../components/peopleList';
 
 export default () => (
   <Layout>
@@ -12,4 +12,4 @@ export default () => (
     <h2>People</h2>
     <PeopleList />
   </Layout>
-)
+);

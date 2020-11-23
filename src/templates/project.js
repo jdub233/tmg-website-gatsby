@@ -1,18 +1,25 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-import Layout from "../components/layout";
-import NormalizeP from "../components/filters/normalizeP";
-import Gallery from "../components/shared/gallery";
+import Layout from '../components/layout';
+import NormalizeP from '../components/filters/normalizeP';
+import Gallery from '../components/shared/gallery';
 
-import "./detailPage.scss"
+import './detailPage.scss';
 
-const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, portalData }}, ...rest ] }, allAssetsJson: { nodes: assets }, site: { siteMetadata: { siteUrl } } } }) => {
+const Project = ({
+  data: {
+    allProjectsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] },
+    allAssetsJson: { nodes: assets },
+    site: { siteMetadata: { siteUrl } },
+  },
+}) => {
   const project = fieldData;
   const papers = portalData.ProjectPaperJoin_displayProject;
 
-  // For meta tag descriptions; strip html tags and pad with spaces, then trim all extra spaces from the result.
+  // For meta tag descriptions; strip html tags and pad with spaces.
+  // Then trim all extra spaces from the result.
   const descriptionPlain = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
 
   // Normally there is only one public collection.
@@ -20,12 +27,12 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
 
   // Filter the assets for the primary collection.
   let collectionAssets = null;
-  if (collection) { 
+  if (collection) {
     // Only allow assets that are part of the primary collection.
-    collectionAssets = assets.filter((asset) => asset.fieldData.CollectionID === collection.Collections__CollectionID); 
+    collectionAssets = assets.filter((asset) => (asset.fieldData.CollectionID === collection.CollectionID));
   }
 
-  return(
+  return (
     <Layout>
       <Helmet>
         <title>{project.Name}</title>
@@ -38,42 +45,47 @@ const Project = ({ data: { allProjectsJson: { edges: [ {node: { fieldData, porta
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@tangible_media" />
         <meta name="twitter:title" content={project.Name} />
-        <meta name="twitter:description" content={
+        <meta
+          name="twitter:description"
+          content={
           (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
-        } />
+        }
+        />
         <meta name="twitter:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
         <link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
       </Helmet>
-      <h2>{project.Name} <span className="subtitle">{project.Members}</span></h2>
+      <h2>
+        {project.Name}
+        {' '}
+        <span className="subtitle">{project.Members}</span>
+      </h2>
       <div className="detail">
-        <img 
-          className="detail-badge" 
-          alt={project.Name} 
+        <img
+          className="detail-badge"
+          alt={project.Name}
           src={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=140`}
         />
         <div className="detail-main">
           <NormalizeP className="description" mixedMarkup={project.DescriptionHTML} />
 
-          {collection &&
-            <Gallery assets={collectionAssets} name={collection.Collections__Name} />
-          }
-          
+          {collection
+            && <Gallery assets={collectionAssets} name={collection.Collections__Name} />}
+
           {(papers.length > 0) && <h3 className="detail-main-papers">Papers</h3>}
           {papers.map((node) => (
             <div key={node.recordId}>
               <a href={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.Paper_Download_URL}`}>
                 {node.Papers_WebView__Title}
               </a>
-              {node.Papers_WebView__Venue &&
-                <span className="venue">{node.Papers_WebView__Venue}</span>
-              }
+              {node.Papers_WebView__Venue
+                && <span className="venue">{node.Papers_WebView__Venue}</span>}
             </div>
           ))}
 
         </div>
       </div>
     </Layout>
-  )
+  );
 };
 
 export const query = graphql`
@@ -98,7 +110,7 @@ export const query = graphql`
           }
           portalData {
             CollectionsForWeb {
-              Collections__CollectionID
+              CollectionID: Collections__CollectionID
               Collections__Name
               Collections__ForWeb
               Collections__Description
@@ -132,6 +144,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Project
+export default Project;
