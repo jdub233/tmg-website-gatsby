@@ -56,12 +56,12 @@ const ProjectList = () => {
   // Filter to a specific year if one is selected.
   if (year !== 'show all' && searchString === '') {
     const filteredYear = Object.entries(projectsByYearObj).filter(
-      (aYear) => aYear[0] === year
+      (aYear) => aYear[0] === year,
     );
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
     projectsByYearObj = {
-      [filteredYear[0][0]]: filteredYear[0][1]
+      [filteredYear[0][0]]: filteredYear[0][1],
     };
   }
 
