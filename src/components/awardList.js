@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import YearNav from './filters/yearNav';
 
@@ -138,6 +139,19 @@ const AwardBox = ({ award: { id, fieldData, portalData: { proj_portal: projects 
     </div>
   </div>
 );
+
+AwardBox.propTypes = {
+  award: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    fieldData: PropTypes.shape({
+      SummaryTitle: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Award_URL: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      AwardedTo: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects } } }) => (
   <div className="press-box" key={id}>

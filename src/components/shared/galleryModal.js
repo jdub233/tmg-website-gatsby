@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './galleryModal.scss';
 
-export default ({ show, setShow, relativeURL }) => (
+const GalleryModal = ({ show, setShow, relativeURL }) => (
   <div
     className="modal"
     style={{ display: show ? 'block' : 'none' }}
@@ -40,3 +42,11 @@ export default ({ show, setShow, relativeURL }) => (
     </div>
   </div>
 );
+
+GalleryModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  setShow: PropTypes.func.isRequired,
+  relativeURL: PropTypes.string.isRequired,
+};
+
+export default GalleryModal;

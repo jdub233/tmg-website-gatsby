@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import YearNav from './filters/yearNav';
 
@@ -57,7 +58,7 @@ const PaperList = () => {
   // Filter to a specific year if one is selected.
   if (year !== 'show all') {
     const filteredYear = Object.entries(papersByYear).filter(
-      (aYear) => aYear[0] === year
+      (aYear) => aYear[0] === year,
     );
 
     // Wraps the filtered results in an object to match the full result object.
@@ -118,5 +119,14 @@ const PaperBox = ({ node: { fieldData, portalData } }) => (
     </div>
   </div>
 );
+
+PaperBox.propTypes = {
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape({
+      Download_URL: PropTypes.string.isRequired,
+    }).isRequired,
+    portalData: PropTypes.object,
+  }).isRequired,
+};
 
 export default PaperList;

@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ dateString }) => {
+const FormattedDate = ({ dateString }) => {
   // Days are optional, so count the date segments by the '-' separator to see if the day should be displayed.
   // Filter is useful here because it will always return an array, even an empty one, so will always have a valid length.
   const dateSeparators = [...dateString].filter((x) => x === '-').length;
@@ -15,3 +16,9 @@ export default ({ dateString }) => {
     </>
   );
 };
+
+FormattedDate.propTypes = {
+  dateString: PropTypes.string.isRequired,
+};
+
+export default FormattedDate;

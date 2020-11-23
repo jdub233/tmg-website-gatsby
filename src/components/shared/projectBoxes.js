@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import './projectBoxes.scss';
 
-const NameSpan = ({ name }) => {
-  if (name === 'Programmable Droplets for Interaction') { return <span>Programmable Droplets...</span>; }
-  if (name === 'TRANSFORM as Dynamic and Adaptive Furniture') { return <span>TRANSFORM as Dynamic...</span>; }
-  if (name === 'Weight/Volume Changing UI') { return <span>Weight/Volume Changing UI</span>; }
+const NameSpan = ({ name }) => <span>{name.length > 18 ? `${name.substring(0, 17)}...` : name}</span>;
 
-  return <span>{name.length > 18 ? `${name.substring(0, 17)}...` : name}</span>;
+NameSpan.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
-export default ({ projects }) => (
+const ProjectBoxes = ({ projects }) => (
   <div className="projectBoxes">
     {projects.map((node) => (
       <div className="projectItem" key={node.id}>
@@ -28,3 +27,9 @@ export default ({ projects }) => (
     ))}
   </div>
 );
+
+ProjectBoxes.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default ProjectBoxes;

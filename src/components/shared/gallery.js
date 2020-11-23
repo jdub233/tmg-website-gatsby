@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import GalleryNav from '../filters/yearNav';
 import Modal from './galleryModal';
 
 import './gallery.scss';
 
-export default ({ assets, name }) => {
+export default function gallery({ assets, name }) {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -62,4 +63,9 @@ export default ({ assets, name }) => {
       />
     </div>
   );
+}
+
+gallery.propTypes = {
+  assets: PropTypes.arrayOf(PropTypes.object),
+  name: PropTypes.string,
 };

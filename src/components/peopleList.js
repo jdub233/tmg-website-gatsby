@@ -1,5 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import './peopleList.scss';
 
@@ -24,6 +25,11 @@ const CategoryList = ({ category, people }) => (
     </div>
   </div>
 );
+
+CategoryList.propTypes = {
+  category: PropTypes.string.isRequired,
+  people: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 const PeopleListItem = ({
   node: {
