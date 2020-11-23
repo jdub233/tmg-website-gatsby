@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './yearNav.scss';
 
-export default ({
-  years, setYear, currentYear, showPrevNext = false,
+const YearNav = ({
+  years, setYear, currentYear, showPrevNext,
 }) => (
   <ul className="yearNav">
     {showPrevNext
@@ -27,3 +28,22 @@ export default ({
       )}
   </ul>
 );
+
+YearNav.propTypes = {
+  years: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])).isRequired,
+  currentYear: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
+  setYear: PropTypes.func.isRequired,
+  showPrevNext: PropTypes.bool,
+};
+
+YearNav.defaultProps = {
+  showPrevNext: false,
+};
+
+export default YearNav;

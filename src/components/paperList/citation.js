@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import './citation.scss';
 
-export default ({
+export default function Citation({
   fieldData: {
     Download_URL, Title, Citation, DOI_URL, Abstract,
   },
-}) => {
+}) {
   const [showAbstract, setShowAbstract] = useState(false);
 
   return (
@@ -32,4 +34,14 @@ export default ({
       <div className={`citation-abstract${!showAbstract ? '-hide' : ''}`}>{Abstract}</div>
     </div>
   );
+}
+
+Citation.propTypes = {
+  fieldData: PropTypes.shape({
+    Download_URL: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Citation: PropTypes.string.isRequired,
+    DOI_URL: PropTypes.string.isRequired,
+    Abstract: PropTypes.string.isRequired,
+  }).isRequired,
 };
