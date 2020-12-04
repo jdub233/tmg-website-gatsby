@@ -157,7 +157,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
-        {(fieldData.booPublished_URL === '') ? fieldData.Title : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+        {(fieldData.Published_URL === '') ? fieldData.Title : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
       </h4>
       {fieldData.isPDFPublic
        && (
