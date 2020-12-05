@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import './peopleList.scss';
 
+const slugify = require('@sindresorhus/slugify');
+
 const categories = [
   'Professor',
   'Ph.D. Candidate',
@@ -39,7 +41,7 @@ const PeopleListItem = ({
   },
 }) => (
     <div className="person">
-      <Link to={`/person/${slug}`}>
+      <Link to={`/person/${slugify(slug)}`}>
         <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
       </Link>
       <div className="description">
