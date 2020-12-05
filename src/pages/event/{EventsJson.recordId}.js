@@ -2,11 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-import Layout from '../components/layout';
-import NormalizeP from '../components/filters/normalizeP';
-import FormattedDate from '../components/shared/formattedDate';
-import ProjectBoxes from '../components/shared/projectBoxes';
-import Gallery from '../components/shared/gallery';
+import Layout from '../../components/layout';
+import NormalizeP from '../../components/filters/normalizeP';
+import FormattedDate from '../../components/shared/formattedDate';
+import ProjectBoxes from '../../components/shared/projectBoxes';
+import Gallery from '../../components/shared/gallery';
 
 import './event.scss';
 

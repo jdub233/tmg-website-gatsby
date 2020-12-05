@@ -2,11 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-import Layout from '../components/layout';
-import NormalizeP from '../components/filters/normalizeP';
-import ProjectBoxes from '../components/shared/projectBoxes';
+import Layout from '../../components/layout';
+import NormalizeP from '../../components/filters/normalizeP';
+import ProjectBoxes from '../../components/shared/projectBoxes';
 
-import './detailPage.scss';
+import '../detailPage.scss';
 
 // eslint-disable-next-line no-unused-vars
 const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => {
@@ -81,8 +81,8 @@ const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => 
 };
 
 export const query = graphql`
-  query($slug: String!) {
-    allPeopleJson(filter: { fieldData: {slug: {eq: $slug} } } ) {
+  query($fieldData__slug: String!) {
+    allPeopleJson(filter: { fieldData: {slug: {eq: $fieldData__slug} } } ) {
       edges {
         node {
           fieldData {
