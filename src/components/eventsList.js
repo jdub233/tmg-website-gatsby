@@ -61,7 +61,7 @@ const EventsList = () => {
 
     // Wraps the filtered results in an object to match the full result object.
     // Seems like there ought to be an easier way, but this is at least effective.
-    (filteredYear.length !==0) 
+    (filteredYear.length !== 0)
       ? eventsByYearObj = {
         [filteredYear[0][0]]: filteredYear[0][1],
       }
@@ -82,7 +82,7 @@ const EventsList = () => {
   );
 };
 
-const TypeFilter = ({setEventType, eventType}) => (
+const TypeFilter = ({ setEventType, eventType }) => (
   <div className="type-filter">
     <button className={`type-filter-option${(eventType === 'Exhibition') ? '-selected' : ''}`} onClick={() => setEventType('Exhibition')}>Exhibitions</button>
     <button className={`type-filter-option${(eventType === 'Conference') ? '-selected' : ''}`} onClick={() => setEventType('Conference')}>Conferences</button>
@@ -101,13 +101,12 @@ const EventYearList = ({ events }) => (
             <Link to={`/event/${recordId}`}>{Title}</Link>
           </h4>
           <div className="events-item-venue">
-            {Venue_Link 
+            {Venue_Link
               ? <a href={Venue_Link}>{Venue_Name}</a>
-              : <div>{ Venue_Name }</div>
-            }
+              : <div>{Venue_Name}</div>}
           </div>
           <div className="event-details">
-            { (Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null }
+            {(Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null}
             <FormattedDate dateString={cDateFragment} />
           </div>
         </div>
