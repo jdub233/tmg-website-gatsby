@@ -2,11 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
-import Layout from '../components/layout';
-import NormalizeP from '../components/filters/normalizeP';
-import Gallery from '../components/shared/gallery';
+import Layout from '../../components/layout';
+import NormalizeP from '../../components/filters/normalizeP';
+import Gallery from '../../components/shared/gallery';
 
-import './detailPage.scss';
+import '../detailPage.scss';
 
 const Project = ({
   data: {
@@ -89,13 +89,13 @@ const Project = ({
 };
 
 export const query = graphql`
-  query($slug: String!) {
+  query($fieldData__slug: String!) {
     site {
       siteMetadata {
         siteUrl
       }
     }
-    allProjectsJson(filter: {fieldData: {slug: {eq: $slug}}}) {
+    allProjectsJson(filter: {fieldData: {slug: {eq: $fieldData__slug}}}) {
       edges {
         node {
           fieldData {
@@ -129,7 +129,7 @@ export const query = graphql`
         }
       }
     }
-    allAssetsJson(filter: {fieldData: {Projects__slug: {eq: $slug}}}) {
+    allAssetsJson(filter: {fieldData: {Projects__slug: {eq: $fieldData__slug}}}) {
       nodes {
         recordId
         fieldData {
