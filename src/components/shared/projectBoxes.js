@@ -18,7 +18,7 @@ const ProjectBoxes = ({ projects }) => (
       <div className="projectItem" key={node.id}>
         <Link className="projectBadge" to={`/project/${slugify(node.fieldData.slug)}`}>
           <img
-            alt="{node.fieldData.Name}"
+            alt={node.fieldData.Name}
             src={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
           />
           <p className="projectBadge-title">
