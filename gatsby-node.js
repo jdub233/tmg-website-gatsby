@@ -1,4 +1,4 @@
-const path = require(`path`);
+const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -17,11 +17,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  people.data.allPeopleJson.edges.map( ({ node }) => {
+  people.data.allPeopleJson.edges.map(({ node }) => {
     createPage({
       path: `person/${node.fieldData.slug}`,
-      component: path.resolve(`./src/templates/person.js`),
-      context: { slug: node.fieldData.slug, },
+      component: path.resolve('./src/templates/person.js'),
+      context: { slug: node.fieldData.slug },
     });
   });
 
@@ -38,11 +38,11 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
-  
-  projects.data.allProjectsJson.edges.map( ({node}) => {
+
+  projects.data.allProjectsJson.edges.map(({ node }) => {
     createPage({
       path: `project/${node.fieldData.slug}`,
-      component: path.resolve(`./src/templates/project.js`),
+      component: path.resolve('./src/templates/project.js'),
       context: { slug: node.fieldData.slug },
     });
   });
@@ -59,15 +59,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  events.data.allEventsJson.edges.map( ({node}) => {
+  events.data.allEventsJson.edges.map(({ node }) => {
     createPage({
       path: `event/${node.recordId}`,
-      component: path.resolve(`./src/templates/event.js`),
+      component: path.resolve('./src/templates/event.js'),
       context: { recordId: node.recordId },
     });
   });
-
-}
+};
 
 // Extra type definitions for fields with inconsistent values.
 exports.createSchemaCustomization = ({ actions }) => {
@@ -82,4 +81,4 @@ exports.createSchemaCustomization = ({ actions }) => {
   `;
 
   createTypes(typeDefs);
-}
+};
