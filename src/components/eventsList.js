@@ -25,7 +25,7 @@ const EventsList = () => {
               Event_Month
               Event_Link
               EventID
-              Venue_Name
+              VenueName: Venue_Name
               Venue_Link
               Presenter
               Title
@@ -128,7 +128,7 @@ TypeButton.propTypes = {
 
 const EventYearList = ({ events }) => (
   <div className="events">
-    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, EventYear, Event_Month, Type, cDateFragment } }) => {
+    {events.map(({ recordId, fieldData: { Title, VenueName, Venue_Link, Presenter, EventID, EventYear, Event_Month, Type, cDateFragment } }) => {
 
       return (
         <div className="events-item" key={EventID}>
@@ -137,8 +137,8 @@ const EventYearList = ({ events }) => (
           </h4>
           <div className="events-item-venue">
             {Venue_Link
-              ? <a href={Venue_Link}>{Venue_Name}</a>
-              : <div>{Venue_Name}</div>}
+              ? <a href={Venue_Link}>{VenueName}</a>
+              : <div>{VenueName}</div>}
           </div>
           <div className="event-details">
             {(Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null}
