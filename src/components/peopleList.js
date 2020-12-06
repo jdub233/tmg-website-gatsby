@@ -66,7 +66,13 @@ PeopleListItem.propTypes = {
   }).isRequired,
 };
 
-const AlumniListItem = ({ node: { fieldData: { slug, FullName, cBadgeRawURL, SubCategory } } }) => (
+const AlumniListItem = ({
+  node: {
+    fieldData: {
+      slug, FullName, cBadgeRawURL, SubCategory,
+    },
+  },
+}) => (
   <div className="alumnus">
     <Link to={`/person/${slugify(slug)}`}>
       <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
