@@ -36,17 +36,17 @@ CategoryList.propTypes = {
 const PeopleListItem = ({
   node: {
     fieldData: {
-      slug, Full_Name, cBadgeRawURL, CategoryOverride, Category, SubCategory,
+      slug, FullName, cBadgeRawURL, CategoryOverride, Category, SubCategory,
     },
   },
 }) => (
   <div className="person">
     <Link to={`/person/${slugify(slug)}`}>
-      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
       <Link to={`/person/${slug}`}>
-        <h4>{Full_Name}</h4>
+        <h4>{FullName}</h4>
       </Link>
       {(Category === 'Professor')
         && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
@@ -66,14 +66,14 @@ PeopleListItem.propTypes = {
   }).isRequired,
 };
 
-const AlumniListItem = ({ node: { fieldData: { slug, Full_Name, cBadgeRawURL, SubCategory } } }) => (
+const AlumniListItem = ({ node: { fieldData: { slug, FullName, cBadgeRawURL, SubCategory } } }) => (
   <div className="alumnus">
     <Link to={`/person/${slug}`}>
-      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
+      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
     </Link>
     <div className="alumnus-details">
       <Link to={`/person/${slug}`}>
-        <h4>{Full_Name}</h4>
+        <h4>{FullName}</h4>
       </Link>
       <div className="subcategory">{SubCategory}</div>
     </div>
@@ -90,7 +90,7 @@ const PeopleList = () => (
               id
               fieldData {
                 slug
-                Full_Name
+                FullName: Full_Name
                 cBadgeRawURL
                 Category
                 SubCategory
