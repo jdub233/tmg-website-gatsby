@@ -22,7 +22,6 @@ const EventsList = () => {
           node {
             fieldData {
               EventYear: Event_Year
-              Event_Month
               Event_Link
               EventID
               VenueName: Venue_Name
@@ -128,7 +127,7 @@ TypeButton.propTypes = {
 
 const EventYearList = ({ events }) => (
   <div className="events">
-    {events.map(({ recordId, fieldData: { Title, VenueName, Venue_Link, Presenter, EventID, EventYear, Event_Month, Type, cDateFragment } }) => {
+    {events.map(({ recordId, fieldData: { Title, VenueName, Venue_Link, Presenter, EventID, Type, cDateFragment } }) => {
 
       return (
         <div className="events-item" key={EventID}>
