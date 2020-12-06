@@ -127,7 +127,12 @@ TypeButton.propTypes = {
 
 const EventYearList = ({ events }) => (
   <div className="events">
-    {events.map(({ recordId, fieldData: { Title, VenueName, VenueLink, Presenter, EventID, Type, cDateFragment } }) => (
+    {events.map(({
+      recordId,
+      fieldData: {
+        Title, VenueName, VenueLink, Presenter, EventID, Type, cDateFragment,
+      },
+    }) => (
       <div className="events-item" key={EventID}>
         <h4>
           <Link to={`/event/${recordId}`}>{Title}</Link>
