@@ -23,7 +23,7 @@ const PaperList = () => {
                 DOI
                 DOI_URL
                 PaperID
-                Paper_Year
+                PaperYear: Paper_Year
                 Download_URL: SC_published_pdf_Download_URL
                 Title
                 Venue
@@ -48,9 +48,9 @@ const PaperList = () => {
 
   // Group papers by year with a reducer.
   let papersByYear = papers.reduce((accumulator, { node }) => {
-    const { fieldData: { Paper_Year } } = node;
+    const { fieldData: { PaperYear } } = node;
 
-    accumulator[Paper_Year] = [...accumulator[Paper_Year] || [], node];
+    accumulator[PaperYear] = [...accumulator[PaperYear] || [], node];
     return accumulator;
   }, {});
 
