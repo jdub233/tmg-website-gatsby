@@ -68,13 +68,15 @@ const EventsList = () => {
       (aYear) => aYear[0] === year,
     );
 
-    // Wraps the filtered results in an object to match the full result object.
-    // Seems like there ought to be an easier way, but this is at least effective.
-    (filteredYear.length !== 0)
-      ? eventsByYearObj = {
-        [filteredYear[0][0]]: filteredYear[0][1],
-      }
-      : eventsByYearObj = {};
+    // If an event type is selected, and there are no events of that type for the year,
+    // then filteredYear will be empty, so just set eventsByYearObj to an empty object.
+    if (filteredYear.length === 0) {
+      eventsByYearObj = {};
+    } else {
+      // Otherwise wrap the filtered results in an object to match the full result object.
+      // Seems like there ought to be an easier way, but this is at least effective.
+      eventsByYearObj = { [filteredYear[0][0]]: filteredYear[0][1] };
+    }
   }
 
   return (
