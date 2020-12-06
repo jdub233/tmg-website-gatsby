@@ -48,7 +48,9 @@ const PaperList = () => {
 
   // Group papers by year with a reducer.
   let papersByYear = papers.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node];
+    const { fieldData: { Paper_Year } } = node;
+
+    accumulator[Paper_Year] = [...accumulator[Paper_Year] || [], node];
     return accumulator;
   }, {});
 
