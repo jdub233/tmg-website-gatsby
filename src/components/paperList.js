@@ -125,7 +125,7 @@ PaperBox.propTypes = {
     fieldData: PropTypes.shape({
       Download_URL: PropTypes.string.isRequired,
     }).isRequired,
-    portalData: PropTypes.object,
+    portalData: PropTypes.shape(),
   }).isRequired,
 };
 
