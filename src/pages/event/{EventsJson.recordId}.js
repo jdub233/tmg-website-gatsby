@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
 import Layout from '../../components/layout';
 import NormalizeP from '../../components/filters/normalizeP';
@@ -10,16 +11,18 @@ import Gallery from '../../components/shared/gallery';
 
 import './event.scss';
 
-const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] }, allAssetsJson } }) => {
+const Event = ({
+  data: { allEventsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] }, allAssetsJson },
+}) => {
   const {
-    Title, Event_Link, Venue_Name, Venue_Link, DescriptionHTML, cDateFragment,
+    Title, EventLink, VenueName, VenueLink, DescriptionHTML, cDateFragment,
   } = fieldData;
 
-  const { proj_portal, Collections_Events_WebView: Collections } = portalData;
+  const { projectPortal, Collections_Events_WebView: Collections } = portalData;
   const { nodes: assets } = allAssetsJson;
 
   // Filter out projects with no slug, they are artifacts from unpublished projects.
-  const projects = proj_portal.filter(({ slug }) => slug !== '');
+  const projects = projectPortal.filter(({ slug }) => slug !== '');
   // Format portal data to match the format of the shared ProjectBoxes component.
   const projectsNodes = projects.map((node) => (
     {
@@ -38,7 +41,9 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
   let collectionAssets = null;
   if (collection) {
     // Only allow assets that are part of the primary collection.
-    collectionAssets = assets.filter((asset) => asset.fieldData.CollectionID === collection.CollectionID);
+    collectionAssets = assets.filter(({ fieldData: { CollectionID } }) => (
+      CollectionID === collection.CollectionID
+    ));
   }
 
   return (
@@ -48,13 +53,13 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
       </Helmet>
       <h2>{Title}</h2>
       <div className="event">
-        {Event_Link
-          && <h4 className="event-link"><a href={Event_Link}>Event Link</a></h4>}
+        {EventLink
+          && <h4 className="event-link"><a href={EventLink}>Event Link</a></h4>}
         <p className="event-venue">
-          {Venue_Link && 'Venue: '}
-          {Venue_Link
-            ? <a href={Venue_Link}>{Venue_Name}</a>
-            : Venue_Name}
+          {VenueLink && 'Venue: '}
+          {VenueLink
+            ? <a href={VenueLink}>{VenueName}</a>
+            : VenueName}
         </p>
         <p className="event-date"><FormattedDate dateString={cDateFragment} /></p>
         <NormalizeP mixedMarkup={DescriptionHTML} />
@@ -67,16 +72,20 @@ const Event = ({ data: { allEventsJson: { edges: [{ node: { fieldData, portalDat
   );
 };
 
+Event.propTypes = {
+  data: PropTypes.shape().isRequired,
+};
+
 export const query = graphql`
   query($recordId: String!) {
     allEventsJson(filter: {recordId: {eq: $recordId}}) {
       edges {
         node {
           fieldData {
-            Event_Link
+            EventLink: Event_Link
             EventID
-            Venue_Name
-            Venue_Link
+            VenueName: Venue_Name
+            VenueLink: Venue_Link
             Presenter
             Title
             Type
@@ -85,7 +94,7 @@ export const query = graphql`
           }
           recordId
           portalData {
-            proj_portal {
+            projectPortal: proj_portal {
               Name: Projects_People_WebView__Name
               cBadgeRawURL: Projects_People_WebView__cBadgeRawURL
               slug: Projects_People_WebView__slug
