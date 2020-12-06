@@ -46,7 +46,9 @@ const ProjectList = () => {
   }
 
   let projectsByYearObj = filteredProjects.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Project_Year] = [...accumulator[node.fieldData.Project_Year] || [], node];
+    const { fieldData: { Project_Year } } = node;
+
+    accumulator[Project_Year] = [...accumulator[Project_Year] || [], node];
     return accumulator;
   }, {});
 
