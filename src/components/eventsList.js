@@ -7,6 +7,13 @@ import FormattedDate from './shared/formattedDate';
 
 import './eventsList.scss';
 
+const eventTypes = [
+  'Exhibition',
+  'Conference',
+  'Presentation',
+  'show all',
+];
+
 const EventsList = () => {
   const data = useStaticQuery(graphql`
     {
@@ -87,12 +94,37 @@ const EventsList = () => {
 
 const TypeFilter = ({ setEventType, eventType }) => (
   <div className="type-filter">
-    <button className={`type-filter-option${(eventType === 'Exhibition') ? '-selected' : ''}`} onClick={() => setEventType('Exhibition')}>Exhibitions</button>
-    <button className={`type-filter-option${(eventType === 'Conference') ? '-selected' : ''}`} onClick={() => setEventType('Conference')}>Conferences</button>
-    <button className={`type-filter-option${(eventType === 'Presentation') ? '-selected' : ''}`} onClick={() => setEventType('Presentation')}>Presentations</button>
-    <button className={`type-filter-option${(eventType === 'show all') ? '-selected' : ''}`} onClick={() => setEventType('show all')}>show all</button>
+    {eventTypes.map((aType) => (
+      <TypeButton
+        key={aType}
+        setEventType={setEventType}
+        eventType={eventType}
+        thisEventType={aType}
+      />
+    ))}
   </div>
 );
+
+TypeFilter.propTypes = {
+  setEventType: PropTypes.func.isRequired,
+  eventType: PropTypes.string.isRequired,
+};
+
+const TypeButton = ({ setEventType, eventType, thisEventType }) => (
+  <button
+    type="button"
+    className={`type-filter-option${(eventType === thisEventType) ? '-selected' : ''}`}
+    onClick={() => setEventType(thisEventType)}
+  >
+    {thisEventType}
+  </button>
+);
+
+TypeButton.propTypes = {
+  setEventType: PropTypes.func.isRequired,
+  eventType: PropTypes.string.isRequired,
+  thisEventType: PropTypes.string.isRequired,
+};
 
 const EventYearList = ({ events }) => (
   <div className="events">
