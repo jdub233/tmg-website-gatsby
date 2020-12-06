@@ -80,6 +80,10 @@ const AlumniListItem = ({ node: { fieldData: { slug, FullName, cBadgeRawURL, Sub
   </div>
 );
 
+AlumniListItem.propTypes = {
+  node: PropTypes.shape().isRequired,
+};
+
 const PeopleList = () => (
   <StaticQuery
     query={graphql`
