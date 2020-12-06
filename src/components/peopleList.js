@@ -40,25 +40,25 @@ const PeopleListItem = ({
     },
   },
 }) => (
-    <div className="person">
-      <Link to={`/person/${slugify(slug)}`}>
-        <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+  <div className="person">
+    <Link to={`/person/${slugify(slug)}`}>
+      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+    </Link>
+    <div className="description">
+      <Link to={`/person/${slug}`}>
+        <h4>{Full_Name}</h4>
       </Link>
-      <div className="description">
-        <Link to={`/person/${slug}`}>
-          <h4>{Full_Name}</h4>
-        </Link>
-        {(Category === 'Professor')
-          && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
+      {(Category === 'Professor')
+        && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
 
-        {(Category !== 'Professor')
-          && <div>{Category}</div>}
-        {(Category !== 'Professor')
-          && <div>{SubCategory}</div>}
+      {(Category !== 'Professor')
+        && <div>{Category}</div>}
+      {(Category !== 'Professor')
+        && <div>{SubCategory}</div>}
 
-      </div>
     </div>
-  );
+  </div>
+);
 
 const AlumniListItem = ({ node: { fieldData: { slug, Full_Name, cBadgeRawURL, SubCategory } } }) => (
   <div className="alumnus">
