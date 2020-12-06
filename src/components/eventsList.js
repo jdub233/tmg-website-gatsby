@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import YearNav from './filters/yearNav';
 import FormattedDate from './shared/formattedDate';
@@ -116,5 +117,11 @@ const EventYearList = ({ events }) => (
     })}
   </div>
 );
+
+EventYearList.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.shape().isRequired,
+  ).isRequired,
+};
 
 export default EventsList;
