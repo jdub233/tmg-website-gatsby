@@ -15,7 +15,7 @@ const AwardList = () => {
             fieldData {
               AwardID
               Award_URL
-              Award_Year
+              AwardYear: Award_Year
               AwardedTo
               Description
               ForWeb
@@ -73,7 +73,9 @@ const AwardList = () => {
   const [year, setYear] = useState('show all');
 
   const awardsByYear = awards.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Award_Year] = [...accumulator[node.fieldData.Award_Year] || [], node];
+    const { fieldData: { AwardYear } } = node;
+
+    accumulator[AwardYear] = [...accumulator[AwardYear] || [], node];
     return accumulator;
   }, {});
 
