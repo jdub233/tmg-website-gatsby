@@ -60,6 +60,12 @@ const PeopleListItem = ({
   </div>
 );
 
+PeopleListItem.propTypes = {
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape().isRequired,
+  }).isRequired,
+};
+
 const AlumniListItem = ({ node: { fieldData: { slug, Full_Name, cBadgeRawURL, SubCategory } } }) => (
   <div className="alumnus">
     <Link to={`/person/${slug}`}>
