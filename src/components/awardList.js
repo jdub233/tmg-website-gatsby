@@ -60,7 +60,7 @@ const AwardList = () => {
               Title
               Type
               isPDFPublic
-              Year_Published
+              YearPublished: Year_Published
             }
           }
         }
@@ -80,7 +80,9 @@ const AwardList = () => {
   }, {});
 
   const pressByYear = pressItems.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Year_Published] = [...accumulator[node.fieldData.Year_Published] || [], node];
+    const { fieldData: { YearPublished } } = node;
+
+    accumulator[YearPublished] = [...accumulator[YearPublished] || [], node];
     return accumulator;
   }, {});
 
