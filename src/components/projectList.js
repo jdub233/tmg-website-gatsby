@@ -19,7 +19,7 @@ const ProjectList = () => {
               slug
               Name
               BadgeContainerURL
-              Project_Year
+              ProjectYear: Project_Year
               cBadgeRawURL
               Members
             }
@@ -46,9 +46,9 @@ const ProjectList = () => {
   }
 
   let projectsByYearObj = filteredProjects.reduce((accumulator, { node }) => {
-    const { fieldData: { Project_Year } } = node;
+    const { fieldData: { ProjectYear } } = node;
 
-    accumulator[Project_Year] = [...accumulator[Project_Year] || [], node];
+    accumulator[ProjectYear] = [...accumulator[ProjectYear] || [], node];
     return accumulator;
   }, {});
 
