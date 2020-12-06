@@ -45,7 +45,7 @@ const PeopleListItem = ({
       <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
     </Link>
     <div className="description">
-      <Link to={`/person/${slug}`}>
+      <Link to={`/person/${slugify(slug)}`}>
         <h4>{FullName}</h4>
       </Link>
       {(Category === 'Professor')
@@ -68,11 +68,11 @@ PeopleListItem.propTypes = {
 
 const AlumniListItem = ({ node: { fieldData: { slug, FullName, cBadgeRawURL, SubCategory } } }) => (
   <div className="alumnus">
-    <Link to={`/person/${slug}`}>
+    <Link to={`/person/${slugify(slug)}`}>
       <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
     </Link>
     <div className="alumnus-details">
-      <Link to={`/person/${slug}`}>
+      <Link to={`/person/${slugify(slug)}`}>
         <h4>{FullName}</h4>
       </Link>
       <div className="subcategory">{SubCategory}</div>
