@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
 import Layout from '../../components/layout';
 import NormalizeP from '../../components/filters/normalizeP';
@@ -29,7 +30,9 @@ const Project = ({
   let collectionAssets = null;
   if (collection) {
     // Only allow assets that are part of the primary collection.
-    collectionAssets = assets.filter((asset) => (asset.fieldData.CollectionID === collection.CollectionID));
+    collectionAssets = assets.filter(({ fieldData: { CollectionID } }) => (
+      CollectionID === collection.CollectionID
+    ));
   }
 
   return (
@@ -86,6 +89,10 @@ const Project = ({
       </div>
     </Layout>
   );
+};
+
+Project.propTypes = {
+  data: PropTypes.shape().isRequired,
 };
 
 export const query = graphql`
