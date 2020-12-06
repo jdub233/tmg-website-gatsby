@@ -112,8 +112,12 @@ const PeopleList = () => (
       }
     `}
     render={({ allPeopleJson: { edges } }) => {
+      // Assemble people by categories.
+      const categorized = categories.map((category) => (
+        edges.filter(({ node: { fieldData: { Category } } }) => Category === category)));
+
+      // Alumni are rendered separately.
       const alumni = edges.filter(({ node: { fieldData: { Category } } }) => Category === 'Alumni');
-      const categorized = categories.map((category) => edges.filter(({ node: { fieldData: { Category } } }) => Category === category));
 
       return (
         <div className="people">
