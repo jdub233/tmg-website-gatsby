@@ -13,7 +13,7 @@ const EventsList = () => {
         edges {
           node {
             fieldData {
-              Event_Year
+              EventYear: Event_Year
               Event_Month
               Event_Link
               EventID
@@ -47,9 +47,9 @@ const EventsList = () => {
 
   // Group events by year with reduce.
   let eventsByYearObj = filteredEvents.reduce((accumulator, { node }) => {
-    const { fieldData: { Event_Year } } = node;
+    const { fieldData: { EventYear } } = node;
 
-    accumulator[Event_Year] = [...accumulator[Event_Year] || [], node];
+    accumulator[EventYear] = [...accumulator[EventYear] || [], node];
     return accumulator;
   }, {});
 
@@ -95,7 +95,7 @@ const TypeFilter = ({ setEventType, eventType }) => (
 
 const EventYearList = ({ events }) => (
   <div className="events">
-    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, Event_Year, Event_Month, Type, cDateFragment } }) => {
+    {events.map(({ recordId, fieldData: { Title, Venue_Name, Venue_Link, Presenter, EventID, EventYear, Event_Month, Type, cDateFragment } }) => {
 
       return (
         <div className="events-item" key={EventID}>
