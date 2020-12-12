@@ -28,9 +28,9 @@ const AwardList = () => {
             id
             portalData {
               proj_portal {
-                Projects_for_Awards__Name
-                Projects_for_Awards__cBadgeRawURL
-                Projects_for_Awards__slug
+                Name: Projects_for_Awards__Name
+                badge: Projects_for_Awards__cBadgeRawURL
+                slug: Projects_for_Awards__slug
                 recordId
               }
             }
@@ -129,12 +129,12 @@ const AwardBox = ({ award: { id, fieldData, portalData: { proj_portal: projects 
     <div className="award-box-project-badges">
       {projects
         && projects.map(({
-          Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordId,
+          slug, Name, badge, recordId,
         }) => (
           <ProjectBadge
-            slug={Projects_for_Awards__slug}
-            name={Projects_for_Awards__Name}
-            srcURL={Projects_for_Awards__cBadgeRawURL}
+            slug={slug}
+            name={Name}
+            srcURL={badge}
             key={recordId}
           />
         ))}
