@@ -14,7 +14,7 @@ const AwardList = () => {
           node {
             fieldData {
               AwardID
-              Award_URL
+              AwardURL: Award_URL
               AwardYear: Award_Year
               AwardedTo
               Description
@@ -119,13 +119,13 @@ const AwardList = () => {
   );
 };
 
-const AwardBox = ({ award: { id, fieldData: { SummaryTitle, Title, Award_URL, Description, AwardedTo }, portalData: { projects } } }) => (
+const AwardBox = ({ award: { id, fieldData: { SummaryTitle, Title, AwardURL, Description, AwardedTo }, portalData: { projects } } }) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
       {SummaryTitle
         && <p className="award-box-tagline">{SummaryTitle}</p>}
       <h4>
-        {(Award_URL === '') ? Title : <a href={Award_URL}>{Title}</a>}
+        {(AwardURL === '') ? Title : <a href={AwardURL}>{Title}</a>}
       </h4>
       {Description
         && <p className="award-box-textblock">{Description}</p>}
@@ -155,7 +155,7 @@ AwardBox.propTypes = {
     fieldData: PropTypes.shape({
       SummaryTitle: PropTypes.string.isRequired,
       Title: PropTypes.string.isRequired,
-      Award_URL: PropTypes.string.isRequired,
+      AwardURL: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
       AwardedTo: PropTypes.string.isRequired,
     }).isRequired,
