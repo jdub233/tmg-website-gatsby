@@ -119,18 +119,18 @@ const AwardList = () => {
   );
 };
 
-const AwardBox = ({ award: { id, fieldData, portalData: { projects } } }) => (
+const AwardBox = ({ award: { id, fieldData: { SummaryTitle, Title, Award_URL, Description, AwardedTo }, portalData: { projects } } }) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
-      {fieldData.SummaryTitle
-        && <p className="award-box-tagline">{fieldData.SummaryTitle}</p>}
+      {SummaryTitle
+        && <p className="award-box-tagline">{SummaryTitle}</p>}
       <h4>
-        {(fieldData.Award_URL === '') ? fieldData.Title : <a href={fieldData.Award_URL}>{fieldData.Title}</a>}
+        {(Award_URL === '') ? Title : <a href={Award_URL}>{Title}</a>}
       </h4>
-      {fieldData.Description
-        && <p className="award-box-textblock">{fieldData.Description}</p>}
+      {Description
+        && <p className="award-box-textblock">{Description}</p>}
       <p className="award-box-details">
-        {fieldData.AwardedTo}
+        {AwardedTo}
       </p>
     </div>
     <div className="award-box-project-badges">
