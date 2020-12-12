@@ -119,7 +119,15 @@ const AwardList = () => {
   );
 };
 
-const AwardBox = ({ award: { id, fieldData: { SummaryTitle, Title, AwardURL, Description, AwardedTo }, portalData: { projects } } }) => (
+const AwardBox = ({
+  award: {
+    id,
+    fieldData: {
+      SummaryTitle, Title, AwardURL, Description, AwardedTo,
+    },
+    portalData: { projects },
+  },
+}) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
       {SummaryTitle
