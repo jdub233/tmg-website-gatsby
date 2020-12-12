@@ -195,6 +195,13 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
   </div>
 );
 
+PressBox.propTypes = {
+  press: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    fieldData: PropTypes.shape().isRequired,
+  }).isRequired,
+};
+
 const ProjectBadge = ({ slug, name, srcURL }) => (
   <Link to={`/project/${slug}`}>
     <img
