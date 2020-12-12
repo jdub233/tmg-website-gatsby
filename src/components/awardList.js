@@ -156,18 +156,20 @@ AwardBox.propTypes = {
   }).isRequired,
 };
 
-const PressBox = ({ press: { id, fieldData, portalData: { projects } } }) => (
+const PressBox = (
+  { press: { id, fieldData: { Published_URL, Title, isPDFPublic, PDFDownloadURL, Published_In }, portalData: { projects } } },
+) => (
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
-        {(fieldData.Published_URL.trim() === '') ? fieldData.Title : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+        {(Published_URL.trim() === '') ? Title : <a href={Published_URL}>{Title}</a> }
       </h4>
-      {fieldData.isPDFPublic
+      {isPDFPublic
        && (
        <div className="icon-link">
          <a
            className="icon-link-anchor"
-           href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
+           href={`${process.env.GATSBY_MEDIA_LIBRARY}/${PDFDownloadURL}`}
          >
           &nbsp;
          </a>
@@ -176,7 +178,7 @@ const PressBox = ({ press: { id, fieldData, portalData: { projects } } }) => (
       <p className="press-box-details">
         Press:
         {' '}
-        {fieldData.Published_In}
+        {Published_In}
       </p>
     </div>
     <div className="press-box-project-badges">
