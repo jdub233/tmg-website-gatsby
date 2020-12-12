@@ -49,6 +49,8 @@ const PeopleListItem = ({
         <h4>{FullName}</h4>
       </Link>
       {(Category === 'Professor')
+        // The Professor category requires rendering tags from inside the field contents.
+        // eslint-disable-next-line react/no-danger
         && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
 
       {(Category !== 'Professor')
