@@ -12,6 +12,7 @@ import Gallery from '../../components/shared/gallery';
 import './event.scss';
 
 const Event = ({
+  // eslint-disable-next-line no-unused-vars
   data: { allEventsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] }, allAssetsJson },
 }) => {
   const {

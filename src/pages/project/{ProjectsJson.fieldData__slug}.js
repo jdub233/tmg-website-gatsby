@@ -11,6 +11,7 @@ import '../detailPage.scss';
 
 const Project = ({
   data: {
+    // eslint-disable-next-line no-unused-vars
     allProjectsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] },
     allAssetsJson: { nodes: assets },
     site: { siteMetadata: { siteUrl } },
