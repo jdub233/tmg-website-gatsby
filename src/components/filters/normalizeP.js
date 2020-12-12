@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/no-danger */
+// Paragraphs don't have a natural index other that the order, and the order should never change.
+// We need to rerender valid tags inside each paragraph, so we need to dangerously set the HTML.
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
