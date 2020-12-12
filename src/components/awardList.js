@@ -27,7 +27,7 @@ const AwardList = () => {
             }
             id
             portalData {
-              proj_portal {
+              projects: proj_portal {
                 Name: Projects_for_Awards__Name
                 badge: Projects_for_Awards__cBadgeRawURL
                 slug: Projects_for_Awards__slug
@@ -42,7 +42,7 @@ const AwardList = () => {
           node {
             id
             portalData {
-              proj_portal {
+              projects: proj_portal {
                 recordId
                 Name: Projects_for_Press__Name
                 badge: Projects_for_Press__cBadgeRawURL
@@ -112,7 +112,7 @@ const AwardList = () => {
   );
 };
 
-const AwardBox = ({ award: { id, fieldData, portalData: { proj_portal: projects } } }) => (
+const AwardBox = ({ award: { id, fieldData, portalData: { projects } } }) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
       {fieldData.SummaryTitle
@@ -156,7 +156,7 @@ AwardBox.propTypes = {
   }).isRequired,
 };
 
-const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects } } }) => (
+const PressBox = ({ press: { id, fieldData, portalData: { projects } } }) => (
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
