@@ -199,6 +199,7 @@ PressBox.propTypes = {
   press: PropTypes.shape({
     id: PropTypes.string.isRequired,
     fieldData: PropTypes.shape().isRequired,
+    portalData: PropTypes.shape().isRequired,
   }).isRequired,
 };
 
