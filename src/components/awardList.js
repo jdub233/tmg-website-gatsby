@@ -156,9 +156,15 @@ AwardBox.propTypes = {
   }).isRequired,
 };
 
-const PressBox = (
-  { press: { id, fieldData: { Published_URL, Title, isPDFPublic, PDFDownloadURL, Published_In }, portalData: { projects } } },
-) => (
+const PressBox = ({
+  press: {
+    id,
+    fieldData: {
+      Published_URL, Title, isPDFPublic, PDFDownloadURL, Published_In,
+    },
+    portalData: { projects },
+  },
+}) => (
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
