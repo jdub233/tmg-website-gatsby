@@ -53,8 +53,8 @@ const AwardList = () => {
             fieldData {
               PDFDownloadURL
               PressID
-              Published_In
-              Published_URL
+              PublishedIn: Published_In
+              PublishedURL: Published_URL
               Title
               Type
               isPDFPublic
@@ -160,7 +160,7 @@ const PressBox = ({
   press: {
     id,
     fieldData: {
-      Published_URL, Title, isPDFPublic, PDFDownloadURL, Published_In,
+      PublishedURL, Title, isPDFPublic, PDFDownloadURL, PublishedIn,
     },
     portalData: { projects },
   },
@@ -168,7 +168,7 @@ const PressBox = ({
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
-        {(Published_URL.trim() === '') ? Title : <a href={Published_URL}>{Title}</a> }
+        {(PublishedURL.trim() === '') ? Title : <a href={PublishedURL}>{Title}</a> }
       </h4>
       {isPDFPublic
        && (
@@ -184,7 +184,7 @@ const PressBox = ({
       <p className="press-box-details">
         Press:
         {' '}
-        {Published_In}
+        {PublishedIn}
       </p>
     </div>
     <div className="press-box-project-badges">
