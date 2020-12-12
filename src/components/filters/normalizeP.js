@@ -6,7 +6,13 @@ const normalizeP = ({ mixedMarkup, className }) => {
   const normalizedMarkup = mixedMarkup.split('\r\r')
     .filter((x) => x !== '')
     .map((graf) => graf.replace(/\r/gi, '<br>'))
-    .map((graf, index) => <div style={{ marginBottom: '20px' }} key={index} dangerouslySetInnerHTML={{ __html: graf }} />);
+    .map((graf, index) => (
+      <div
+        style={{ marginBottom: '20px' }}
+        key={index}
+        dangerouslySetInnerHTML={{ __html: graf }}
+      />
+    ));
 
   return (
     <div className={className}>{normalizedMarkup}</div>
