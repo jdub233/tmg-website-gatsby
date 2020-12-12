@@ -85,7 +85,14 @@ const AwardList = () => {
   }, {});
 
   // A bit terse, but this extracts all the unique years for both press and awards.
-  const years = [...new Set([...Object.entries(pressByYear).map((aYear) => aYear[0]), ...Object.entries(awardsByYear).map((aYear) => aYear[0])])].sort().reverse();
+  const years = [
+    ...new Set(
+      [
+        ...Object.entries(pressByYear).map((aYear) => aYear[0]),
+        ...Object.entries(awardsByYear).map((aYear) => aYear[0]),
+      ],
+    ),
+  ].sort().reverse();
 
   const yearsForNav = ['show all', ...years];
 
