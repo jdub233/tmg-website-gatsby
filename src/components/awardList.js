@@ -154,6 +154,7 @@ AwardBox.propTypes = {
       Description: PropTypes.string.isRequired,
       AwardedTo: PropTypes.string.isRequired,
     }).isRequired,
+    portalData: PropTypes.shape().isRequired,
   }).isRequired,
 };
 
