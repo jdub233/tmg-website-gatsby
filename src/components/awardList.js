@@ -228,4 +228,10 @@ const ProjectBadge = ({ slug, name, srcURL }) => (
   </Link>
 );
 
+ProjectBadge.propTypes = {
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  srcURL: PropTypes.string.isRequired,
+};
+
 export default AwardList;
