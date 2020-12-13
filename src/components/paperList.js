@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import YearNav from './filters/yearNav';
 
-import Citation from './paperList/citation';
+import CitationDetails from './paperList/citationDetails';
 
 import './paperList.scss';
 
@@ -23,8 +23,8 @@ const PaperList = () => {
                 DOI
                 DOI_URL
                 PaperID
-                Paper_Year
-                Download_URL: SC_published_pdf_Download_URL
+                PaperYear: Paper_Year
+                DownloadURL: SC_published_pdf_Download_URL
                 Title
                 Venue
               }
@@ -48,7 +48,9 @@ const PaperList = () => {
 
   // Group papers by year with a reducer.
   let papersByYear = papers.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Paper_Year] = [...accumulator[node.fieldData.Paper_Year] || [], node];
+    const { fieldData: { PaperYear } } = node;
+
+    accumulator[PaperYear] = [...accumulator[PaperYear] || [], node];
     return accumulator;
   }, {});
 
@@ -90,13 +92,13 @@ const PaperBox = ({ node: { fieldData, portalData } }) => (
     <div className="icon-link">
       <a
         className="icon-link-anchor"
-        href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.Download_URL}`}
+        href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.DownloadURL}`}
         aria-label="Download link"
       >
         &nbsp;
       </a>
     </div>
-    <Citation fieldData={fieldData} />
+    <CitationDetails fieldData={fieldData} />
     <div className="related-projects">
       {portalData.proj_portal.map(({
         slug, BadgeURL, Name, recordId,
@@ -123,9 +125,9 @@ const PaperBox = ({ node: { fieldData, portalData } }) => (
 PaperBox.propTypes = {
   node: PropTypes.shape({
     fieldData: PropTypes.shape({
-      Download_URL: PropTypes.string.isRequired,
+      DownloadURL: PropTypes.string.isRequired,
     }).isRequired,
-    portalData: PropTypes.object,
+    portalData: PropTypes.shape(),
   }).isRequired,
 };
 

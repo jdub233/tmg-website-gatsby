@@ -36,43 +36,61 @@ CategoryList.propTypes = {
 const PeopleListItem = ({
   node: {
     fieldData: {
-      slug, Full_Name, cBadgeRawURL, CategoryOverride, Category, SubCategory,
+      slug, FullName, cBadgeRawURL, CategoryOverride, Category, SubCategory,
     },
   },
 }) => (
-    <div className="person">
+  <div className="person">
+    <Link to={`/person/${slugify(slug)}`}>
+      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+    </Link>
+    <div className="description">
       <Link to={`/person/${slugify(slug)}`}>
-        <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
+        <h4>{FullName}</h4>
       </Link>
-      <div className="description">
-        <Link to={`/person/${slug}`}>
-          <h4>{Full_Name}</h4>
-        </Link>
-        {(Category === 'Professor')
-          && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
+      {(Category === 'Professor')
+        // The Professor category requires rendering tags from inside the field contents.
+        // eslint-disable-next-line react/no-danger
+        && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
 
-        {(Category !== 'Professor')
-          && <div>{Category}</div>}
-        {(Category !== 'Professor')
-          && <div>{SubCategory}</div>}
+      {(Category !== 'Professor')
+        && <div>{Category}</div>}
+      {(Category !== 'Professor')
+        && <div>{SubCategory}</div>}
 
-      </div>
     </div>
-  );
+  </div>
+);
 
-const AlumniListItem = ({ node: { fieldData: { slug, Full_Name, cBadgeRawURL, SubCategory } } }) => (
+PeopleListItem.propTypes = {
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape().isRequired,
+  }).isRequired,
+};
+
+const AlumniListItem = ({
+  node: {
+    fieldData: {
+      slug, FullName, cBadgeRawURL, SubCategory,
+    },
+  },
+}) => (
   <div className="alumnus">
-    <Link to={`/person/${slug}`}>
-      <img alt={Full_Name} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
+    <Link to={`/person/${slugify(slug)}`}>
+      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
     </Link>
     <div className="alumnus-details">
-      <Link to={`/person/${slug}`}>
-        <h4>{Full_Name}</h4>
+      <Link to={`/person/${slugify(slug)}`}>
+        <h4>{FullName}</h4>
       </Link>
       <div className="subcategory">{SubCategory}</div>
     </div>
   </div>
 );
+
+AlumniListItem.propTypes = {
+  node: PropTypes.shape().isRequired,
+};
 
 const PeopleList = () => (
   <StaticQuery
@@ -84,7 +102,7 @@ const PeopleList = () => (
               id
               fieldData {
                 slug
-                Full_Name
+                FullName: Full_Name
                 cBadgeRawURL
                 Category
                 SubCategory
@@ -96,8 +114,12 @@ const PeopleList = () => (
       }
     `}
     render={({ allPeopleJson: { edges } }) => {
+      // Assemble people by categories.
+      const categorized = categories.map((category) => (
+        edges.filter(({ node: { fieldData: { Category } } }) => Category === category)));
+
+      // Alumni are rendered separately.
       const alumni = edges.filter(({ node: { fieldData: { Category } } }) => Category === 'Alumni');
-      const categorized = categories.map((category) => edges.filter(({ node: { fieldData: { Category } } }) => Category === category));
 
       return (
         <div className="people">

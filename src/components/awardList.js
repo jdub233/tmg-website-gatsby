@@ -14,8 +14,8 @@ const AwardList = () => {
           node {
             fieldData {
               AwardID
-              Award_URL
-              Award_Year
+              AwardURL: Award_URL
+              AwardYear: Award_Year
               AwardedTo
               Description
               ForWeb
@@ -27,10 +27,10 @@ const AwardList = () => {
             }
             id
             portalData {
-              proj_portal {
-                Projects_for_Awards__Name
-                Projects_for_Awards__cBadgeRawURL
-                Projects_for_Awards__slug
+              projects: proj_portal {
+                Name: Projects_for_Awards__Name
+                badge: Projects_for_Awards__cBadgeRawURL
+                slug: Projects_for_Awards__slug
                 recordId
               }
             }
@@ -42,25 +42,23 @@ const AwardList = () => {
           node {
             id
             portalData {
-              proj_portal {
+              projects: proj_portal {
                 recordId
-                Projects_for_Press__ProjectID
-                Projects_for_Press__Name
-                Projects_for_Press__cBadgeRawURL
-                Projects_for_Press__internal_recid
-                Projects_for_Press__slug
+                Name: Projects_for_Press__Name
+                badge: Projects_for_Press__cBadgeRawURL
+                slug: Projects_for_Press__slug
                 modId
               }
             }
             fieldData {
               PDFDownloadURL
               PressID
-              Published_In
-              Published_URL
+              PublishedIn: Published_In
+              PublishedURL: Published_URL
               Title
               Type
               isPDFPublic
-              Year_Published
+              YearPublished: Year_Published
             }
           }
         }
@@ -73,17 +71,28 @@ const AwardList = () => {
   const [year, setYear] = useState('show all');
 
   const awardsByYear = awards.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Award_Year] = [...accumulator[node.fieldData.Award_Year] || [], node];
+    const { fieldData: { AwardYear } } = node;
+
+    accumulator[AwardYear] = [...accumulator[AwardYear] || [], node];
     return accumulator;
   }, {});
 
   const pressByYear = pressItems.reduce((accumulator, { node }) => {
-    accumulator[node.fieldData.Year_Published] = [...accumulator[node.fieldData.Year_Published] || [], node];
+    const { fieldData: { YearPublished } } = node;
+
+    accumulator[YearPublished] = [...accumulator[YearPublished] || [], node];
     return accumulator;
   }, {});
 
   // A bit terse, but this extracts all the unique years for both press and awards.
-  const years = [...new Set([...Object.entries(pressByYear).map((aYear) => aYear[0]), ...Object.entries(awardsByYear).map((aYear) => aYear[0])])].sort().reverse();
+  const years = [
+    ...new Set(
+      [
+        ...Object.entries(pressByYear).map((aYear) => aYear[0]),
+        ...Object.entries(awardsByYear).map((aYear) => aYear[0]),
+      ],
+    ),
+  ].sort().reverse();
 
   const yearsForNav = ['show all', ...years];
 
@@ -110,29 +119,37 @@ const AwardList = () => {
   );
 };
 
-const AwardBox = ({ award: { id, fieldData, portalData: { proj_portal: projects } } }) => (
+const AwardBox = ({
+  award: {
+    id,
+    fieldData: {
+      SummaryTitle, Title, AwardURL, Description, AwardedTo,
+    },
+    portalData: { projects },
+  },
+}) => (
   <div key={id} className="award-box">
     <div className="award-box-content">
-      {fieldData.SummaryTitle
-        && <p className="award-box-tagline">{fieldData.SummaryTitle}</p>}
+      {SummaryTitle
+        && <p className="award-box-tagline">{SummaryTitle}</p>}
       <h4>
-        {(fieldData.Award_URL === '') ? fieldData.Title : <a href={fieldData.Award_URL}>{fieldData.Title}</a>}
+        {(AwardURL === '') ? Title : <a href={AwardURL}>{Title}</a>}
       </h4>
-      {fieldData.Description
-        && <p className="award-box-textblock">{fieldData.Description}</p>}
+      {Description
+        && <p className="award-box-textblock">{Description}</p>}
       <p className="award-box-details">
-        {fieldData.AwardedTo}
+        {AwardedTo}
       </p>
     </div>
     <div className="award-box-project-badges">
       {projects
         && projects.map(({
-          Projects_for_Awards__slug, Projects_for_Awards__Name, Projects_for_Awards__cBadgeRawURL, recordId,
+          slug, Name, badge, recordId,
         }) => (
           <ProjectBadge
-            slug={Projects_for_Awards__slug}
-            name={Projects_for_Awards__Name}
-            srcURL={Projects_for_Awards__cBadgeRawURL}
+            slug={slug}
+            name={Name}
+            srcURL={badge}
             key={recordId}
           />
         ))}
@@ -146,25 +163,34 @@ AwardBox.propTypes = {
     fieldData: PropTypes.shape({
       SummaryTitle: PropTypes.string.isRequired,
       Title: PropTypes.string.isRequired,
-      Award_URL: PropTypes.string.isRequired,
+      AwardURL: PropTypes.string.isRequired,
       Description: PropTypes.string.isRequired,
       AwardedTo: PropTypes.string.isRequired,
     }).isRequired,
+    portalData: PropTypes.shape().isRequired,
   }).isRequired,
 };
 
-const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects } } }) => (
+const PressBox = ({
+  press: {
+    id,
+    fieldData: {
+      PublishedURL, Title, isPDFPublic, PDFDownloadURL, PublishedIn,
+    },
+    portalData: { projects },
+  },
+}) => (
   <div className="press-box" key={id}>
     <div className="press-box-content">
       <h4>
-        {(fieldData.Published_URL.trim() === '') ? fieldData.Title : <a href={fieldData.Published_URL}>{fieldData.Title}</a> }
+        {(PublishedURL.trim() === '') ? Title : <a href={PublishedURL}>{Title}</a> }
       </h4>
-      {fieldData.isPDFPublic
+      {isPDFPublic
        && (
        <div className="icon-link">
          <a
            className="icon-link-anchor"
-           href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.PDFDownloadURL}`}
+           href={`${process.env.GATSBY_MEDIA_LIBRARY}/${PDFDownloadURL}`}
          >
           &nbsp;
          </a>
@@ -173,24 +199,38 @@ const PressBox = ({ press: { id, fieldData, portalData: { proj_portal: projects 
       <p className="press-box-details">
         Press:
         {' '}
-        {fieldData.Published_In}
+        {PublishedIn}
       </p>
     </div>
     <div className="press-box-project-badges">
       {projects
         && projects.map(({
-          Projects_for_Press__slug, Projects_for_Press__Name, Projects_for_Press__cBadgeRawURL, recordId,
+          slug, Name, badge, recordId,
         }) => (
           <ProjectBadge
-            slug={Projects_for_Press__slug}
-            name={Projects_for_Press__Name}
-            srcURL={Projects_for_Press__cBadgeRawURL}
+            slug={slug}
+            name={Name}
+            srcURL={badge}
             key={recordId}
           />
         ))}
     </div>
   </div>
 );
+
+PressBox.propTypes = {
+  press: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    fieldData: PropTypes.shape({
+      PublishedURL: PropTypes.string,
+      Title: PropTypes.string.isRequired,
+      isPDFPublic: PropTypes.string,
+      PDFDownloadURL: PropTypes.string,
+      PublishedIn: PropTypes.string,
+    }).isRequired,
+    portalData: PropTypes.shape().isRequired,
+  }).isRequired,
+};
 
 const ProjectBadge = ({ slug, name, srcURL }) => (
   <Link to={`/project/${slug}`}>
@@ -202,5 +242,11 @@ const ProjectBadge = ({ slug, name, srcURL }) => (
     />
   </Link>
 );
+
+ProjectBadge.propTypes = {
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  srcURL: PropTypes.string.isRequired,
+};
 
 export default AwardList;

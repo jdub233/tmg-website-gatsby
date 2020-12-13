@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
 import Layout from '../../components/layout';
 import NormalizeP from '../../components/filters/normalizeP';
@@ -78,6 +79,10 @@ const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => 
       ))}
     </Layout>
   );
+};
+
+Person.propTypes = {
+  data: PropTypes.shape().isRequired,
 };
 
 export const query = graphql`
