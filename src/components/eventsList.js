@@ -117,7 +117,7 @@ const TypeButton = ({ setEventType, eventType, thisEventType }) => (
     className={`type-filter-option${(eventType === thisEventType) ? '-selected' : ''}`}
     onClick={() => setEventType(thisEventType)}
   >
-    {thisEventType}
+    {(thisEventType === 'show all' ? 'show all' : `${thisEventType}s`)}
   </button>
 );
 
