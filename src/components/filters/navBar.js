@@ -6,7 +6,7 @@ import './navBar.scss';
 const NavBar = ({
   years: elements, setYear: setElement, currentYear: currentElement, showPrevNext,
 }) => (
-  <ul className="yearNav">
+  <ul className="navBar">
     {showPrevNext
       && <li key="prev"><button type="button" className="prevNext" onClick={() => setElement((currentElement === 1) ? (elements.length) : currentElement - 1)}>previous</button></li>}
     {elements.map((element) => (
