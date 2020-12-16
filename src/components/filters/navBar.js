@@ -9,14 +9,14 @@ const NavBar = ({
   <ul className="yearNav">
     {showPrevNext
       && <li key="prev"><button type="button" className="prevNext" onClick={() => setElement((currentElement === 1) ? (elements.length) : currentElement - 1)}>previous</button></li>}
-    {elements.map((y) => (
-      <li key={y}>
+    {elements.map((element) => (
+      <li key={element}>
         <button
           type="button"
-          onClick={() => setElement(y)}
-          className={`year${(y === currentElement) ? '-selected' : ''}`}
+          onClick={() => setElement(element)}
+          className={`year${(element === currentElement) ? '-selected' : ''}`}
         >
-          {y}
+          {element}
         </button>
       </li>
     ))}
