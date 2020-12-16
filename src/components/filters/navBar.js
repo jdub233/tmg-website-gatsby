@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './yearNav.scss';
+import './navBar.scss';
 
 const YearNav = ({
   years, setYear, currentYear, showPrevNext,

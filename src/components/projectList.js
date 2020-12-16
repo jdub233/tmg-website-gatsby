@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import YearNav from './filters/yearNav';
+import YearNav from './filters/navBar';
 import ProjectBoxes from './shared/projectBoxes';
 
 import './projectList.scss';
