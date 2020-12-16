@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import './navBar.scss';
 
 const NavBar = ({
-  years, setYear, currentYear, showPrevNext,
+  years: elements, setYear: setElement, currentYear: currentElement, showPrevNext,
 }) => (
   <ul className="yearNav">
     {showPrevNext
-      && <li key="prev"><button type="button" className="prevNext" onClick={() => setYear((currentYear === 1) ? (years.length) : currentYear - 1)}>previous</button></li>}
-    {years.map((y) => (
+      && <li key="prev"><button type="button" className="prevNext" onClick={() => setElement((currentElement === 1) ? (elements.length) : currentElement - 1)}>previous</button></li>}
+    {elements.map((y) => (
       <li key={y}>
         <button
           type="button"
-          onClick={() => setYear(y)}
-          className={`year${(y === currentYear) ? '-selected' : ''}`}
+          onClick={() => setElement(y)}
+          className={`year${(y === currentElement) ? '-selected' : ''}`}
         >
           {y}
         </button>
@@ -23,7 +23,7 @@ const NavBar = ({
     {showPrevNext
       && (
       <li key="next">
-        <button type="button" className="prevNext" onClick={() => setYear((currentYear === years.length) ? 1 : currentYear + 1)}>next</button>
+        <button type="button" className="prevNext" onClick={() => setElement((currentElement === elements.length) ? 1 : currentElement + 1)}>next</button>
       </li>
       )}
   </ul>
