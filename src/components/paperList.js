@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import YearNav from './filters/navBar';
+import NavBar from './filters/navBar';
 
 import CitationDetails from './paperList/citationDetails';
 
@@ -81,7 +81,7 @@ const PaperList = () => {
 
   return (
     <div>
-      <YearNav years={years} setYear={setYear} currentYear={year} />
+      <NavBar years={years} setYear={setYear} currentYear={year} />
       {sortedList}
     </div>
   );

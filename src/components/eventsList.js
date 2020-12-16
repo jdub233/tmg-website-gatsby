@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import YearNav from './filters/navBar';
+import NavBar from './filters/navBar';
 import FormattedDate from './shared/formattedDate';
 
 import './eventsList.scss';
@@ -82,7 +82,7 @@ const EventsList = () => {
   return (
     <div>
       <TypeFilter setEventType={setEventType} eventType={eventType} />
-      <YearNav years={years} setYear={setYear} currentYear={year} />
+      <NavBar years={years} setYear={setYear} currentYear={year} />
       {Object.entries(eventsByYearObj).reverse().map(([key, eventsThisYear]) => (
         <div className="year" key={key}>
           <h3 className="year-header">{key}</h3>

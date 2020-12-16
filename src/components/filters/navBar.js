@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './navBar.scss';
 
-const YearNav = ({
+const NavBar = ({
   years, setYear, currentYear, showPrevNext,
 }) => (
   <ul className="yearNav">
@@ -29,7 +29,7 @@ const YearNav = ({
   </ul>
 );
 
-YearNav.propTypes = {
+NavBar.propTypes = {
   years: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -42,8 +42,8 @@ YearNav.propTypes = {
   showPrevNext: PropTypes.bool,
 };
 
-YearNav.defaultProps = {
+NavBar.defaultProps = {
   showPrevNext: false,
 };
 
-export default YearNav;
+export default NavBar;
