@@ -15,7 +15,7 @@ export default function gallery({ assets, name }) {
     setCurrent(x - 1);
   };
 
-  // Fast way to generate an integer array that can be sent to the existing YearNav component.
+  // Fast way to generate an integer array that can be sent to the NavBar component.
   const assetIndex = Array.from(Array(assets.length + 1).keys()).slice(1);
 
   return (
@@ -51,9 +51,9 @@ export default function gallery({ assets, name }) {
         ))}
       </div>
       <GalleryNav
-        years={assetIndex}
-        setYear={setCurrentZeroIndexed}
-        currentYear={current + 1}
+        elements={assetIndex}
+        setElement={setCurrentZeroIndexed}
+        currentElement={current + 1}
         showPrevNext
       />
       <Modal

@@ -81,7 +81,7 @@ const PaperList = () => {
 
   return (
     <div>
-      <NavBar years={years} setYear={setYear} currentYear={year} />
+      <NavBar elements={years} setElement={setYear} currentElement={year} />
       {sortedList}
     </div>
   );

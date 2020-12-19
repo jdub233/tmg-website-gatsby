@@ -77,7 +77,7 @@ const ProjectList = () => {
         onChange={({ target: { value } }) => setSearchString(value)}
       />
 
-      <NavBar years={years} setYear={setYear} currentYear={(searchString === '') ? year : 'show all'} />
+      <NavBar elements={years} setElement={setYear} currentElement={(searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, items]) => (
         <div key={key}>
           <h3 className="projects-year">{key}</h3>

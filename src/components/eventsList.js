@@ -82,7 +82,7 @@ const EventsList = () => {
   return (
     <div>
       <TypeFilter setEventType={setEventType} eventType={eventType} />
-      <NavBar years={years} setYear={setYear} currentYear={year} />
+      <NavBar elements={years} setElement={setYear} currentElement={year} />
       {Object.entries(eventsByYearObj).reverse().map(([key, eventsThisYear]) => (
         <div className="year" key={key}>
           <h3 className="year-header">{key}</h3>

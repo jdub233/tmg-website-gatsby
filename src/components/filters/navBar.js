@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 
 import './navBar.scss';
 
+/**
+ * Renders a clickable navigation box for a set of elements
+ *
+ * Used for the year navigation in projects, papers, events, and awards.
+ * Also provides the gallery navigation for image galleries.
+ */
 const NavBar = ({
-  years: elements, setYear: setElement, currentYear: currentElement, showPrevNext,
+  elements, setElement, currentElement, showPrevNext,
 }) => (
   <ul className="navBar">
     {showPrevNext
@@ -30,15 +36,15 @@ const NavBar = ({
 );
 
 NavBar.propTypes = {
-  years: PropTypes.arrayOf(PropTypes.oneOfType([
+  elements: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ])).isRequired,
-  currentYear: PropTypes.oneOfType([
+  currentElement: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
-  setYear: PropTypes.func.isRequired,
+  setElement: PropTypes.func.isRequired,
   showPrevNext: PropTypes.bool,
 };
 

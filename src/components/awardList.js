@@ -102,7 +102,7 @@ const AwardList = () => {
 
   return (
     <div className="press-awards">
-      <NavBar years={yearsForNav} setYear={setYear} currentYear={year} />
+      <NavBar elements={yearsForNav} setElement={setYear} currentElement={year} />
       {filteredYears.map((aYear) => (
         <div key={aYear} className="year-item">
           <h3>{aYear}</h3>
