@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 
+import PressBox from './awardList/pressBox';
+import AwardBox from './awardList/awardBox';
 import YearNav from './filters/yearNav';
 
 import './awardList.scss';
@@ -117,136 +118,6 @@ const AwardList = () => {
       ))}
     </div>
   );
-};
-
-const AwardBox = ({
-  award: {
-    id,
-    fieldData: {
-      SummaryTitle, Title, AwardURL, Description, AwardedTo,
-    },
-    portalData: { projects },
-  },
-}) => (
-  <div key={id} className="award-box">
-    <div className="award-box-content">
-      {SummaryTitle
-        && <p className="award-box-tagline">{SummaryTitle}</p>}
-      <h4>
-        {(AwardURL === '') ? Title : <a href={AwardURL}>{Title}</a>}
-      </h4>
-      {Description
-        && <p className="award-box-textblock">{Description}</p>}
-      <p className="award-box-details">
-        {AwardedTo}
-      </p>
-    </div>
-    <div className="award-box-project-badges">
-      {projects
-        && projects.map(({
-          slug, Name, badge, recordId,
-        }) => (
-          <ProjectBadge
-            slug={slug}
-            name={Name}
-            srcURL={badge}
-            key={recordId}
-          />
-        ))}
-    </div>
-  </div>
-);
-
-AwardBox.propTypes = {
-  award: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    fieldData: PropTypes.shape({
-      SummaryTitle: PropTypes.string.isRequired,
-      Title: PropTypes.string.isRequired,
-      AwardURL: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-      AwardedTo: PropTypes.string.isRequired,
-    }).isRequired,
-    portalData: PropTypes.shape().isRequired,
-  }).isRequired,
-};
-
-const PressBox = ({
-  press: {
-    id,
-    fieldData: {
-      PublishedURL, Title, isPDFPublic, PDFDownloadURL, PublishedIn,
-    },
-    portalData: { projects },
-  },
-}) => (
-  <div className="press-box" key={id}>
-    <div className="press-box-content">
-      <h4>
-        {(PublishedURL.trim() === '') ? Title : <a href={PublishedURL}>{Title}</a> }
-      </h4>
-      {isPDFPublic
-       && (
-       <div className="icon-link">
-         <a
-           className="icon-link-anchor"
-           href={`${process.env.GATSBY_MEDIA_LIBRARY}/${PDFDownloadURL}`}
-         >
-          &nbsp;
-         </a>
-       </div>
-       )}
-      <p className="press-box-details">
-        Press:
-        {' '}
-        {PublishedIn}
-      </p>
-    </div>
-    <div className="press-box-project-badges">
-      {projects
-        && projects.map(({
-          slug, Name, badge, recordId,
-        }) => (
-          <ProjectBadge
-            slug={slug}
-            name={Name}
-            srcURL={badge}
-            key={recordId}
-          />
-        ))}
-    </div>
-  </div>
-);
-
-PressBox.propTypes = {
-  press: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    fieldData: PropTypes.shape({
-      PublishedURL: PropTypes.string,
-      Title: PropTypes.string.isRequired,
-      isPDFPublic: PropTypes.string,
-      PDFDownloadURL: PropTypes.string,
-      PublishedIn: PropTypes.string,
-    }).isRequired,
-    portalData: PropTypes.shape().isRequired,
-  }).isRequired,
-};
-
-const ProjectBadge = ({ slug, name, srcURL }) => (
-  <Link to={`/project/${slug}`}>
-    <img
-      alt={name}
-      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${srcURL}?width=60`}
-      width="60px"
-      height="60px"
-    />
-  </Link>
-);
-
-ProjectBadge.propTypes = {
-  name: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  srcURL: PropTypes.string.isRequired,
 };
 
 export default AwardList;
