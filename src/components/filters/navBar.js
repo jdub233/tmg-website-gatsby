@@ -20,7 +20,7 @@ const NavBar = ({
         <button
           type="button"
           onClick={() => setElement(element)}
-          className={`year${(element === currentElement) ? '-selected' : ''}`}
+          className={`element${(element === currentElement) ? '-selected' : ''}`}
         >
           {element}
         </button>
