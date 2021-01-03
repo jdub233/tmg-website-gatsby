@@ -1,4 +1,4 @@
-.yearNav {
+.navBar {
     display: flex;
     flex-wrap: wrap;
     padding: 0 5px 0 5px;
@@ -13,7 +13,7 @@
 
         margin: 5px 0 5px 0;
 
-        .year, %year {
+        .element, %element {
             display: inline-block;
             padding: 0 .5em 0 .5em;
             line-height: 30px;
@@ -38,7 +38,7 @@
             }
 
             &-selected {
-                @extend %year;
+                @extend %element;
 
                 color: #848484 !important;
                 background: linear-gradient(to bottom, #fff, #eae9e9);
@@ -52,7 +52,7 @@
         }
 
         .prevNext {
-            @extend %year;
+            @extend %element;
         }
     }
 }

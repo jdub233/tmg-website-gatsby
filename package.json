@@ -4,6 +4,7 @@
   "description": "Gatsby implementation of TMG Trackr website",
   "version": "0.1.0",
   "license": "MIT",
+  "author": "Jonathan Williams",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
