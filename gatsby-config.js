@@ -32,9 +32,15 @@ module.exports = {
             policy: [{ userAgent: '*', disallow: ['/'] }],
           },
           production: {
-            policy: [{ userAgent: '*', disallow: '/' }],
+            policy: [{ userAgent: '*', allow: '/' }],
           },
         },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
       },
     },
   ],
