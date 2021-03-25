@@ -1,6 +1,6 @@
 version: 0.1
 phases:
-  preBuild:
+  pre_build:
     commands:
       - yum install -y jq
       - npm ci
@@ -16,4 +16,5 @@ artifacts:
     - '**/*'
 cache:
   paths:
+    - '.cache/*'
     - node_modules/**/*
