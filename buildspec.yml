@@ -2,7 +2,7 @@ version: 0.1
 phases:
   pre_build:
     commands:
-      - yum install -y jq
+      - apt-get install --yes jq
       - npm ci
   build:
     commands:
