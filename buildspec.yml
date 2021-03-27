@@ -8,7 +8,7 @@ phases:
       - npm run build
   post_build:
     commands:
-      - 'aws s3 sync "public/" "s3://tmg-website-content-prod" --delete --acl "public-read"'
+      - 'aws s3 sync "public/" "s3://tangible.media.mit.edu" --delete --acl "public-read"'
 artifacts:
   baseDirectory: public
   files:
