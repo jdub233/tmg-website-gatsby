@@ -2,7 +2,7 @@ version: 0.1
 phases:
   pre_build:
     commands:
-      - npm ci --unsafe-perm
+      - npm ci
   build:
     commands:
       - npm run build
