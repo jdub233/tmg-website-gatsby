@@ -1,0 +1,20 @@
+version: 0.1
+phases:
+  pre_build:
+    commands:
+      - npm ci --unsafe-perm
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - bash -c "if [ /"$CODEBUILD_BUILD_SUCCEEDING/" == /"0/" ]; then exit 1; fi"
+      - 'aws s3 sync "public/" "s3://tangible.media.mit.edu" --delete --acl "public-read"'
+artifacts:
+  baseDirectory: public
+  files:
+    - '**/*'
+cache:
+  paths:
+    - '.cache/*'
+    - node_modules/**/*
