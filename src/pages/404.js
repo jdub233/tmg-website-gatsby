@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 import Layout from '../components/layout';
 
-export default () => (
+const FourOhFour = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | Not Found!</title>
@@ -18,3 +18,5 @@ export default () => (
     </p>
   </Layout>
 );
+
+export default FourOhFour;

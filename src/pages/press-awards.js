@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import AwardList from '../components/awardList';
 
-export default () => (
+const PressAwards = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | Press &amp; Awards</title>
@@ -13,3 +13,5 @@ export default () => (
     <AwardList />
   </Layout>
 );
+
+export default PressAwards;

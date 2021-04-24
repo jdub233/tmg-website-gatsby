@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import EventsList from '../components/eventsList';
 
-export default () => (
+const Events = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | Events</title>
@@ -13,3 +13,5 @@ export default () => (
     <EventsList />
   </Layout>
 );
+
+export default Events;

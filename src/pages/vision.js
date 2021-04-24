@@ -9,7 +9,7 @@ import './vision.scss';
 import Layout from '../components/layout';
 import Statement from '../components/vision/statement';
 
-export default () => (
+const Vision = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | Vision</title>
@@ -50,3 +50,5 @@ export default () => (
 
   </Layout>
 );
+
+export default Vision;
