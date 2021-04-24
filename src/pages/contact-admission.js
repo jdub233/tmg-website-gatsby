@@ -9,7 +9,7 @@ import Layout from '../components/layout';
 
 import './contact-admission.scss';
 
-export default () => (
+const ContactAdmission = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | About us</title>
@@ -133,3 +133,5 @@ export default () => (
     </p>
   </Layout>
 );
+
+export default ContactAdmission;

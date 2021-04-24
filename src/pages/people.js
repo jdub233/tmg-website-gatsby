@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import PeopleList from '../components/peopleList';
 
-export default () => (
+const People = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | People</title>
@@ -13,3 +13,5 @@ export default () => (
     <PeopleList />
   </Layout>
 );
+
+export default People;

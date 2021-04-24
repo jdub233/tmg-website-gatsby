@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import ProjectList from '../components/projectList';
 
-export default () => (
+const Projects = () => (
   <Layout>
     <Helmet>
       <title>Tangible Media Group | Projects</title>
@@ -13,3 +13,5 @@ export default () => (
     <ProjectList />
   </Layout>
 );
+
+export default Projects;
