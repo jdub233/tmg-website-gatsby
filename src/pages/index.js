@@ -12,7 +12,7 @@ import Statement from '../components/vision/statement';
 const Index = ({
   data: { allProjectsJson: { edges: projects }, site: { siteMetadata: { siteUrl } } },
 }) => {
-  const projectsNodes = projects.slice(0, 6).map(({ node }) => node);
+  const projectsNodes = projects.map(({ node }) => node);
 
   return (
     <Layout>

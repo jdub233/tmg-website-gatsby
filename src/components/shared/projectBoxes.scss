@@ -1,11 +1,8 @@
 .projectBoxes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     width: 960px;
 
     .projectItem {
         width: 140px;
-        
 
         .projectBadge {
             img {
