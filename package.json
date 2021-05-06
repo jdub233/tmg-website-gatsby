@@ -2,7 +2,7 @@
   "name": "tmg-trackr-gatsby",
   "private": true,
   "description": "Gatsby implementation of TMG Trackr website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Jonathan Williams",
   "scripts": {
