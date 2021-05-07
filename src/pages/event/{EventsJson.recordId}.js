@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Layout from '../../components/layout';
 import NormalizeP from '../../components/filters/normalizeP';
 import FormattedDate from '../../components/shared/formattedDate';
-import ProjectBoxes from '../../components/shared/projectBoxes';
+import ProjectBox from '../../components/shared/projectBox';
 import Gallery from '../../components/shared/gallery';
 
 import './event.scss';
@@ -24,7 +24,7 @@ const Event = ({
 
   // Filter out projects with no slug, they are artifacts from unpublished projects.
   const projects = projectPortal.filter(({ slug }) => slug !== '');
-  // Format portal data to match the format of the shared ProjectBoxes component.
+  // Format portal data to match the format of the shared ProjectBox component.
   const projectsNodes = projects.map((node) => (
     {
       id: node.slug,
@@ -67,8 +67,11 @@ const Event = ({
         {collection
           && <Gallery assets={collectionAssets} name={collection.Name} />}
       </div>
+
       {projectsNodes.length > 0 && <h3 className="event-projects">Projects</h3>}
-      <ProjectBoxes projects={projectsNodes} />
+      <div className="projects-items">
+        {projectsNodes.map((project) => <ProjectBox key={project.id} node={project} />)}
+      </div>
     </Layout>
   );
 };

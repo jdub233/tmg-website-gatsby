@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import NavBar from './filters/navBar';
-import ProjectBoxes from './shared/projectBoxes';
+import ProjectBox from './shared/projectBox';
 
 import './projectList.scss';
 
@@ -81,7 +81,9 @@ const ProjectList = () => {
       {Object.entries(projectsByYearObj).reverse().map(([key, items]) => (
         <div key={key}>
           <h3 className="projects-year">{key}</h3>
-          <ProjectBoxes projects={items.reverse()} />
+          <div className="projects-items">
+            {items.reverse().map((item) => <ProjectBox key={item.id} node={item} />)}
+          </div>
         </div>
       ))}
     </div>

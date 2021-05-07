@@ -1,0 +1,22 @@
+
+.projectBadge {
+    img {
+        width: 140px;
+        height: 140px;
+        border-radius: 4px;
+    }
+    
+    &-title {
+        font-family: "OpenSansLightItalic";
+        font-weight: normal;
+        color: #4a4a4a;
+        margin-top: -1px;
+        margin-block-end: 15px;
+
+        span {
+            cursor: pointer;
+            background: url(../../img/dotted.png) bottom left repeat-x;
+        }
+        
+    }
+}
