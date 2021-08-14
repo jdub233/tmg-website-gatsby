@@ -25,7 +25,13 @@ const ProjectBox = ({ node: { fieldData: { slug, Name, cBadgeRawURL } } }) => (
 );
 
 ProjectBox.propTypes = {
-  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+      cBadgeRawURL: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default ProjectBox;
