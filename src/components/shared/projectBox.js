@@ -2,10 +2,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import slugify from '@sindresorhus/slugify';
 
 import './projectBox.scss';
-
-const slugify = require('@sindresorhus/slugify');
 
 const NameSpan = ({ name }) => <span>{name.length > 18 ? `${name.substring(0, 17)}...` : name}</span>;
 
