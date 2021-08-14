@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import VisionHeadline from './visionHeadline';
 
@@ -29,7 +30,7 @@ const RACaption = () => (
   </div>
 );
 
-export default ({ home = false }) => {
+const Statement = ({ home = false }) => {
   const phases = ['GUI', 'TUI', 'Radical Atoms'];
   const phaseImages = [gui, tui, ra];
   const phaseCaptions = [<GUICaption />, <TUICaption />, <RACaption />];
@@ -93,3 +94,8 @@ export default ({ home = false }) => {
     </div>
   );
 };
+
+Statement.propTypes = { home: PropTypes.bool };
+Statement.defaultProps = { home: false };
+
+export default Statement;

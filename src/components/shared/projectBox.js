@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -12,20 +11,26 @@ NameSpan.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-const ProjectBox = ({ node }) => (
-  <Link className="projectBadge" to={`/project/${slugify(node.fieldData.slug)}`}>
+const ProjectBox = ({ node: { fieldData: { slug, Name, cBadgeRawURL } } }) => (
+  <Link className="projectBadge" to={`/project/${slugify(slug)}`}>
     <img
-      alt={node.fieldData.Name}
-      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
+      alt={Name}
+      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`}
     />
     <p className="projectBadge-title">
-      <NameSpan name={node.fieldData.Name} />
+      <NameSpan name={Name} />
     </p>
   </Link>
 );
 
 ProjectBox.propTypes = {
-  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  node: PropTypes.shape({
+    fieldData: PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      Name: PropTypes.string.isRequired,
+      cBadgeRawURL: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default ProjectBox;
