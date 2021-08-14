@@ -26,13 +26,13 @@
     "gatsby-plugin-sitemap": "^3.3.0",
     "gatsby-source-filesystem": "^3.3.0",
     "gatsby-transformer-json": "^3.3.0",
-    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "sass": "^1.35.2"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^18.2.1",

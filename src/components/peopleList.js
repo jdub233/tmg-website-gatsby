@@ -11,7 +11,7 @@ const categories = [
   'Ph.D. Candidate',
   'M.S. Candidate',
   'Visiting Scientist',
-  'MLK Visiting Associate',
+  'Visiting Professor',
   'Administrative Assistant',
   'Research Affiliate',
   'Collaborator',
@@ -20,7 +20,8 @@ const categories = [
 
 const CategoryList = ({ category, people }) => (
   <div>
-    <h3 className="category-title">{category}</h3>
+    { people.length > 0
+      && <h3 className="category-title">{category}</h3>}
     <div className="people-list">
       {people.map(({ node }) => (
         <PeopleListItem key={node.id} node={node} />
