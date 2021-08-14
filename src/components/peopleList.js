@@ -1,10 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import slugify from '@sindresorhus/slugify';
 
 import './peopleList.scss';
-
-const slugify = require('@sindresorhus/slugify');
 
 const categories = [
   'Professor',
