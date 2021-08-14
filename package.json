@@ -16,7 +16,7 @@
     "preinstall": "node ./bin/fetch.js"
   },
   "dependencies": {
-    "@sindresorhus/slugify": "^1.1.0",
+    "@sindresorhus/slugify": "^2.1.0",
     "dotenv": "^8.2.0",
     "gatsby": "^3.4.1",
     "gatsby-plugin-google-analytics": "^3.3.0",
