@@ -54,7 +54,7 @@ const PeopleListItem = ({
         // eslint-disable-next-line react/no-danger
         && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
 
-      {(Category !== 'Professor')
+      {(Category !== 'Professor' && Category !== 'Visiting Professor')
         && <div>{Category}</div>}
       {(Category !== 'Professor')
         && <div>{SubCategory}</div>}
