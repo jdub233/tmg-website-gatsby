@@ -12,14 +12,14 @@ NameSpan.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-const ProjectBox = ({ node }) => (
-  <Link className="projectBadge" to={`/project/${slugify(node.fieldData.slug)}`}>
+const ProjectBox = ({ node: { fieldData: { slug, Name, cBadgeRawURL } } }) => (
+  <Link className="projectBadge" to={`/project/${slugify(slug)}`}>
     <img
-      alt={node.fieldData.Name}
-      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${node.fieldData.cBadgeRawURL}?width=140`}
+      alt={Name}
+      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`}
     />
     <p className="projectBadge-title">
-      <NameSpan name={node.fieldData.Name} />
+      <NameSpan name={Name} />
     </p>
   </Link>
 );
