@@ -11,7 +11,7 @@ const categories = [
   'Ph.D. Candidate',
   'M.S. Candidate',
   'Visiting Scientist',
-  'MLK Visiting Associate',
+  'Visiting Professor',
   'Administrative Assistant',
   'Research Affiliate',
   'Collaborator',
