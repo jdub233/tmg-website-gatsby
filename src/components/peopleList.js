@@ -7,6 +7,7 @@ import './peopleList.scss';
 
 const categories = [
   'Professor',
+  'Postdoctoral Associate',
   'Ph.D. Candidate',
   'M.S. Candidate',
   'Visiting Scientist',
