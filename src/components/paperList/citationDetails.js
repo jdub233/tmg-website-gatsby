@@ -16,7 +16,7 @@ export default function CitationDetails({
         <h4>{Title}</h4>
       </a>
       <p>{Citation}</p>
-      {DOI_URL !== ''
+      {DOI_URL !== '' && !Citation.includes('DOI:')
         && (
         <div className="citation-doi">
           DOI:
