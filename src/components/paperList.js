@@ -8,7 +8,7 @@ import CitationDetails from './paperList/citationDetails';
 
 import './paperList.scss';
 
-const PaperList = () => {
+function PaperList() {
   const data = useStaticQuery(graphql`
       {
         allPapersJson(sort: {fields: fieldData___Paper_Year, order: DESC}) {
@@ -85,42 +85,44 @@ const PaperList = () => {
       {sortedList}
     </div>
   );
-};
+}
 
-const PaperBox = ({ node: { fieldData, portalData } }) => (
-  <div className="paperBox">
-    <div className="icon-link">
-      <a
-        className="icon-link-anchor"
-        href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.DownloadURL}`}
-        aria-label="Download link"
-      >
+function PaperBox({ node: { fieldData, portalData } }) {
+  return (
+    <div className="paperBox">
+      <div className="icon-link">
+        <a
+          className="icon-link-anchor"
+          href={`${process.env.GATSBY_MEDIA_LIBRARY}/${fieldData.DownloadURL}`}
+          aria-label="Download link"
+        >
         &nbsp;
-      </a>
-    </div>
-    <CitationDetails fieldData={fieldData} />
-    <div className="related-projects">
-      {portalData.proj_portal.map(({
-        slug, BadgeURL, Name, recordId,
-      }) => {
-        // Filter out any blank records.
-        if (slug === '') {
-          return null;
-        }
+        </a>
+      </div>
+      <CitationDetails fieldData={fieldData} />
+      <div className="related-projects">
+        {portalData.proj_portal.map(({
+          slug, BadgeURL, Name, recordId,
+        }) => {
+          // Filter out any blank records.
+          if (slug === '') {
+            return null;
+          }
 
-        return (
-          <Link className="related-projects-link" key={recordId} to={`/project/${slug}`}>
-            <img
-              src={`${process.env.GATSBY_MEDIA_LIBRARY}/${BadgeURL}?width=60`}
-              width="60px"
-              alt={Name}
-            />
-          </Link>
-        );
-      })}
+          return (
+            <Link className="related-projects-link" key={recordId} to={`/project/${slug}`}>
+              <img
+                src={`${process.env.GATSBY_MEDIA_LIBRARY}/${BadgeURL}?width=60`}
+                width="60px"
+                alt={Name}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 PaperBox.propTypes = {
   node: PropTypes.shape({

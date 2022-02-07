@@ -6,7 +6,7 @@ import ProjectBox from './shared/projectBox';
 
 import './projectList.scss';
 
-const ProjectList = () => {
+function ProjectList() {
   const data = useStaticQuery(graphql`
     {
       allProjectsJson(sort: {fields: [fieldData___Project_Year], order: DESC}) {
@@ -88,6 +88,6 @@ const ProjectList = () => {
       ))}
     </div>
   );
-};
+}
 
 export default ProjectList;

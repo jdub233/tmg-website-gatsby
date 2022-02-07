@@ -9,14 +9,14 @@ import Gallery from '../../components/shared/gallery';
 
 import '../detailPage.scss';
 
-const Project = ({
+function Project({
   data: {
     // eslint-disable-next-line no-unused-vars
     allProjectsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] },
     allAssetsJson: { nodes: assets },
     site: { siteMetadata: { siteUrl } },
   },
-}) => {
+}) {
   const project = fieldData;
   const papers = portalData.ProjectPaperJoin_displayProject;
 
@@ -90,7 +90,7 @@ const Project = ({
       </div>
     </Layout>
   );
-};
+}
 
 Project.propTypes = {
   data: PropTypes.shape().isRequired,

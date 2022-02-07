@@ -6,7 +6,7 @@ import Modal from './galleryModal';
 
 import './gallery.scss';
 
-export default function gallery({ assets, name }) {
+function Gallery({ assets, name }) {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -65,7 +65,9 @@ export default function gallery({ assets, name }) {
   );
 }
 
-gallery.propTypes = {
-  assets: PropTypes.arrayOf(PropTypes.object),
-  name: PropTypes.string,
+Gallery.propTypes = {
+  assets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  name: PropTypes.string.isRequired,
 };
+
+export default Gallery;

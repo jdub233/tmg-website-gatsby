@@ -7,7 +7,7 @@ import NavBar from './filters/navBar';
 
 import './awardList.scss';
 
-const AwardList = () => {
+function AwardList() {
   const data = useStaticQuery(graphql`
     {
       allAwardsJson {
@@ -118,6 +118,6 @@ const AwardList = () => {
       ))}
     </div>
   );
-};
+}
 
 export default AwardList;

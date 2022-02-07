@@ -5,23 +5,27 @@ import slugify from '@sindresorhus/slugify';
 
 import './projectBox.scss';
 
-const NameSpan = ({ name }) => <span>{name.length > 18 ? `${name.substring(0, 17)}...` : name}</span>;
+function NameSpan({ name }) {
+  return <span>{name.length > 18 ? `${name.substring(0, 17)}...` : name}</span>;
+}
 
 NameSpan.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-const ProjectBox = ({ node: { fieldData: { slug, Name, cBadgeRawURL } } }) => (
-  <Link className="projectBadge" to={`/project/${slugify(slug)}`}>
-    <img
-      alt={Name}
-      src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`}
-    />
-    <p className="projectBadge-title">
-      <NameSpan name={Name} />
-    </p>
-  </Link>
-);
+function ProjectBox({ node: { fieldData: { slug, Name, cBadgeRawURL } } }) {
+  return (
+    <Link className="projectBadge" to={`/project/${slugify(slug)}`}>
+      <img
+        alt={Name}
+        src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`}
+      />
+      <p className="projectBadge-title">
+        <NameSpan name={Name} />
+      </p>
+    </Link>
+  );
+}
 
 ProjectBox.propTypes = {
   node: PropTypes.shape({

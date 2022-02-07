@@ -14,7 +14,7 @@ const eventTypes = [
   'show all',
 ];
 
-const EventsList = () => {
+function EventsList() {
   const data = useStaticQuery(graphql`
     {
       allEventsJson {
@@ -91,35 +91,39 @@ const EventsList = () => {
       ))}
     </div>
   );
-};
+}
 
-const TypeFilter = ({ setEventType, eventType }) => (
-  <div className="type-filter">
-    {eventTypes.map((aType) => (
-      <TypeButton
-        key={aType}
-        setEventType={setEventType}
-        eventType={eventType}
-        thisEventType={aType}
-      />
-    ))}
-  </div>
-);
+function TypeFilter({ setEventType, eventType }) {
+  return (
+    <div className="type-filter">
+      {eventTypes.map((aType) => (
+        <TypeButton
+          key={aType}
+          setEventType={setEventType}
+          eventType={eventType}
+          thisEventType={aType}
+        />
+      ))}
+    </div>
+  );
+}
 
 TypeFilter.propTypes = {
   setEventType: PropTypes.func.isRequired,
   eventType: PropTypes.string.isRequired,
 };
 
-const TypeButton = ({ setEventType, eventType, thisEventType }) => (
-  <button
-    type="button"
-    className={`type-filter-option${(eventType === thisEventType) ? '-selected' : ''}`}
-    onClick={() => setEventType(thisEventType)}
-  >
-    {(thisEventType === 'show all' ? 'show all' : `${thisEventType}s`)}
-  </button>
-);
+function TypeButton({ setEventType, eventType, thisEventType }) {
+  return (
+    <button
+      type="button"
+      className={`type-filter-option${(eventType === thisEventType) ? '-selected' : ''}`}
+      onClick={() => setEventType(thisEventType)}
+    >
+      {(thisEventType === 'show all' ? 'show all' : `${thisEventType}s`)}
+    </button>
+  );
+}
 
 TypeButton.propTypes = {
   setEventType: PropTypes.func.isRequired,
@@ -127,31 +131,33 @@ TypeButton.propTypes = {
   thisEventType: PropTypes.string.isRequired,
 };
 
-const EventYearList = ({ events }) => (
-  <div className="events">
-    {events.map(({
-      recordId,
-      fieldData: {
-        Title, VenueName, VenueLink, Presenter, EventID, Type, cDateFragment,
-      },
-    }) => (
-      <div className="events-item" key={EventID}>
-        <h4>
-          <Link to={`/event/${recordId}`}>{Title}</Link>
-        </h4>
-        <div className="events-item-venue">
-          {VenueLink
-            ? <a href={VenueLink}>{VenueName}</a>
-            : <div>{VenueName}</div>}
+function EventYearList({ events }) {
+  return (
+    <div className="events">
+      {events.map(({
+        recordId,
+        fieldData: {
+          Title, VenueName, VenueLink, Presenter, EventID, Type, cDateFragment,
+        },
+      }) => (
+        <div className="events-item" key={EventID}>
+          <h4>
+            <Link to={`/event/${recordId}`}>{Title}</Link>
+          </h4>
+          <div className="events-item-venue">
+            {VenueLink
+              ? <a href={VenueLink}>{VenueName}</a>
+              : <div>{VenueName}</div>}
+          </div>
+          <div className="event-details">
+            {(Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null}
+            <FormattedDate dateString={cDateFragment} />
+          </div>
         </div>
-        <div className="event-details">
-          {(Type === 'Presentation' && Presenter) ? `${Presenter} / ` : null}
-          <FormattedDate dateString={cDateFragment} />
-        </div>
-      </div>
-    ))}
-  </div>
-);
+      ))}
+    </div>
+  );
+}
 
 EventYearList.propTypes = {
   events: PropTypes.arrayOf(

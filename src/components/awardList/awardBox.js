@@ -3,43 +3,43 @@ import PropTypes from 'prop-types';
 
 import ProjectBadge from './projectBadge';
 
-const AwardBox = ({
+function AwardBox({
   award: {
-    id,
-    fieldData: {
+    id, fieldData: {
       SummaryTitle, Title, AwardURL, Description, AwardedTo,
-    },
-    portalData: { projects },
+    }, portalData: { projects },
   },
-}) => (
-  <div key={id} className="award-box">
-    <div className="award-box-content">
-      {SummaryTitle
-        && <p className="award-box-tagline">{SummaryTitle}</p>}
-      <h4>
-        {(AwardURL === '') ? Title : <a href={AwardURL}>{Title}</a>}
-      </h4>
-      {Description
-        && <p className="award-box-textblock">{Description}</p>}
-      <p className="award-box-details">
-        {AwardedTo}
-      </p>
+}) {
+  return (
+    <div key={id} className="award-box">
+      <div className="award-box-content">
+        {SummaryTitle
+          && <p className="award-box-tagline">{SummaryTitle}</p>}
+        <h4>
+          {(AwardURL === '') ? Title : <a href={AwardURL}>{Title}</a>}
+        </h4>
+        {Description
+          && <p className="award-box-textblock">{Description}</p>}
+        <p className="award-box-details">
+          {AwardedTo}
+        </p>
+      </div>
+      <div className="award-box-project-badges">
+        {projects
+          && projects.map(({
+            slug, Name, badge, recordId,
+          }) => (
+            <ProjectBadge
+              slug={slug}
+              name={Name}
+              srcURL={badge}
+              key={recordId}
+            />
+          ))}
+      </div>
     </div>
-    <div className="award-box-project-badges">
-      {projects
-        && projects.map(({
-          slug, Name, badge, recordId,
-        }) => (
-          <ProjectBadge
-            slug={slug}
-            name={Name}
-            srcURL={badge}
-            key={recordId}
-          />
-        ))}
-    </div>
-  </div>
-);
+  );
+}
 
 AwardBox.propTypes = {
   award: PropTypes.shape({

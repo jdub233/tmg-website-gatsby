@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './citation.scss';
 
-export default function CitationDetails({
+function CitationDetails({
   fieldData: {
     DownloadURL, Title, Citation, DOI_URL, Abstract,
   },
@@ -45,3 +45,5 @@ CitationDetails.propTypes = {
     Abstract: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+export default CitationDetails;

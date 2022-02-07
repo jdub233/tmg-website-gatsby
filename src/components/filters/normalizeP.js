@@ -6,7 +6,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const normalizeP = ({ mixedMarkup, className }) => {
+function NormalizeP({ mixedMarkup, className }) {
   // Renders double carriage returns to <p> tags and single carriage returns to <br> tags.
   const normalizedMarkup = mixedMarkup.split('\r\r')
     .filter((x) => x !== '')
@@ -19,14 +19,12 @@ const normalizeP = ({ mixedMarkup, className }) => {
       />
     ));
 
-  return (
-    <div className={className}>{normalizedMarkup}</div>
-  );
+  return <div className={className}>{normalizedMarkup}</div>;
+}
+
+NormalizeP.propTypes = {
+  mixedMarkup: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
-normalizeP.propTypes = {
-  mixedMarkup: PropTypes.string,
-  className: PropTypes.string,
-};
-
-export default normalizeP;
+export default NormalizeP;
