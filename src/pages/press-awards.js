@@ -4,14 +4,16 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import AwardList from '../components/awardList';
 
-const PressAwards = () => (
-  <Layout>
-    <Helmet>
-      <title>Tangible Media Group | Press &amp; Awards</title>
-    </Helmet>
-    <h2>Press &amp; Awards</h2>
-    <AwardList />
-  </Layout>
-);
+function PressAwards() {
+  return (
+    <Layout>
+      <Helmet>
+        <title>Tangible Media Group | Press &amp; Awards</title>
+      </Helmet>
+      <h2>Press &amp; Awards</h2>
+      <AwardList />
+    </Layout>
+  );
+}
 
 export default PressAwards;

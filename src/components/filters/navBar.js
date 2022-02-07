@@ -9,31 +9,33 @@ import './navBar.scss';
  * Used for the year navigation in projects, papers, events, and awards.
  * Also provides the gallery navigation for image galleries.
  */
-const NavBar = ({
+function NavBar({
   elements, setElement, currentElement, showPrevNext,
-}) => (
-  <ul className="navBar">
-    {showPrevNext
+}) {
+  return (
+    <ul className="navBar">
+      {showPrevNext
       && <li key="prev"><button type="button" className="prevNext" onClick={() => setElement((currentElement === 1) ? (elements.length) : currentElement - 1)}>previous</button></li>}
-    {elements.map((element) => (
-      <li key={element}>
-        <button
-          type="button"
-          onClick={() => setElement(element)}
-          className={`element${(element === currentElement) ? '-selected' : ''}`}
-        >
-          {element}
-        </button>
-      </li>
-    ))}
-    {showPrevNext
+      {elements.map((element) => (
+        <li key={element}>
+          <button
+            type="button"
+            onClick={() => setElement(element)}
+            className={`element${(element === currentElement) ? '-selected' : ''}`}
+          >
+            {element}
+          </button>
+        </li>
+      ))}
+      {showPrevNext
       && (
       <li key="next">
         <button type="button" className="prevNext" onClick={() => setElement((currentElement === elements.length) ? 1 : currentElement + 1)}>next</button>
       </li>
       )}
-  </ul>
-);
+    </ul>
+  );
+}
 
 NavBar.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.oneOfType([

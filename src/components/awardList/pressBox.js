@@ -3,21 +3,20 @@ import PropTypes from 'prop-types';
 
 import ProjectBadge from './projectBadge';
 
-const PressBox = ({
+function PressBox({
   press: {
-    id,
-    fieldData: {
+    id, fieldData: {
       PublishedURL, Title, isPDFPublic, PDFDownloadURL, PublishedIn,
-    },
-    portalData: { projects },
+    }, portalData: { projects },
   },
-}) => (
-  <div className="press-box" key={id}>
-    <div className="press-box-content">
-      <h4>
-        {(PublishedURL.trim() === '') ? Title : <a href={PublishedURL}>{Title}</a>}
-      </h4>
-      {isPDFPublic
+}) {
+  return (
+    <div className="press-box" key={id}>
+      <div className="press-box-content">
+        <h4>
+          {(PublishedURL.trim() === '') ? Title : <a href={PublishedURL}>{Title}</a>}
+        </h4>
+        {isPDFPublic
           && (
             <div className="icon-link">
               <a
@@ -28,14 +27,14 @@ const PressBox = ({
               </a>
             </div>
           )}
-      <p className="press-box-details">
-        Press:
-        {' '}
-        {PublishedIn}
-      </p>
-    </div>
-    <div className="press-box-project-badges">
-      {projects
+        <p className="press-box-details">
+          Press:
+          {' '}
+          {PublishedIn}
+        </p>
+      </div>
+      <div className="press-box-project-badges">
+        {projects
           && projects.map(({
             slug, Name, badge, recordId,
           }) => (
@@ -46,9 +45,10 @@ const PressBox = ({
               key={recordId}
             />
           ))}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 PressBox.propTypes = {
   press: PropTypes.shape({

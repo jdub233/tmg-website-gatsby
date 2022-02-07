@@ -18,51 +18,55 @@ const categories = [
   'Visiting Student',
 ];
 
-const CategoryList = ({ category, people }) => (
-  <div>
-    { people.length > 0
-      && <h3 className="category-title">{category}</h3>}
-    <div className="people-list">
-      {people.map(({ node }) => (
-        <PeopleListItem key={node.id} node={node} />
-      ))}
+function CategoryList({ category, people }) {
+  return (
+    <div>
+      { people.length > 0
+        && <h3 className="category-title">{category}</h3>}
+      <div className="people-list">
+        {people.map(({ node }) => (
+          <PeopleListItem key={node.id} node={node} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 CategoryList.propTypes = {
   category: PropTypes.string.isRequired,
   people: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const PeopleListItem = ({
+function PeopleListItem({
   node: {
     fieldData: {
       slug, FullName, cBadgeRawURL, CategoryOverride, Category, SubCategory,
     },
   },
-}) => (
-  <div className="person">
-    <Link to={`/person/${slugify(slug)}`}>
-      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
-    </Link>
-    <div className="description">
+}) {
+  return (
+    <div className="person">
       <Link to={`/person/${slugify(slug)}`}>
-        <h4>{FullName}</h4>
+        <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=140`} />
       </Link>
-      {(Category === 'Professor')
-        // The Professor category requires rendering tags from inside the field contents.
-        // eslint-disable-next-line react/no-danger
-        && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
+      <div className="description">
+        <Link to={`/person/${slugify(slug)}`}>
+          <h4>{FullName}</h4>
+        </Link>
+        {(Category === 'Professor')
+          // The Professor category requires rendering tags from inside the field contents.
+          // eslint-disable-next-line react/no-danger
+          && <div dangerouslySetInnerHTML={{ __html: CategoryOverride }} />}
 
-      {(Category !== 'Professor' && Category !== 'Visiting Professor')
-        && <div>{Category}</div>}
-      {(Category !== 'Professor')
-        && <div>{SubCategory}</div>}
+        {(Category !== 'Professor' && Category !== 'Visiting Professor')
+          && <div>{Category}</div>}
+        {(Category !== 'Professor')
+          && <div>{SubCategory}</div>}
 
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 PeopleListItem.propTypes = {
   node: PropTypes.shape({
@@ -70,33 +74,36 @@ PeopleListItem.propTypes = {
   }).isRequired,
 };
 
-const AlumniListItem = ({
+function AlumniListItem({
   node: {
     fieldData: {
       slug, FullName, cBadgeRawURL, SubCategory,
     },
   },
-}) => (
-  <div className="alumnus">
-    <Link to={`/person/${slugify(slug)}`}>
-      <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
-    </Link>
-    <div className="alumnus-details">
+}) {
+  return (
+    <div className="alumnus">
       <Link to={`/person/${slugify(slug)}`}>
-        <h4>{FullName}</h4>
+        <img alt={FullName} src={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=60`} />
       </Link>
-      <div className="subcategory">{SubCategory}</div>
+      <div className="alumnus-details">
+        <Link to={`/person/${slugify(slug)}`}>
+          <h4>{FullName}</h4>
+        </Link>
+        <div className="subcategory">{SubCategory}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 AlumniListItem.propTypes = {
   node: PropTypes.shape().isRequired,
 };
 
-const PeopleList = () => (
-  <StaticQuery
-    query={graphql`
+function PeopleList() {
+  return (
+    <StaticQuery
+      query={graphql`
       {
         allPeopleJson {
           edges {
@@ -115,36 +122,37 @@ const PeopleList = () => (
         }
       }
     `}
-    render={({ allPeopleJson: { edges } }) => {
-      // Assemble people by categories.
-      const categorized = categories.map((category) => (
-        edges.filter(({ node: { fieldData: { Category } } }) => Category === category)));
+      render={({ allPeopleJson: { edges } }) => {
+        // Assemble people by categories.
+        const categorized = categories.map((category) => (
+          edges.filter(({ node: { fieldData: { Category } } }) => Category === category)));
 
-      // Alumni are rendered separately.
-      const alumni = edges.filter(({ node: { fieldData: { Category } } }) => Category === 'Alumni');
+        // Alumni are rendered separately.
+        const alumni = edges.filter(({ node: { fieldData: { Category } } }) => Category === 'Alumni');
 
-      return (
-        <div className="people">
-          <div className="temp-spacer">&nbsp;</div>
-          {categories.map((category, index) => (
-            <CategoryList
-              key={category}
-              category={category}
-              people={categorized[index]}
-            />
-          ))}
-
-          <h3>Alumni</h3>
-          <div className="alumni-list">
-            {alumni.reverse().map(({ node }) => (
-              <AlumniListItem key={node.id} node={node} />
+        return (
+          <div className="people">
+            <div className="temp-spacer">&nbsp;</div>
+            {categories.map((category, index) => (
+              <CategoryList
+                key={category}
+                category={category}
+                people={categorized[index]}
+              />
             ))}
-          </div>
 
-        </div>
-      );
-    }}
-  />
-);
+            <h3>Alumni</h3>
+            <div className="alumni-list">
+              {alumni.reverse().map(({ node }) => (
+                <AlumniListItem key={node.id} node={node} />
+              ))}
+            </div>
+
+          </div>
+        );
+      }}
+    />
+  );
+}
 
 export default PeopleList;

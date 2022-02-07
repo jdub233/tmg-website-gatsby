@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FormattedDate = ({ dateString }) => {
+function FormattedDate({ dateString }) {
   // Days are optional, so count the date segments by the '-' separator.
   // Filter is useful here because it will always return an array.
   const dateSeparators = [...dateString].filter((x) => x === '-').length;
@@ -17,7 +17,7 @@ const FormattedDate = ({ dateString }) => {
       {eventDate.getUTCFullYear()}
     </>
   );
-};
+}
 
 FormattedDate.propTypes = {
   dateString: PropTypes.string.isRequired,

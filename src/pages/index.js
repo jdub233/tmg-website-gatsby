@@ -12,9 +12,9 @@ import Layout from '../components/layout';
 import ProjectBox from '../components/shared/projectBox';
 import Statement from '../components/vision/statement';
 
-const Index = ({
+function Index({
   data: { allProjectsJson: { edges: projects }, site: { siteMetadata: { siteUrl } } },
-}) => {
+}) {
   const projectsNodes = projects.map(({ node }) => node);
 
   return (
@@ -49,7 +49,7 @@ const Index = ({
       </div>
     </Layout>
   );
-};
+}
 
 Index.propTypes = {
   data: PropTypes.shape().isRequired,

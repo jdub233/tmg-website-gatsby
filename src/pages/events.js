@@ -4,14 +4,16 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 import EventsList from '../components/eventsList';
 
-const Events = () => (
-  <Layout>
-    <Helmet>
-      <title>Tangible Media Group | Events</title>
-    </Helmet>
-    <h2>Events</h2>
-    <EventsList />
-  </Layout>
-);
+function Events() {
+  return (
+    <Layout>
+      <Helmet>
+        <title>Tangible Media Group | Events</title>
+      </Helmet>
+      <h2>Events</h2>
+      <EventsList />
+    </Layout>
+  );
+}
 
 export default Events;

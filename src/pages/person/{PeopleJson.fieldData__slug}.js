@@ -10,7 +10,7 @@ import ProjectBox from '../../components/shared/projectBox';
 import '../detailPage.scss';
 
 // eslint-disable-next-line no-unused-vars
-const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => {
+function Person({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) {
   const {
     FullName,
     Category,
@@ -83,7 +83,7 @@ const Person = ({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) => 
       ))}
     </Layout>
   );
-};
+}
 
 Person.propTypes = {
   data: PropTypes.shape().isRequired,
