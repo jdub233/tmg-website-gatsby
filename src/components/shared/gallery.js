@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import GalleryNav from '../filters/navBar';
+import GalleryNav from '../filters/elementNav';
 import Modal from './galleryModal';
 
 import './gallery.scss';

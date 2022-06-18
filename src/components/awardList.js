@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import PressBox from './awardList/pressBox';
 import AwardBox from './awardList/awardBox';
-import NavBar from './filters/navBar';
+import ElementNav from './filters/elementNav';
 
 import './awardList.scss';
 
@@ -102,7 +102,7 @@ function AwardList() {
 
   return (
     <div className="press-awards">
-      <NavBar elements={yearsForNav} setElement={setYear} currentElement={year} />
+      <ElementNav elements={yearsForNav} setElement={setYear} currentElement={year} />
       {filteredYears.map((aYear) => (
         <div key={aYear} className="year-item">
           <h3>{aYear}</h3>

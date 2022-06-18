@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import NavBar from './filters/navBar';
+import ElementNav from './filters/elementNav';
 import ProjectBox from './shared/projectBox';
 
 import './projectList.scss';
@@ -77,7 +77,7 @@ function ProjectList() {
         onChange={({ target: { value } }) => setSearchString(value)}
       />
 
-      <NavBar elements={years} setElement={setYear} currentElement={(searchString === '') ? year : 'show all'} />
+      <ElementNav elements={years} setElement={setYear} currentElement={(searchString === '') ? year : 'show all'} />
       {Object.entries(projectsByYearObj).reverse().map(([key, items]) => (
         <div key={key}>
           <h3 className="projects-year">{key}</h3>
