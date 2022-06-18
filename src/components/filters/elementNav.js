@@ -9,7 +9,7 @@ import './navBar.scss';
  * Used for the year navigation in projects, papers, events, and awards.
  * Also provides the gallery navigation for image galleries.
  */
-function NavBar({
+function ElementNav({
   elements, setElement, currentElement, showPrevNext,
 }) {
   return (
@@ -37,7 +37,7 @@ function NavBar({
   );
 }
 
-NavBar.propTypes = {
+ElementNav.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -50,8 +50,8 @@ NavBar.propTypes = {
   showPrevNext: PropTypes.bool,
 };
 
-NavBar.defaultProps = {
+ElementNav.defaultProps = {
   showPrevNext: false,
 };
 
-export default NavBar;
+export default ElementNav;
