@@ -16,31 +16,31 @@
     "preinstall": "node ./bin/fetch.js"
   },
   "dependencies": {
-    "@sindresorhus/slugify": "^2.1.0",
+    "@sindresorhus/slugify": "^2.1.1",
     "deepmerge": "^4.2.2",
     "dotenv": "^8.6.0",
-    "gatsby": "^4.6.0",
-    "gatsby-plugin-google-analytics": "^4.6.0",
-    "gatsby-plugin-react-helmet": "^5.6.0",
-    "gatsby-plugin-robots-txt": "^1.7.0",
-    "gatsby-plugin-sass": "^5.6.0",
-    "gatsby-plugin-sitemap": "^5.6.0",
-    "gatsby-source-filesystem": "^4.6.0",
-    "gatsby-transformer-json": "^4.6.0",
+    "gatsby": "^4.24.4",
+    "gatsby-plugin-google-analytics": "^4.24.0",
+    "gatsby-plugin-react-helmet": "^5.24.0",
+    "gatsby-plugin-robots-txt": "^1.7.1",
+    "gatsby-plugin-sass": "^5.24.0",
+    "gatsby-plugin-sitemap": "^5.24.0",
+    "gatsby-source-filesystem": "^4.24.0",
+    "gatsby-transformer-json": "^4.24.0",
     "prop-types": "^15.8.1",
-    "pure-react-carousel": "^1.28.0",
+    "pure-react-carousel": "^1.30.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-transition-group": "^4.4.1",
-    "sass": "^1.49.7"
+    "react-transition-group": "^4.4.5",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "prettier": "^2.5.1"
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1"
   },
   "repository": {
     "type": "git",
