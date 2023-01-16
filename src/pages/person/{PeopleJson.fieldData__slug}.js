@@ -36,13 +36,6 @@ function Person({ data: { allPeopleJson: { edges: [{ node }, ...rest] } } }) {
 
   return (
     <Layout>
-      <Helmet>
-        <title>
-          Tangible Media Group |
-          {' '}
-          {FullName}
-        </title>
-      </Helmet>
       <h2>
         {FullName}
         <span className="subtitle">{Category}</span>
@@ -128,3 +121,13 @@ export const query = graphql`
 `;
 
 export default Person;
+
+export function Head({ data: { allPeopleJson: { edges: [{ node: { fieldData } }] } } }) {
+  return (
+    <title>
+      Tangible Media Group |
+      {' '}
+      {fieldData.FullName}
+    </title>
+  );
+}
