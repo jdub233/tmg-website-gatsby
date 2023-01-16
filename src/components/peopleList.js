@@ -35,7 +35,7 @@ function CategoryList({ category, people }) {
 
 CategoryList.propTypes = {
   category: PropTypes.string.isRequired,
-  people: PropTypes.arrayOf(PropTypes.object).isRequired,
+  people: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 function PeopleListItem({

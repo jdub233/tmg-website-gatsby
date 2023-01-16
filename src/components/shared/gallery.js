@@ -66,7 +66,7 @@ function Gallery({ assets, name }) {
 }
 
 Gallery.propTypes = {
-  assets: PropTypes.arrayOf(PropTypes.object).isRequired,
+  assets: PropTypes.arrayOf(PropTypes.shape).isRequired,
   name: PropTypes.string.isRequired,
 };
 

@@ -83,6 +83,11 @@ Person.propTypes = {
 
 export const query = graphql`
   query($fieldData__slug: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allPeopleJson(filter: { fieldData: {slug: {eq: $fieldData__slug} } } ) {
       edges {
         node {
@@ -121,12 +126,42 @@ export const query = graphql`
 
 export default Person;
 
-export function Head({ data: { allPeopleJson: { edges: [{ node: { fieldData } }] } } }) {
+export function Head({
+  data: {
+    allPeopleJson: { edges: [{ node: { fieldData } }] },
+    site: { siteMetadata: { siteUrl } },
+  },
+}) {
+  const {
+    FullName, DescriptionHTML, slug, cBadgeRawURL,
+  } = fieldData;
+
+  const descriptionPlain = DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+
   return (
-    <title>
-      Tangible Media Group |
-      {' '}
-      {fieldData.FullName}
-    </title>
+    <>
+      <title>
+        Tangible Media Group |
+        {' '}
+        {fieldData.FullName}
+      </title>
+      <meta name="title" content={FullName} />
+      <meta name="description" content={descriptionPlain} />
+      <meta name="og:title" content={FullName} />
+      <meta name="og:url" content={`${siteUrl}/person/${slug}`} />
+      <meta name="og:type" content="website" />
+      <meta name="og:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=600`} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@tangible_media" />
+      <meta name="twitter:title" content={FullName} />
+      <meta
+        name="twitter:description"
+        content={
+          (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
+        }
+      />
+      <meta name="twitter:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=600`} />
+      <link rel="canonical" href={`${siteUrl}/person/${slug}`} />
+    </>
   );
 }
