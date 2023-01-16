@@ -13,7 +13,6 @@ module.exports = {
     siteUrl: `${process.env.SITE_URL}`,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-transformer-json',
     {
