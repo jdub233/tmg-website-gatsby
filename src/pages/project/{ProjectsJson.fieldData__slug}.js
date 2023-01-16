@@ -132,9 +132,9 @@ export default Project;
 
 export function Head({
   data: {
-    allProjectsJson: { edges: [{ node: { fieldData } }] } ,
+    allProjectsJson: { edges: [{ node: { fieldData } }] },
     site: { siteMetadata: { siteUrl } },
-  }
+  },
 }) {
   const {
     Name, DescriptionHTML, slug, cBadgeRawURL,
