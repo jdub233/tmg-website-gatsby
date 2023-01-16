@@ -2,7 +2,6 @@
 /* eslint-disable max-len */
 // Content should likely be moved to an mdx file.
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import './vision.scss';
 

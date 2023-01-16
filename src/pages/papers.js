@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import PaperList from '../components/paperList';
 import Layout from '../components/layout';
