@@ -7,9 +7,6 @@ import Layout from '../components/layout';
 function Papers() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Papers</title>
-      </Helmet>
       <h2>Papers</h2>
       <PaperList />
     </Layout>
@@ -17,3 +14,9 @@ function Papers() {
 }
 
 export default Papers;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Papers</title>
+  );
+}

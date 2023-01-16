@@ -7,9 +7,6 @@ import Layout from '../components/layout';
 function FourOhFour() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Not Found!</title>
-      </Helmet>
       <h2>404 sorry not found!</h2>
       <p>
         The link you requested could not be found. It may have been moved or deleted.
@@ -22,3 +19,9 @@ function FourOhFour() {
 }
 
 export default FourOhFour;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Not Found!</title>
+  );
+}

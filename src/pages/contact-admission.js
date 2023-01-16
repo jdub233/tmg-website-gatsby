@@ -12,9 +12,6 @@ import './contact-admission.scss';
 function ContactAdmission() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | About us</title>
-      </Helmet>
       <h2>About us</h2>
       <h3>What is the Tangible Media Group?</h3>
       <p>
@@ -137,3 +134,9 @@ function ContactAdmission() {
 }
 
 export default ContactAdmission;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | About us</title>
+  );
+}

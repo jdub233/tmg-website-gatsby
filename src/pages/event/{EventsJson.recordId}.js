@@ -49,9 +49,6 @@ function Event({
 
   return (
     <Layout>
-      <Helmet>
-        <title>{Title}</title>
-      </Helmet>
       <h2>{Title}</h2>
       <div className="event">
         {EventLink
@@ -128,3 +125,9 @@ export const query = graphql`
 `;
 
 export default Event;
+
+export function Head({ data: { allEventsJson: { edges: [{ node: { fieldData: { Title } } }] } } }) {
+  return (
+    <title>{Title}</title>
+  );
+}

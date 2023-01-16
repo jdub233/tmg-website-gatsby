@@ -12,9 +12,6 @@ import Statement from '../components/vision/statement';
 function Vision() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Vision</title>
-      </Helmet>
       <Statement />
       <div className="half-column">
         <div className="text-block">
@@ -54,3 +51,9 @@ function Vision() {
 }
 
 export default Vision;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Vision</title>
+  );
+}
