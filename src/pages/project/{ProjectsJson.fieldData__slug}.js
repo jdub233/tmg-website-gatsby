@@ -14,15 +14,10 @@ function Project({
     // eslint-disable-next-line no-unused-vars
     allProjectsJson: { edges: [{ node: { fieldData, portalData } }, ...rest] },
     allAssetsJson: { nodes: assets },
-    site: { siteMetadata: { siteUrl } },
   },
 }) {
   const project = fieldData;
   const papers = portalData.ProjectPaperJoin_displayProject;
-
-  // For meta tag descriptions; strip html tags and pad with spaces.
-  // Then trim all extra spaces from the result.
-  const descriptionPlain = fieldData.DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
 
   // Normally there is only one public collection.
   const collection = portalData.CollectionsForWeb[0];
@@ -38,26 +33,6 @@ function Project({
 
   return (
     <Layout>
-      <Helmet>
-        <title>{project.Name}</title>
-        <meta name="title" content={project.Name} />
-        <meta name="description" content={descriptionPlain} />
-        <meta name="og:title" content={project.Name} />
-        <meta name="og:url" content={`${siteUrl}/project/${project.slug}`} />
-        <meta name="og:type" content="website" />
-        <meta name="og:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@tangible_media" />
-        <meta name="twitter:title" content={project.Name} />
-        <meta
-          name="twitter:description"
-          content={
-          (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
-        }
-        />
-        <meta name="twitter:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${project.cBadgeRawURL}?width=600`} />
-        <link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
-      </Helmet>
       <h2>
         {project.Name}
         {' '}
@@ -155,3 +130,41 @@ export const query = graphql`
 `;
 
 export default Project;
+
+export function Head({
+  data: {
+    allProjectsJson: { edges: [{ node: { fieldData } }] } ,
+    site: { siteMetadata: { siteUrl } },
+  }
+}) {
+  const {
+    Name, DescriptionHTML, slug, cBadgeRawURL,
+  } = fieldData;
+
+  // For meta tag descriptions; strip html tags and pad with spaces.
+  // Then trim all extra spaces from the result.
+  const descriptionPlain = DescriptionHTML.replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+
+  return (
+    <>
+      <title>{Name}</title>
+      <meta name="title" content={Name} />
+      <meta name="description" content={descriptionPlain} />
+      <meta name="og:title" content={Name} />
+      <meta name="og:url" content={`${siteUrl}/project/${slug}`} />
+      <meta name="og:type" content="website" />
+      <meta name="og:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=600`} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@tangible_media" />
+      <meta name="twitter:title" content={Name} />
+      <meta
+        name="twitter:description"
+        content={
+          (descriptionPlain.length < 200) ? descriptionPlain : `${descriptionPlain.substring(0, 196)} ...`
+        }
+      />
+      <meta name="twitter:image" content={`${process.env.GATSBY_MEDIA_LIBRARY}/${cBadgeRawURL}?width=600`} />
+      <link rel="canonical" href={`${siteUrl}/project/${slug}/`} />
+    </>
+  );
+}
