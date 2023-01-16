@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import Layout from '../components/layout';
 import AwardList from '../components/awardList';
@@ -7,9 +6,6 @@ import AwardList from '../components/awardList';
 function PressAwards() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Press &amp; Awards</title>
-      </Helmet>
       <h2>Press &amp; Awards</h2>
       <AwardList />
     </Layout>
@@ -17,3 +13,9 @@ function PressAwards() {
 }
 
 export default PressAwards;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Press &amp; Awards</title>
+  );
+}

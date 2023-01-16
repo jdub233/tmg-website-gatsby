@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/layout';
@@ -49,9 +48,6 @@ function Event({
 
   return (
     <Layout>
-      <Helmet>
-        <title>{Title}</title>
-      </Helmet>
       <h2>{Title}</h2>
       <div className="event">
         {EventLink
@@ -128,3 +124,9 @@ export const query = graphql`
 `;
 
 export default Event;
+
+export function Head({ data: { allEventsJson: { edges: [{ node: { fieldData: { Title } } }] } } }) {
+  return (
+    <title>{Title}</title>
+  );
+}

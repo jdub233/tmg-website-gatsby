@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import Layout from '../components/layout';
 import ProjectList from '../components/projectList';
@@ -7,9 +6,6 @@ import ProjectList from '../components/projectList';
 function Projects() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Projects</title>
-      </Helmet>
       <h2>Projects</h2>
       <ProjectList />
     </Layout>
@@ -17,3 +13,9 @@ function Projects() {
 }
 
 export default Projects;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Projects</title>
+  );
+}

@@ -2,7 +2,6 @@
 /* eslint-disable max-len */
 // Content should likely be moved to an mdx file.
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import './vision.scss';
 
@@ -12,9 +11,6 @@ import Statement from '../components/vision/statement';
 function Vision() {
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group | Vision</title>
-      </Helmet>
       <Statement />
       <div className="half-column">
         <div className="text-block">
@@ -54,3 +50,9 @@ function Vision() {
 }
 
 export default Vision;
+
+export function Head() {
+  return (
+    <title>Tangible Media Group | Vision</title>
+  );
+}
