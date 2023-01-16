@@ -13,16 +13,12 @@ import ProjectBox from '../components/shared/projectBox';
 import Statement from '../components/vision/statement';
 
 function Index({
-  data: { allProjectsJson: { edges: projects }, site: { siteMetadata: { siteUrl } } },
+  data: { allProjectsJson: { edges: projects } },
 }) {
   const projectsNodes = projects.map(({ node }) => node);
 
   return (
     <Layout>
-      <Helmet>
-        <title>Tangible Media Group</title>
-        <link rel="canonical" href={siteUrl} />
-      </Helmet>
       <Statement home />
       <div>
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
@@ -79,3 +75,12 @@ export const query = graphql`
 `;
 
 export default Index;
+
+export function Head({ data: { site: { siteMetadata: { siteUrl } } } }) {
+  return (
+    <>
+      <title>Tangible Media Group</title>
+      <link rel="canonical" href={siteUrl} />
+    </>
+  );
+}
