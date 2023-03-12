@@ -56,6 +56,10 @@ body {
     font-family: "OpenSansRegular", sans-serif;
     font-size: 13px;
     line-height: 1.65em;
+
+    @media screen and (max-width: 500px) {
+        min-width: 200px;
+    }
 }
 
 #container {
@@ -67,6 +71,11 @@ body {
 
     margin: auto;
     width: 1042px;
+
+    @media screen and (max-width: 500px) {
+        min-width: 200px;
+        width: auto;
+    }
     
     a:link, a:visited, h1, h2, h3, h4, h5, h6 {
         color: #4a4a4a;
@@ -111,6 +120,11 @@ body {
         padding-right: 20px;
 
         flex-grow: 1;
+        @media screen and (max-width: 500px) {
+            width: 90%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
 
 }
