@@ -5,10 +5,19 @@
 
     margin-bottom: 13px;
 
+    @media screen and (max-width: 500px) {
+        width: auto;
+        grid-template-columns: 8fr 2fr;
+    }
+
     .icon-link {
         width: 46px;
         height: 46px;
         background-image: url(../img/pdf-icon.png);
+
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
 
         &-anchor {
             width: 100%;
@@ -19,11 +28,21 @@
 
     .related-projects {
         padding-left: 10px;
+
+        @media screen and (max-width: 500px) {
+            display: grid;
+            grid-template-columns: 1fr;
+            height: min-content;
+        }
         
         &-link {
             
             img {
                 margin-bottom: 14.5px;
+
+                @media screen and (max-width: 500px) {
+                    margin-bottom: 0px;
+                }
             }
         }
     }
