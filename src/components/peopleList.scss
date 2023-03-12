@@ -15,10 +15,18 @@
         grid-template-columns: 480px 460px;
         padding-right: 0px;
 
+        @media screen and (max-width: 500px) {
+            grid-template-columns: 1fr;
+        }
+
         .person {
             display: flex;
             margin-top:20px;
             height: 140px;
+
+            @media screen and (max-width: 500px) {
+                height: auto;
+            }
 
             .description {
                 margin-top: -3px;
@@ -49,6 +57,12 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         width: 960px;
+
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            grid-template-columns: 1fr;
+            
+        }
 
         .alumnus {
             display: flex;
