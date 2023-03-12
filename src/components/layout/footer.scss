@@ -13,6 +13,27 @@
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
 
+    @media screen and (max-width: 500px) {
+        background-image: none;
+        background: linear-gradient(to right, #cf6229, #d79928);
+        width: auto;
+        height: 100%;
+        grid-template-columns: 5fr 5fr;
+        line-height: 2em;
+    }
+
+    .org-name {
+        line-height: 1em;
+        // Suppress for desktop
+        display: none;
+
+        @media screen and (max-width: 500px) {
+            display: block;
+            font-size: 14px;
+            padding: 10px;
+        }
+    }
+
     .navbar {
         list-style-type: none;
         display: flex;
@@ -22,6 +43,14 @@
         left: 560px;
 
         margin-top: 0px;
+
+        @media screen and (max-width: 500px) {
+            position: relative;
+            flex-direction: column;
+            left: auto;
+            font-size: 16px;
+            margin-bottom: 0px;
+        }
 
         li {
             flex: 1 1 auto;
@@ -47,6 +76,14 @@
         top: 21px;
         left: 827px;
         font-size: 14px;
+
+        @media screen and (max-width: 500px) {
+            position: relative;
+            left: 0px;
+            top: 0px;
+            font-size: 16px;
+            padding: 10px;
+        }
 
         a {
             color: #fff;
