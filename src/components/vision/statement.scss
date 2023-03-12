@@ -4,10 +4,20 @@
     margin-top: 20px;
     margin-bottom: -6px;
 
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+    }
+
     .more {
         margin-top: -45px;
         margin-right: 135px;
         text-align: right;
+
+        @media screen and (max-width: 500px) {
+            margin-top: -10px;
+            margin-right: 0px;
+            text-align: left;
+        }
 
         &-link {
             color: #787878 !important;
@@ -32,6 +42,11 @@
         font-family: "AlternateGothicFSNo3";
         background-color: #e1e1e1;
         border-radius: 4px;
+
+        @media screen and (max-width: 500px) {
+            // this isn't in a good place in the document flow for mobile
+            display: none;
+        }
 
         a {
             margin-left: 141px;
@@ -131,6 +146,10 @@
             margin-top: 5px;
             font-family: "OpenSansLightItalic";
             color: #848484;
+
+            @media screen and (max-width: 500px) {
+                width: 300px;
+            }
 
             strong {
                 font-family: "OpenSansBoldItalic";

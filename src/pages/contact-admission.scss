@@ -3,6 +3,10 @@
     grid-template-columns: 50% 50%;
     column-gap: 10px;
 
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 100%;
+    }
+
     .column {
         padding-right: 10px;
     }
