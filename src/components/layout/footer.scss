@@ -21,13 +21,21 @@
         grid-template-columns: 5fr 5fr;
         line-height: 2em;
     }
+    @media screen and (min-width: 500px) and (max-width: 1024px) {
+        background-image: none;
+        background: linear-gradient(to right, #cf6229, #d79928);
+        width: auto;
+        grid-template-columns: 3fr 9fr;
+        line-height: 2em;
+        
+    }
 
     .org-name {
         line-height: 1em;
         // Suppress for desktop
         display: none;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 1024px) {
             display: block;
             font-size: 14px;
             padding: 10px;
@@ -50,6 +58,10 @@
             left: auto;
             font-size: 16px;
             margin-bottom: 0px;
+        }
+        @media screen and (min-width: 500px) and (max-width: 1024px) {
+            left: inherit !important;
+            right: 5%;
         }
 
         li {
@@ -83,6 +95,10 @@
             top: 0px;
             font-size: 16px;
             padding: 10px;
+        }
+        @media screen and (min-width: 500px) and (max-width: 1024px) {
+            left: inherit !important;
+            right: 5%;
         }
 
         a {
