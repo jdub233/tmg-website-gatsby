@@ -60,7 +60,7 @@
         width: 780px;
 
         @media screen and (max-width: 500px) {
-            width: 90%;
+            width: auto;
         }
 
         &-item {
