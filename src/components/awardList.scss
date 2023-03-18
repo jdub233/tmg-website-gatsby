@@ -34,6 +34,9 @@
             }
 
             &-textblock {
+                @media screen and (max-width: 500px) {
+                    overflow-wrap: anywhere;
+                }
                 margin-bottom: 20px;
             }
 
@@ -77,6 +80,9 @@
             }
 
             &-details {
+                @media screen and (max-width: 500px) {
+                    overflow-wrap: anywhere;
+                }
                 @extend %details;
             }
 
