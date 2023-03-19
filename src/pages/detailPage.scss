@@ -38,6 +38,14 @@
         &-papers {
             margin-top: -10px;
         }
+
+        & .description img {
+            // Prevent images from overflowing the container at mobile sizes
+            @media screen and (max-width: 1024px) {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     }
 
 }
