@@ -4,7 +4,7 @@
     margin-top: 20px;
     margin-bottom: -6px;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 
@@ -13,7 +13,7 @@
         margin-right: 135px;
         text-align: right;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 1040px) {
             margin-top: -10px;
             margin-right: 0px;
             text-align: left;
@@ -43,7 +43,7 @@
         background-color: #e1e1e1;
         border-radius: 4px;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 1000px) {
             // this isn't in a good place in the document flow for mobile
             display: none;
         }

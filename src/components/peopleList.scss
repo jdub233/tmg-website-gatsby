@@ -15,8 +15,11 @@
         grid-template-columns: 480px 460px;
         padding-right: 0px;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 650px) {
             grid-template-columns: 1fr;
+        }
+        @media screen and (min-width: 650px) and (max-width: 960px) {
+            grid-template-columns: 1fr 1fr;
         }
 
         .person {
@@ -24,7 +27,7 @@
             margin-top:20px;
             height: 140px;
 
-            @media screen and (max-width: 500px) {
+            @media screen and (max-width: 1024px) {
                 height: auto;
             }
 
@@ -61,7 +64,10 @@
         @media screen and (max-width: 500px) {
             width: 100%;
             grid-template-columns: 1fr;
-            
+        }
+        @media screen and (min-width: 500px) and (max-width: 930px) {
+            width: 100%;
+            grid-template-columns: 1fr 1fr;
         }
 
         .alumnus {
