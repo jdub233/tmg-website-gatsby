@@ -64,8 +64,11 @@
         padding-inline-start: 78px;
         padding-inline-end: 8px;            
         
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 650px) {
             flex-direction: column;
+            padding-inline-start: 0px;
+        }
+        @media screen and (min-width: 500px) and (max-width: 768px) {
             padding-inline-start: 0px;
         }
 
