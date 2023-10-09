@@ -1,5 +1,8 @@
 version: 0.1
 phases:
+  install:
+    runtime-versions:
+      nodejs: 18
   pre_build:
     commands:
       - npm i -g npm && npm ci --unsafe-perm
