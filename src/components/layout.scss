@@ -62,6 +62,7 @@ body {
     }
     @media screen and (min-width: 500px) and (max-width: 1024px) {
         min-width: 500px;
+        text-size-adjust: none;
     }
 }
 
