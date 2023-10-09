@@ -2,9 +2,8 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 16
+      nodejs: 18
     commands:
-      - n 18
       - npm i -g npm
       - npm ci --unsafe-perm
   build:
