@@ -1,6 +1,10 @@
 .event {
     width: 780px;
 
+    @media screen and (max-width: 1024px) {
+        width: auto;
+    }
+
     &-link {
         margin-top: 0px;
         margin-bottom: -15px !important;

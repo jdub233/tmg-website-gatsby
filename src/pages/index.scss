@@ -1,3 +1,26 @@
-.more-projects {
+.featured-projects {
     margin-top: 41px;
+
+    & .carousel {
+        @media screen and (max-width: 500px) {
+            padding-left: -10px;
+        }
+    }
+
+    & .carousel__slide {
+        @media screen and (max-width: 500px) {
+            scale: 0.375;
+        }
+        @media screen and (min-width: 500px) and (max-width: 700px) {
+            scale: 0.5;
+        }
+        @media screen and (min-width: 700px) and (max-width: 1000px) {
+            scale: 0.7;
+        }
+    }
+
+    .more-projects {
+        margin-top: 41px;
+    }
+
 }

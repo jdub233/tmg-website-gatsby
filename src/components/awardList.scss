@@ -15,6 +15,10 @@
             margin-bottom: 20px;
             display: grid;
             grid-template-columns: 10fr 2fr;
+            @media screen and (max-width: 768px) {
+                grid-template-columns: 7fr 3fr;
+
+            }
 
             &-tagline {
                 font-family: "OpenSansLightItalic";
@@ -30,6 +34,9 @@
             }
 
             &-textblock {
+                @media screen and (max-width: 500px) {
+                    overflow-wrap: anywhere;
+                }
                 margin-bottom: 20px;
             }
 
@@ -49,6 +56,9 @@
             margin-bottom: 20px;
             display: grid;
             grid-template-columns: 10fr 2fr;
+            @media screen and (max-width: 768px) {
+                grid-template-columns: 7fr 3fr;
+            }
 
              h4 {
                 margin-block-start: 0px;
@@ -70,6 +80,9 @@
             }
 
             &-details {
+                @media screen and (max-width: 500px) {
+                    overflow-wrap: anywhere;
+                }
                 @extend %details;
             }
 

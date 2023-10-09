@@ -19,7 +19,7 @@ function Index({
   return (
     <Layout>
       <Statement home />
-      <div>
+      <div className="featured-projects">
         {projectsNodes.length > 0 && <h3>Featured Projects</h3>}
         <CarouselProvider
           totalSlides={projectsNodes.length}

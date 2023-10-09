@@ -1,22 +1,63 @@
 .subtitle {
     font-size: 13px;
     color: #848484;
+    line-height: normal;
+    
+    @media screen and (max-width: 500px) {
+        font-size: 16px;
+        padding-top: 10px;
+        display: inline-block;
+    }
 }
 
 .detail {
     display: grid;
     grid-template-columns: 2fr 10fr;
 
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+    @media screen and (min-width: 500px) and (max-width: 1024px) {
+        grid-template-columns: 160px 1fr;
+        width: 100%;
+    }
+
     &-badge {
         margin-top: 4px;
         border-radius: 4px;
+        @media screen and (max-width: 500px) {
+            margin-bottom: 20px;
+            
+        }
     }
 
     &-main {
         margin-left: 10px;
 
+        & .iframe-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            & iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         &-papers {
             margin-top: -10px;
+        }
+
+        & .description img {
+            // Prevent images from overflowing the container at mobile sizes
+            @media screen and (max-width: 1024px) {
+                max-width: 100%;
+                height: auto;
+            }
         }
     }
 

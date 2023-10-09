@@ -5,6 +5,23 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         width: 960px;
+        /* Define a bunch of breakpoints for the project grid so it adapts smoothly through different sizes and aspects */
+        @media screen and (max-width: 500px) {
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+        }
+        @media screen and (min-width: 500px) and (max-width: 610px) {
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+        }
+        @media screen and (min-width: 610px) and (max-width: 800px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 100%;
+        }
+        @media screen and (min-width: 800px) and (max-width: 1024px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            width: 100%;
+        }
     }
 
     &-search {
@@ -18,6 +35,11 @@
         height: 32px;
 
         line-height: 1.65em;
+
+        @media screen and (max-width: 500px) {
+            right: 10px;
+            top: -60px;
+        }
 
         &::placeholder {
             color: #818181;
