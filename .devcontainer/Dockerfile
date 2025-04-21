@@ -5,7 +5,7 @@
 
 # To fully customize the contents of this image, use the following Dockerfile instead:
 # https://github.com/microsoft/vscode-dev-containers/tree/v0.117.0/containers/javascript-node-10/.devcontainer/Dockerfile
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-10
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-18
 
 # ** [Optional] Uncomment this section to install additional packages. **
 #
@@ -19,4 +19,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-10
 #    && rm -rf /var/lib/apt/lists/*
 # ENV DEBIAN_FRONTEND=dialog
 
-RUN npm install -g gatsby-cli
+# Install dependencies for native modules
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    python3
