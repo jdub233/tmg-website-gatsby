@@ -50,28 +50,29 @@ Index.propTypes = {
   data: PropTypes.shape().isRequired,
 };
 
-export const query = graphql`
-  {
-    site {
-      siteMetadata {
-        siteUrl
-      }
+export const query = graphql`{
+  site {
+    siteMetadata {
+      siteUrl
     }
-    allProjectsJson(filter: {fieldData: {Featured: {eq: "Yes"}}}, sort: {fields: fieldData___Project_Year, order: DESC}) {
-      edges {
-        node {
-          id
-          recordId
-          fieldData {
-            cBadgeRawURL
-            Name
-            slug
-          }
+  }
+  allProjectsJson(
+    filter: {fieldData: {Featured: {eq: "Yes"}}}
+    sort: {fieldData: {Project_Year: DESC}}
+  ) {
+    edges {
+      node {
+        id
+        recordId
+        fieldData {
+          cBadgeRawURL
+          Name
+          slug
         }
       }
     }
   }
-`;
+}`;
 
 export default Index;
 

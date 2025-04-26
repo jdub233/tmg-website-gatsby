@@ -7,27 +7,25 @@ import ProjectBox from './shared/projectBox';
 import './projectList.scss';
 
 function ProjectList() {
-  const data = useStaticQuery(graphql`
-    {
-      allProjectsJson(sort: {fields: [fieldData___Project_Year], order: DESC}) {
-        edges {
-          node {
-            id
-            recordId
-            fieldData {
-              ForWeb
-              slug
-              Name
-              BadgeContainerURL
-              ProjectYear: Project_Year
-              cBadgeRawURL
-              Members
-            }
-          }
+  const data = useStaticQuery(graphql`{
+  allProjectsJson(sort: {fieldData: {Project_Year: DESC}}) {
+    edges {
+      node {
+        id
+        recordId
+        fieldData {
+          ForWeb
+          slug
+          Name
+          BadgeContainerURL
+          ProjectYear: Project_Year
+          cBadgeRawURL
+          Members
         }
       }
     }
-  `);
+  }
+}`);
 
   const { allProjectsJson: { edges: projects } } = data;
 
@@ -48,7 +46,7 @@ function ProjectList() {
   let projectsByYearObj = filteredProjects.reduce((accumulator, { node }) => {
     const { fieldData: { ProjectYear } } = node;
 
-    accumulator[ProjectYear] = [...accumulator[ProjectYear] || [], node];
+    accumulator[ProjectYear] = [...(accumulator[ProjectYear] || []), node];
     return accumulator;
   }, {});
 
