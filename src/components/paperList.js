@@ -9,38 +9,36 @@ import CitationDetails from './paperList/citationDetails';
 import './paperList.scss';
 
 function PaperList() {
-  const data = useStaticQuery(graphql`
-      {
-        allPapersJson(sort: {fields: fieldData___Paper_Year, order: DESC}) {
-          edges {
-            node {
-              id
-              recordId
-              fieldData {
-                Abstract
-                Authors_Display
-                Citation
-                DOI
-                DOI_URL
-                PaperID
-                PaperYear: Paper_Year
-                DownloadURL: SC_published_pdf_Download_URL
-                Title
-                Venue
-              }
-              portalData {
-                proj_portal {
-                  BadgeURL: Projects_forPapers__cBadgeRawURL
-                  Name: Projects_forPapers__Name
-                  slug: Projects_forPapers__slug
-                  recordId
-                }
-              }
-            }
+  const data = useStaticQuery(graphql`{
+  allPapersJson(sort: {fieldData: {Paper_Year: DESC}}) {
+    edges {
+      node {
+        id
+        recordId
+        fieldData {
+          Abstract
+          Authors_Display
+          Citation
+          DOI
+          DOI_URL
+          PaperID
+          PaperYear: Paper_Year
+          DownloadURL: SC_published_pdf_Download_URL
+          Title
+          Venue
+        }
+        portalData {
+          proj_portal {
+            BadgeURL: Projects_forPapers__cBadgeRawURL
+            Name: Projects_forPapers__Name
+            slug: Projects_forPapers__slug
+            recordId
           }
         }
       }
-    `);
+    }
+  }
+}`);
 
   const { allPapersJson: { edges: papers } } = data;
 
@@ -50,7 +48,7 @@ function PaperList() {
   let papersByYear = papers.reduce((accumulator, { node }) => {
     const { fieldData: { PaperYear } } = node;
 
-    accumulator[PaperYear] = [...accumulator[PaperYear] || [], node];
+    accumulator[PaperYear] = [...(accumulator[PaperYear] || []), node];
     return accumulator;
   }, {});
 
