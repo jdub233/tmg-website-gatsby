@@ -7,12 +7,12 @@ import './peopleList.scss';
 
 const categories = [
   'Professor',
+  'Visiting Professor',
   'Postdoctoral Associate',
   'Postdoctoral Fellow',
   'Ph.D. Candidate',
   'M.S. Candidate',
   'Visiting Scientist',
-  'Visiting Professor',
   'Administrative Assistant',
   'Research Affiliate',
   'Collaborator',
