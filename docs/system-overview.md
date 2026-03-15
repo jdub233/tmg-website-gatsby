@@ -21,7 +21,7 @@ FileMaker is an external system (hosted by a partner) and is not a repo.
 This diagram shows the three repos as black boxes with labeled flows between them. It intentionally omits internal AWS component detail — see the Miro board for the full internal architecture of `superfluid-images`.
 
 ```mermaid
-%%{init: {"flowchart": {"rankSpacing": 100, "nodeSpacing": 50}} }%%
+%%{init: {"flowchart": {"rankSpacing": 150, "nodeSpacing": 100}} }%%
 flowchart LR
     FM(["FileMaker Data Source (external)"])
     Browser(["End User Browser"])
