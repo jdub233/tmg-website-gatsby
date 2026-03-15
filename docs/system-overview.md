@@ -21,27 +21,28 @@ FileMaker is an external system (hosted by a partner) and is not a repo.
 This diagram shows the three repos as black boxes with labeled flows between them. It intentionally omits internal AWS component detail — see the Miro board for the full internal architecture of `superfluid-images`.
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 100, "nodeSpacing": 50}} }%%
 flowchart LR
-    FM(["FileMaker\nData Source\n(external)"])
-    Browser(["End User\nBrowser"])
+    FM(["FileMaker Data Source (external)"])
+    Browser(["End User Browser"])
 
     subgraph GATSBY["jdub233/tmg-website-gatsby"]
-        BUILD["Gatsby Build\nReact + SCSS to static files"]
+        BUILD["Gatsby Build — React + SCSS to static files"]
     end
 
     subgraph SUF["jdub233/superfluid-uploader-frontend"]
-        UPUI["Uploader UI React/Vite\nembedded in FileMaker web viewer"]
+        UPUI["Uploader UI — React/Vite — embedded in FileMaker"]
     end
 
     subgraph SFIMG["jdub233/superfluid-images"]
-        MEDIA["AWS SAM\nCloudFront + Lambda@Edge\nS3 + DynamoDB + Upload API"]
+        MEDIA["AWS SAM — CloudFront + Lambda@Edge + S3 + DynamoDB + Upload API"]
     end
 
-    FM -->|"FileMaker REST API\nJSON at build time"| BUILD
-    FM -->|"Embedded web viewer\nasset GUID + API key in URL"| UPUI
-    BUILD -->|"Compiled static files\ndeployed to S3 + CloudFront"| Browser
-    UPUI -->|"1. GET pre-signed URL\n2. PUT file to S3"| SFIMG
-    SFIMG -->|"Media file requests\nvia CloudFront CDN"| Browser
+    FM -->|"FileMaker REST API — JSON at build time"| BUILD
+    FM -->|"Embedded web viewer — asset GUID + API key"| UPUI
+    BUILD -->|"Compiled static files — deployed to S3 + CloudFront"| Browser
+    UPUI -->|"1. GET pre-signed URL  2. PUT file to S3"| SFIMG
+    SFIMG -->|"Media files via CloudFront CDN"| Browser
 ```
 
 **Reading the diagram:**
