@@ -36,6 +36,26 @@ function Vision() {
         </div>
       </div>
       <div className="text-block">
+        <h3 className="box">Seamless Telepresence</h3>
+        <p>
+          Telepresence has traditionally pursued the idea of “being there and together” by overcoming distance through the use of real-time video communication to digitally connect geographically distributed remote participants.
+          In the early 1990s, Professor Ishii explored the vision of “Seamless Telepresence” through systems such as <i>ClearBoard</i> while at <i>NTT Human Interface Laboratories</i>. This work sought to dissolve the boundary between remote collaborators by creating the illusion of a seamless shared workspace, where digital and physical media could be fused. By carefully aligning gaze, gesture, and drawing surfaces, <i>ClearBoard</i> enabled participants to read each other’s gaze and facial expressions while simultaneously interacting over a shared workspace.
+        </p>
+      </div>
+      <div className="text-block">
+        <h3 className="box">TeleAbsence</h3>
+        <p>
+          TeleAbsence proposes a new vision of “Past and Afterlife Telepresence.” Rather than overcoming physical distance, it addresses the profound emotional and temporal distances shaped by fading memories and the loss of loved ones. TeleAbsence embraces absence not as a limitation, but as a fundamental condition and as a new design space.
+          Instead of explicit or literal representations, TeleAbsence explores poetic encounters with the digital and physical traces left behind by others. It fosters illusory communication—evoking the feeling of being with those who are no longer present—without relying on synthetic or generative representations of an absent person.
+          This vision is deeply inspired by the Portuguese concept of saudade—a longing for people, places, and moments made more poignant by their absence. TeleAbsence is guided by five design principles: presence of absence, illusory communication, materiality of memory, traces of reflection, and remote time, which together create opportunities to revisit and re-experience cherished moments.
+          By expanding telepresence to encompass the full spectrum of human existence—from before birth to the afterlife—TeleAbsence offers a framework for engaging with memory, legacy, and loss. Through thoughtful human–computer interaction design, it envisions a future in which personal memories are meaningfully preserved and reconstituted, allowing individuals to reconnect with their past selves and sustain bonds with those who are no longer with us.
+          <b>
+            TeleAbsence expands our capacity to care, to remember, and to see ourselves as part of a longer human arc (continuum). It is a living medium, stretching across generations and weaving fragments of identity into continuity.
+            In this way, memory becomes more than remembrance. It becomes a human bond across time.
+          </b>
+        </p>
+      </div>
+      <div className="text-block">
         <h3 className="box">Vision-driven Design Research</h3>
         <p>
           Looking back on the history of Human-Computer Interaction (HCI), we notice that quantum leaps have rarely resulted from studies on users’ needs; they have instead stemmed from the passion and dreams of visionaries like Dr.  <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart">Douglas Engelbart</a>. By looking beyond current limitations, we believe that vision-driven design is critical to foster these quantum leaps, while also complementing needs-driven and technology-driven design. From Tangible Bits, an early example of our vision-driven research, we shifted to Radical Atoms, which seeks out new guiding principles and concepts to view the world of bits and atoms in a new light, with the goal of trailblazing a new realm in interaction design.
