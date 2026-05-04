@@ -38,7 +38,7 @@ function Vision() {
       <div className="text-block">
         <h3 className="box">Seamless Telepresence</h3>
         <p>
-          Telepresence has traditionally pursued the idea of “being there and together“ by overcoming distance through the use of real-time video communication to digitally connect geographically distributed remote participants.
+          Telepresence has traditionally pursued the idea of “being there and together” by overcoming distance through the use of real-time video communication to digitally connect geographically distributed remote participants.
           In the early 1990s, Professor Ishii explored the vision of “Seamless Telepresence” through systems such as <i>ClearBoard</i> while at <i>NTT Human Interface Laboratories</i>. This work sought to dissolve the boundary between remote collaborators by creating the illusion of a seamless shared workspace, where digital and physical media could be fused. By carefully aligning gaze, gesture, and drawing surfaces, <i>ClearBoard</i> enabled participants to read each other’s gaze and facial expressions while simultaneously interacting over a shared workspace.
         </p>
       </div>
