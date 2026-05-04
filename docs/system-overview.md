@@ -1,9 +1,5 @@
 # TMG Website — System Overview
 
-> **For AI coding agents:** This document gives you a map of the full system before you work on any single repo. The diagram below shows repo boundaries and data flows at a high level. Treat each subgraph as a boundary: changes inside one box generally do not require changes in another, but the labeled arrows are the interfaces that must stay consistent.
-
----
-
 ## Repos in this system
 
 | Repo | Purpose |
@@ -16,7 +12,7 @@ FileMaker is an external system (hosted by a partner) and is not a repo.
 
 ---
 
-## Level 1 System Overview
+## System Overview
 
 This diagram shows the three repos as black boxes with labeled flows between them. It intentionally omits internal AWS component detail — see the Miro board for the full internal architecture of `superfluid-images`.
 
@@ -56,8 +52,4 @@ flowchart LR
 
 ## Further detail
 
-- **Miro board** (full internal architecture, upload/serve sequence diagrams):
-  https://miro.com/app/board/uXjVGxJMKN4=/
-- **Notion Project Hub** (stack overview, open work streams, design principles):
-  https://www.notion.so/324ae0c3e70a81c7b8f5ea6b5f8b8499
-- **Per-repo internal diagrams:** See `docs/` in `superfluid-images` and `superfluid-uploader-frontend` (planned).
+- **Per-repo internal diagrams:** See `docs/architecture.md` in `superfluid-images` and `superfluid-uploader-frontend`.
