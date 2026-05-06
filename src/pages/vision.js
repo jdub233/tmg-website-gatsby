@@ -56,12 +56,10 @@ function Vision() {
         </p>
       </div>
       <div className="text-block">
-        <h3 className="box">Vision-driven Design Research</h3>
+        <h3 className="box">Vision-driven Design</h3>
         <p>
-          Looking back on the history of Human-Computer Interaction (HCI), we notice that quantum leaps have rarely resulted from studies on users’ needs; they have instead stemmed from the passion and dreams of visionaries like Dr.  <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart">Douglas Engelbart</a>. By looking beyond current limitations, we believe that vision-driven design is critical to foster these quantum leaps, while also complementing needs-driven and technology-driven design. From Tangible Bits, an early example of our vision-driven research, we shifted to Radical Atoms, which seeks out new guiding principles and concepts to view the world of bits and atoms in a new light, with the goal of trailblazing a new realm in interaction design.
-        </p>
-        <p>
-          From these three approaches in design research &mdash; technology-driven, needs-driven, and vision-driven &mdash; we focus on the vision-driven approach due to its lifespan. We know that technologies become obsolete in ~1 year, and users’ needs change quickly and dramatically in ~10 years. However, we believe that a clear vision can last beyond our lifespan. While it may be decades before atom hackers (such as material scientists or self-organizing nano-robot engineers) invent the necessary enabling technologies for Radical Atoms, the exploration of interaction design should begin today.
+          Looking back on the history of Human-Computer Interaction (HCI), we notice that quantum leaps have rarely resulted from studies on users’ needs; they have instead stemmed from the passion and dreams of visionaries like Dr.  <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart">Douglas Engelbart</a>. By looking beyond current limitations, we believe that vision-driven design is critical to foster these quantum leaps, while also complementing needs-driven and technology-driven design. From Tangible Bits, an early example of our vision-driven research, we shifted to Radical Atoms, which seeks out new guiding principles and concepts to view the world of bits and atoms in a new light, with the goal of trailblazing a new realm in interaction design. From Telepresence to TeleAbsence, we propose a jump from across space to across time, to see ourselves as part of a longer human arc.
+          From three approaches in design research — technology-driven, needs-driven, and vision-driven — we focus on the vision-driven approach due to its lifespan. We know that technologies become obsolete in ~1 year, and users’ needs change quickly and dramatically in ~10 years. However, we believe that a clear vision can last beyond our lifespan. While it may be centuries before artists, scientists, and engineers invent the necessary theories and enabling technologies, the exploration of interaction design should begin today.
         </p>
       </div>
 
