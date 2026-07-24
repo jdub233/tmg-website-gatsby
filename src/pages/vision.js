@@ -65,6 +65,13 @@ function Vision() {
       <div className="text-block">
         <h3 className="box">Vision-driven Design</h3>
         <img
+          src="https://tmg-external.s3.amazonaws.com/public/vision/vision.jpg"
+          alt="Figure titled 'Lifespan of Technologies, Needs, and Vision': the word 'vision' beside a snow-capped mountain, and a pyramid overlaid on the same mountain divided into three tiers — Vision (>100 years) at the peak, Needs (~10 years) in the middle, Technologies (~1 year) at the base."
+          width="920"
+          height="275"
+          style={{ maxWidth: '100%', height: 'auto', margin: '20px 0' }}
+        />
+        <img
           src="https://tmg-external.s3.amazonaws.com/public/vision/EvolvingVisions.jpg"
           alt="Graphical chart of the evolution of visions in the Tangible Media Group, from Tangible Bits to Radical Atoms and from Telepresence to TeleAbsence"
           width="920"
