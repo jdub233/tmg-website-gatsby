@@ -35,6 +35,13 @@ function Vision() {
           </p>
         </div>
       </div>
+      <img
+        src="https://tmg-external.s3.amazonaws.com/public/vision/iceberg-iso.jpg"
+        alt="Diagram of three icebergs illustrating GUI, TUI, and Radical Atoms as increasing physical embodiment of digital information. For GUI ('Painted Bits'), only a small tip breaches the waterline. For TUI ('Tangible Bits'), a larger portion emerges above the surface. For Radical Atoms, nearly the entire iceberg rises above the waterline. The area below the waterline is labeled 'the digital world' and above it 'the physical world.'"
+        width="920"
+        height="600"
+        style={{ maxWidth: '100%', height: 'auto', margin: '20px 0' }}
+      />
       <div className="text-block">
         <h3 className="box">Seamless Telepresence</h3>
         <p>
