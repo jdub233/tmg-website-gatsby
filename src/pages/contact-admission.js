@@ -92,7 +92,7 @@ function ContactAdmission() {
       <h2 name="faq">Frequently Asked Questions</h2>
       <p className="box">
         <strong>How do I apply?</strong><br />
-        Submit an application through the main MIT Media Lab admissions process (<a href="https://www.media.mit.edu/admissions/how-to-apply">https://www.media.mit.edu/admissions/how-to-apply</a>) and select Tangible Media Group as one of your choices.
+        Submit an application through the main MIT Media Lab admissions process (<a href="https://www.media.mit.edu/graduate-program/apply">https://www.media.mit.edu/graduate-program/apply</a>) and select Tangible Media Group as one of your choices.
       </p>
       <p className="box">
         <strong>What’s the timeline for applications?</strong><br />
