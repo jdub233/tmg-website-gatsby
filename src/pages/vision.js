@@ -89,6 +89,13 @@ function Vision() {
           Looking back on the history of Human-Computer Interaction (HCI), we notice that quantum leaps have rarely resulted from studies on users’ needs; they have instead stemmed from the passion and dreams of visionaries like Dr.  <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart">Douglas Engelbart</a>. By looking beyond current limitations, we believe that vision-driven design is critical to foster these quantum leaps, while also complementing needs-driven and technology-driven design. From Tangible Bits, an early example of our vision-driven research, we shifted to Radical Atoms, which seeks out new guiding principles and concepts to view the world of bits and atoms in a new light, with the goal of trailblazing a new realm in interaction design. From Telepresence to TeleAbsence, we propose a jump from across space to across time, to see ourselves as part of a longer human arc.
           From three approaches in design research — technology-driven, needs-driven, and vision-driven — we focus on the vision-driven approach due to its lifespan. We know that technologies become obsolete in ~1 year, and users’ needs change quickly and dramatically in ~10 years. However, we believe that a clear vision can last beyond our lifespan. While it may be centuries before artists, scientists, and engineers invent the necessary theories and enabling technologies, the exploration of interaction design should begin today.
         </p>
+        <img
+          src="https://tmg-external.s3.amazonaws.com/public/vision/Hiroshi-IceBerg.jpg"
+          alt="Portrait of Hiroshi Ishii in front of a diagram showing GUI, TUI, and Radical Atoms as icebergs of increasing size rising from the digital world into the physical world. Beside him on a table are glass bottles from his Music Bottles project, an early tangible interface that let people control music by opening and closing physical bottles."
+          width="920"
+          height="699"
+          style={{ maxWidth: '100%', height: 'auto', margin: '20px 0' }}
+        />
       </div>
 
     </Layout>
